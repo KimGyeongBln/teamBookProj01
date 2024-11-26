@@ -3,7 +3,7 @@ package com.java.book;
 import java.util.Date;
 
 public class BookVo {
-	private int book_id;
+	private int bookId;
 	private String category;
 	private String bookTitle;
 	private int rating;
@@ -24,7 +24,7 @@ public class BookVo {
 	
 	BookVo(String category, String bookTitle, String authorName, String publisher, int genre1, int genre2, int genre3, 
 			int isRental, String imgUrl, Date update, String comment) {
-		this.book_id = book_id;
+		this.bookId = bookId;
 		this.bookTitle = bookTitle;
 		this.authorName = authorName;
 		this.publisher = publisher;
@@ -39,11 +39,11 @@ public class BookVo {
 	
 	// Getter, Setter
 	public int getBook_id() {
-		return book_id;
+		return bookId;
 	}
 	
 	public void setBook_id(int book_id) {
-		this.book_id = book_id;
+		this.bookId = book_id;
 	}
 	
 	public String getCategory() {
@@ -55,11 +55,11 @@ public class BookVo {
 	}
 	
 	public String getBook_title() {
-		return book_title;
+		return bookTitle;
 	}
 	
 	public void setBook_title(String book_title) {
-		this.book_title = book_title;
+		this.bookTitle = book_title;
 	}
 	
 	public int getRating() {
@@ -70,12 +70,12 @@ public class BookVo {
 		this.rating = rating;
 	}
 	
-	public int getAuthor_id() {
-		return author_id;
+	public String getAuthorName() {
+		return authorName;
 	}
 	
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
+	public void setAuthor_id(String authorName) {
+		this.authorName = authorName;
 	}
 	
 	public String getPublisher() {
@@ -119,27 +119,27 @@ public class BookVo {
 	}
 	
 	public int getIs_rental() {
-		return is_rental;
+		return isRental;
 	}
 	
-	public void setIs_rental(int is_rental) {
-		this.is_rental = is_rental;
+	public void setIs_rental(int isRental) {
+		this.isRental = isRental;
 	}
 	
-	public String getImg_url() {
-		return img_url;
+	public String getImgUrl() {
+		return imgUrl;
 	}
 	
-	public void setImg_url(String img_url) {
-		this.img_url = img_url;
+	public void setImg_url(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 	
 	public Date getUpd_date() {
-		return upd_date;
+		return update;
 	}
 	
-	public void setUpd_date(Date upd_date) {
-		this.upd_date = upd_date;
+	public void setUpd_date(Date update) {
+		this.update = update;
 	}
 	
 	public String getComment() {
