@@ -14,6 +14,7 @@ public class BookVo {
 	private int genre2;
 	private int genre3;
 	private int isRental;
+	private int price;
 	private String imgUrl;
 	private Date update;
 	private String comment;
@@ -23,7 +24,7 @@ public class BookVo {
 	}
 	
 	BookVo(String bookTitle, String authorName, String publisher, int categoryId, int genre1, int genre2, int genre3, 
-			int isRental, String imgUrl, Date update, String comment) {
+			int isRental, int price, String imgUrl, Date update, String comment) {
 		this.bookId = bookId;
 		this.bookTitle = bookTitle;
 		this.authorName = authorName;
@@ -33,6 +34,7 @@ public class BookVo {
 		this.genre2 = genre2;
 		this.genre2 = genre2;
 		this.isRental = isRental;
+		this.price = price;
 		this.imgUrl = imgUrl;
 		this.update = update;
 		this.comment = comment;
@@ -126,6 +128,14 @@ public class BookVo {
 	
 	public void setIs_rental(int isRental) {
 		this.isRental = isRental;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	public String getImgUrl() {
