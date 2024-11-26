@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class BookVo {
 	private int bookId;
-	private String category;
 	private String bookTitle;
 	private int rating;
 	private String authorName;
 	private String publisher;
 	private	Date date;
+	private int categoryId;
 	private int genre1;
 	private int genre2;
 	private int genre3;
@@ -22,12 +22,13 @@ public class BookVo {
 		
 	}
 	
-	BookVo(String category, String bookTitle, String authorName, String publisher, int genre1, int genre2, int genre3, 
+	BookVo(String bookTitle, String authorName, String publisher, int categoryId, int genre1, int genre2, int genre3, 
 			int isRental, String imgUrl, Date update, String comment) {
 		this.bookId = bookId;
 		this.bookTitle = bookTitle;
 		this.authorName = authorName;
 		this.publisher = publisher;
+		this.categoryId = categoryId;
 		this.genre1 = genre1;
 		this.genre2 = genre2;
 		this.genre2 = genre2;
@@ -96,6 +97,14 @@ public class BookVo {
 	
 	public int getGenre1() {
 		return genre1;
+	}
+	
+	public void setCategory(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	
+	public int getCategoryId() {
+		return categoryId;
 	}
 	
 	public void setGenre1(int genre1) {
