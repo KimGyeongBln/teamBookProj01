@@ -41,16 +41,16 @@ public class BookVo {
 	}
 	
 	// Getter, Setter
-	public int getBook_id() {
+	public int getBookId() {
 		return bookId;
 	}
 	
-	public void setBook_id(int book_id) {
+	public void setBookId(int book_id) {
 		this.bookId = book_id;
 	}
 	
 
-	public String getBook_title() {
+	public String getBookTitle() {
 		return bookTitle;
 	}
 	
@@ -122,7 +122,7 @@ public class BookVo {
 		this.genre3 = genre3;
 	}
 	
-	public int getIs_rental() {
+	public int getIsRental() {
 		return isRental;
 	}
 	
@@ -146,7 +146,7 @@ public class BookVo {
 		this.imgUrl = imgUrl;
 	}
 	
-	public Date getUpd_date() {
+	public Date getUpdDate() {
 		return update;
 	}
 	
