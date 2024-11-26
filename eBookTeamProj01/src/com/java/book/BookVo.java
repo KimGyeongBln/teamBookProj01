@@ -47,14 +47,7 @@ public class BookVo {
 		this.bookId = book_id;
 	}
 	
-	public String getCategory() {
-		return category;
-	}
-	
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	
+
 	public String getBook_title() {
 		return bookTitle;
 	}
