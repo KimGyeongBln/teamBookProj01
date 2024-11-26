@@ -48,18 +48,18 @@ public class BookDaoImpl implements BookDao {
 			
 			//	각 레코드를 List<AuthorVo>로 변환
 			while (rs.next()) {
-				int bookId = rs.getInteger("book_id");
+				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
-				int rating = rs.getInteger("rating");
+				int rating = rs.getInt("rating");
 				String authorName = rs.getString("author_name");
-				String publisher = rs.getSteing("publisher");
+				String publisher = rs.getString("publisher");
 				Date date = rs.getDate("bate");
-				int categoryId = rs.getInteger("category_id");
-				int genre1 = rs.getInteger("genre1");
-				int genre2 = rs.getInteger("genre2");
-				int genre3 = rs.getInteger("genre3");
-				int isRental = rs.getInteger("is_rental");
-				int price = rs.getInteger("price");
+				int categoryId = rs.getInt("category_id");
+				int genre1 = rs.getInt("genre1");
+				int genre2 = rs.getInt("genre2");
+				int genre3 = rs.getInt("genre3");
+				int isRental = rs.getInt("is_rental");
+				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
 				Date update = rs.getDate("update");
 				String comment = rs.getString("comment");
