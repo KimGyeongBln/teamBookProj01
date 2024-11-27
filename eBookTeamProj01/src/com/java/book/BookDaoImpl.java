@@ -76,10 +76,58 @@ public class BookDaoImpl implements BookDao {
 		return list;
 	}
 	
+	@Override
 	public List<BookVo> search(String keyword){
+		List<BookVo> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
-		return null;
+		try {
+			conn = getConnection();
+	
+			
+			String sql = "SELECT book_id, book_title, rating, author_name,"
+					+ " publisher, date, category_id,"
+					+ " genre1, genre2, genre3, is_rental, price,"
+					+ " img_url, update, comment "
+					+ " FROM BOOK"
+					+ " WHERE UPPER(book_title) LIKE ? OR UPPER(author_name) LIKE ? OR " ;
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword.toUpperCase() + "%");
+			pstmt.setString(2, "%" + keyword.toUpperCase() + "%");
+			
+			rs = pstmt.executeQuery();
+			//	각 레코드를 List<AuthorVo>로 변환
+			while (rs.next()) {
+				int bookId = rs.getInt("book_id");
+				String bookTitle = rs.getString("book_title");
+				int rating = rs.getInt("rating");
+				String authorName = rs.getString("author_name");
+				String publisher = rs.getString("publisher");
+				Date date = rs.getDate("date");
+				int categoryId = rs.getInt("category_id");
+				int genre1 = rs.getInt("genre1");
+				int genre2 = rs.getInt("genre2");
+				int genre3 = rs.getInt("genre3");
+				int isRental = rs.getInt("is_rental");
+				int price = rs.getInt("price");
+				String imgUrl = rs.getString("img_url");
+				Date update = rs.getDate("update");
+				String comment = rs.getString("comment");
+				
+				BookVo vo = new BookVo(bookTitle, authorName, publisher, categoryId,  genre1, genre2, genre3, 
+						isRental, price, imgUrl, update, comment);
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;	
 	}
+	
 	
 	public BookVo get(int bookId) {
 		
@@ -129,19 +177,17 @@ public class BookDaoImpl implements BookDao {
 		}
 		return 1 == insertedCount;
 	}
-	
 	public boolean update(BookVo vo) {
 		
 		return false;
 	}
-	
 	public boolean delete(int bookId) {
-		BookDao dao = new BookDaoImpl();
-		boolean success = dao.delete(bookId);
 		
-		System.out.println("BOOK DELETE " +
-				(success ? "성공": "실패"));
 		return false;
-		
 	}
+	
+	
+	
+	
+	
 }
