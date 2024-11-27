@@ -144,9 +144,4 @@ public class BookDaoImpl implements BookDao {
 		return false;
 		
 	}
-	
-	
-	
-	
-	
 }

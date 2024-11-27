@@ -4,10 +4,18 @@ public class UserVo {
 	private int uid;
 	private int userId;
 	private int userPassword;
-	private String adress;
-	private int phoneNumber;
+	private String address;
+	private String phoneNumber;
 	private String email;
-	private String admin;
+	private int admin;
+	
+	public UserVo() {
+		
+	}
+	
+	public UserVo(int uid, int userId, int userPassword, String address, String phoneNumber, String email, int admin) {
+		
+	}
 	
 	public int getUid() {
 		return uid;
@@ -34,18 +42,18 @@ public class UserVo {
 	}
 	
 	public String getAdress() {
-		return adress;
+		return address;
 	}
 	
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.address = adress;
 	}
 	
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
@@ -57,11 +65,11 @@ public class UserVo {
 		this.email = email;
 	}
 	
-	public String getAdmin() {
+	public int getAdmin() {
 		return admin;
 	}
 	
-	public void setAdmin(String admin) {
+	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
 	
