@@ -125,7 +125,7 @@ public class BookDaoImpl implements BookDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;	
+		return list;	
 	}
 	
 	
