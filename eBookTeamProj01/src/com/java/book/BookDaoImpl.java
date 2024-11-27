@@ -49,9 +49,9 @@ public class BookDaoImpl implements BookDao {
 			
 			//	각 레코드를 List<AuthorVo>로 변환
 			while (rs.next()) {
-				int bookId = rs.getInteger("book_id");
+				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
-				int rating = rs.getInteger("rating");
+				int rating = rs.getInt("rating");
 				String authorName = rs.getString("author_name");
 				String publisher = rs.getString("publisher");
 				Date date = rs.getDate("date");
@@ -101,15 +101,15 @@ public class BookDaoImpl implements BookDao {
 			pstmt.setInt(3, vo.getRating());
 			pstmt.setString(4, vo.getAuthorName());
 			pstmt.setString(5, vo.getPublisher());
-			pstmt.setDate(6, vo.getDate());
+			pstmt.setDate(6, ((java.sql.Date)vo.getDate()));
 			pstmt.setInt(7, vo.getGenre1());
-			pstmt.setString(8, vo.getCategoryId());
-			pstmt.setString(9, vo.getGenre2());
-			pstmt.setString(10, vo.getGenre3());
-			pstmt.setString(11, vo.getIsRental());
-			pstmt.setString(12, vo.getPrice());
+			pstmt.setInt(8, vo.getCategoryId());
+			pstmt.setInt(9, vo.getGenre2());
+			pstmt.setInt(10, vo.getGenre3());
+			pstmt.setInt(11, vo.getIsRental());
+			pstmt.setInt(12, vo.getPrice());
 			pstmt.setString(13, vo.getImgUrl());
-			pstmt.setString(14, vo.getUpdDate());
+			pstmt.setDate(14, ((java.sql.Date)vo.getUpdDate()));
 			pstmt.setString(15, vo.getComment());
 			
 			insertedCount = pstmt.executeUpdate();
