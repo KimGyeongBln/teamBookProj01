@@ -65,7 +65,7 @@ public class BookDaoImpl implements BookDao {
 				Date update = rs.getDate("update");
 				String comment = rs.getString("comment");
 				
-				BookVo vo = new BookVo(bookId, bookTitle, authorName, publisher, categoryId,  genre1, genre2, genre3, 
+				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName, publisher, date, categoryId,  genre1, genre2, genre3, 
 						isRental, price, imgUrl, update, comment);
 				
 				list.add(vo);
@@ -117,7 +117,7 @@ public class BookDaoImpl implements BookDao {
 				Date update = rs.getDate("update");
 				String comment = rs.getString("comment");
 				
-				BookVo vo = new BookVo(bookId, bookTitle, authorName, publisher, categoryId,  genre1, genre2, genre3, 
+				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName, publisher, date, categoryId,  genre1, genre2, genre3, 
 						isRental, price, imgUrl, update, comment);
 				
 				list.add(vo);
@@ -167,7 +167,7 @@ public class BookDaoImpl implements BookDao {
 				Date update = rs.getDate("update");
 				String comment = rs.getString("comment");
 				
-				BookVo vo = new BookVo(bookId, bookTitle, authorName, publisher, categoryId,  genre1, genre2, genre3, 
+				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName, publisher, date, categoryId,  genre1, genre2, genre3, 
 						isRental, price, imgUrl, update, comment);
 				
 				list.add(vo);
@@ -216,7 +216,8 @@ public class BookDaoImpl implements BookDao {
 				Date update = rs.getDate("update");
 				String comment = rs.getString("comment");
 				
-				BookVo vo = new BookVo(bookId, bookTitle, authorName, publisher, categoryId,  genre1, genre2, genre3, 
+				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName,
+						publisher, date, categoryId, genre1, genre2, genre3,
 						isRental, price, imgUrl, update, comment);
 				
 				list.add(vo);
