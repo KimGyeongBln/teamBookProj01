@@ -4,6 +4,7 @@ public class UserVo {
 	private int uid;
 	private String userId;
 	private String userPassword;
+	private String userName;
 	private String address;
 	private String phoneNumber;
 	private String email;
@@ -14,10 +15,11 @@ public class UserVo {
 	}
 	
 	public UserVo(int uid, String userId, String userPassword, String address, 
-			String phoneNumber, String email, int admin) {
+			String userName, String phoneNumber, String email, int admin) {
 		this.uid = uid;
 		this.userId = userId;
 		this.userPassword = userPassword;
+		this.userName = userName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
@@ -47,6 +49,15 @@ public class UserVo {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+	
+	public String getUserName() {
+		return userName;
+	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 	
 	public String getAddress() {
 		return address;

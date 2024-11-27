@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			
-			String sql = "SELECT uid, user_id, user_password, address,"
+			String sql = "SELECT uid, user_id, user_password, user_name, address,"
 					+ " phoneNumber, email, admin"
 					+ " FROM USER;";
 			
@@ -49,12 +49,13 @@ public class UserDaoImpl implements UserDao {
 				int uid = rs.getInt("uid");
 				String userId = rs.getString("user_id");
 				String userPassword = rs.getString("user_password");
+				String userName = rs.getString("userName");
 				String address = rs.getString("address");
 				String phoneNumber = rs.getString("phoneNumber");
 				String email = rs.getString("email");
 				int admin = rs.getInt("admin");
 				
-				UserVo vo = new UserVo(uid, userId, userPassword, address, phoneNumber,
+				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, phoneNumber,
 						email, admin);
 				
 				list.add(vo);
@@ -77,7 +78,7 @@ public class UserDaoImpl implements UserDao {
 			conn = getConnection();
 			
 			String sql = "SELECT uid, user_id, user_password,"
-					+ " address, phon_number, email, admin "
+					+ " user_name, address, phon_number, email, admin "
 					+ " FROM USER"
 					+ " WHERE (user_id) LIKE ?" ;
 			pstmt = conn.prepareStatement(sql);
@@ -89,12 +90,13 @@ public class UserDaoImpl implements UserDao {
 				int uid = rs.getInt("uid");
 				String userId = rs.getString("user_id");
 				String userPassword = rs.getString("user_password");
+				String userName = rs.getString("userName");
 				String address = rs.getString("address");
 				String phonNumber = rs.getString("phon_number");
 				String email = rs.getString("email");
 				int admin = rs.getInt("admin");
 			
-				UserVo vo = new UserVo(uid, userId, userPassword, address, 
+				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
 						phonNumber, email, admin);
 				
 				list.add(vo);
@@ -117,7 +119,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "SELECT uid, user_id, user_password, address,"
+			String sql = "SELECT uid, user_id, user_password, user_name, address,"
 					+ " phone_number, email, admin"
 					+ " FROM USER"
 					+ " VALUES(?, ?)";
@@ -126,10 +128,11 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(1, vo.getUid());
 			pstmt.setString(2, vo.getUserId());
 			pstmt.setString(3, vo.getUserPassword());
-			pstmt.setString(4, vo.getAddress());
-			pstmt.setString(5, vo.getPhoneNumber());
-			pstmt.setString(6, vo.getEmail());
-			pstmt.setInt(7, vo.getAdmin());
+			pstmt.setString(4, vo.getUserName());
+			pstmt.setString(5, vo.getAddress());
+			pstmt.setString(6, vo.getPhoneNumber());
+			pstmt.setString(7, vo.getEmail());
+			pstmt.setInt(8, vo.getAdmin());
 
 			insertedCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
