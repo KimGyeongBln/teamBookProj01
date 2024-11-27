@@ -1,7 +1,6 @@
 package com.java.book;
 
-import java.util.Iterator;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DaoApp {
@@ -69,8 +68,27 @@ public class DaoApp {
 	
 	private static boolean login(Scanner sc) {
 		System.out.println("로그인 시도합니다.");
-		System.out.println("로그인 시도합니다.");
-		System.out.println("로그인 시도합니다.");
+		
+		UserDao user = new UserDaoImpl();
+		
+		System.out.print("아이디: ");
+		String id = sc.nextLine();
+		System.out.print("비밀번호: ");
+		String password = sc.nextLine();
+		
+		if(!id.equals("") && !password.equals("")) {
+			try {
+				
+				String sql = "select user_id, user_password "
+						+ " form USER";
+			} catch(Exception e){
+				
+			}
+		} else {
+			System.out.println("다시 입력해 주세요.");
+		}
+		
+		
 		
 		return true;
 	}
