@@ -99,7 +99,7 @@ public class BookDaoImpl implements BookDao {
 			pstmt.setString(2, "%" + keyword.toUpperCase() + "%");
 			
 			rs = pstmt.executeQuery();
-			//	각 레코드를 List<AuthorVo>로 변환
+			
 			while (rs.next()) {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
