@@ -117,7 +117,8 @@ public class BookDaoImpl implements BookDao {
 				Date update = rs.getDate("update");
 				String comment = rs.getString("comment");
 				
-				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName, publisher, date, categoryId,  genre1, genre2, genre3, 
+				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName,
+						publisher, date, categoryId, genre1, genre2, genre3,
 						isRental, price, imgUrl, update, comment);
 				
 				list.add(vo);
@@ -167,7 +168,8 @@ public class BookDaoImpl implements BookDao {
 				Date update = rs.getDate("update");
 				String comment = rs.getString("comment");
 				
-				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName, publisher, date, categoryId,  genre1, genre2, genre3, 
+				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName,
+						publisher, date, categoryId, genre1, genre2, genre3,
 						isRental, price, imgUrl, update, comment);
 				
 				list.add(vo);
@@ -226,6 +228,59 @@ public class BookDaoImpl implements BookDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public List<BookVo> searchgenre(String keyword){
+		List<BookVo> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+	
+			
+			String sql = "SELECT book_id, book_title, rating, author_name,"
+					+ " publisher, date, category_id,"
+					+ " genre1, genre2, genre3, is_rental, price,"
+					+ " img_url, update, comment "
+					+ " FROM BOOK"
+					+ " WHERE UPPER(genre1) LIKE ? OR UPPER(genre2) LIKE ? OR UPPER(genre3) LIKE ?" ;
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword.toUpperCase() + "%");
+			pstmt.setString(2, "%" + keyword.toUpperCase() + "%");
+			pstmt.setString(3, "%" + keyword.toUpperCase() + "%");
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int bookId = rs.getInt("book_id");
+				String bookTitle = rs.getString("book_title");
+				int rating = rs.getInt("rating");
+				String authorName = rs.getString("author_name");
+				String publisher = rs.getString("publisher");
+				Date date = rs.getDate("date");
+				int categoryId = rs.getInt("category_id");
+				int genre1 = rs.getInt("genre1");
+				int genre2 = rs.getInt("genre2");
+				int genre3 = rs.getInt("genre3");
+				int isRental = rs.getInt("is_rental");
+				int price = rs.getInt("price");
+				String imgUrl = rs.getString("img_url");
+				Date update = rs.getDate("update");
+				String comment = rs.getString("comment");
+				
+				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName,
+						publisher, date, categoryId, genre1, genre2, genre3,
+						isRental, price, imgUrl, update, comment);
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;	
 	}
 	
 	public BookVo get(int bookId) {
