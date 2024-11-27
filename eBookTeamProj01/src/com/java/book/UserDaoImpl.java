@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
@@ -69,7 +68,40 @@ public class UserDaoImpl implements UserDao {
 	
 	
 	public List<UserVo> search(String keyword){
+		List<UserVo> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT uid, user_id, user_password,"
+					+ " address, phon_number, email, admin "
+					+ " FROM USER"
+					+ " WHERE (user_id) LIKE ?" ;
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword.toUpperCase() + "%");
+			
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				int uid = rs.getInt("uid");
+				String userId = rs.getString("user_id");
+				String userPassword = rs.getString("user_password");
+				String address = rs.getString("address");
+				String phonNumber = rs.getString("phon_number");
+				String email = rs.getString("email");
+				int admin = rs.getInt("admin");
+			
+				UserVo vo = new UserVo(uid, userId, userPassword, address, 
+						phonNumber, email, admin);
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			}
 		return null;
 	}
 	public UserVo get(int bookId) {
