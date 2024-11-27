@@ -92,7 +92,7 @@ public class BookDaoImpl implements BookDao {
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, update, comment "
 					+ " FROM BOOK"
-					+ " WHERE UPPER(book_title) LIKE ? OR UPPER(author_name) LIKE ? OR " ;
+					+ " WHERE UPPER(book_title) LIKE ? OR UPPER(author_name) LIKE ?" ;
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword.toUpperCase() + "%");
