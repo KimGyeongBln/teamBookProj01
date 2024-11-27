@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 public class BookDaoImpl implements BookDao {
 	static final String dburl = "jdbc:mysql://localhost:3306/e_book";
