@@ -3,7 +3,7 @@ package com.java.book;
 public class UserVo {
 	private int uid;
 	private String userId;
-	private int userPassword;
+	private String userPassword;
 	private String address;
 	private String phoneNumber;
 	private String email;
@@ -13,7 +13,7 @@ public class UserVo {
 		
 	}
 	
-	public UserVo(int uid, String userId, int userPassword, String address, 
+	public UserVo(int uid, String userId, String userPassword, String address, 
 			String phoneNumber, String email, int admin) {
 		this.uid = uid;
 		this.userId = userId;
@@ -40,20 +40,20 @@ public class UserVo {
 		this.userId = userId;
 	}
 	
-	public int getUserPassword() {
+	public String getUserPassword() {
 		return userPassword;
 	}
 	
-	public void setUserPassword(int userPassword) {
+	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
 	
-	public String getAdress() {
+	public String getAddress() {
 		return address;
 	}
 	
-	public void setAdress(String adress) {
-		this.address = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	public String getPhoneNumber() {

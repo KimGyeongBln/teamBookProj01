@@ -49,7 +49,7 @@ public class UserDaoImpl implements UserDao {
 			while (rs.next()) {
 				int uid = rs.getInt("uid");
 				String userId = rs.getString("user_id");
-				int userPassword = rs.getInt("user_password");
+				String userPassword = rs.getString("user_password");
 				String address = rs.getString("address");
 				String phoneNumber = rs.getString("phoneNumber");
 				String email = rs.getString("email");
@@ -78,53 +78,52 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	public boolean insert(UserVo vo) {
-//		Connection conn = null;
-//		PreparedStatement pstmt = null;
-//		int insertedCount = 0;
-//		
-//		try {
-//			conn = getConnection();
-//			
-//			String sql = "SELECT uid, user_id, rating, author_name,"
-//					+ " publisher, date, category_id,"
-//					+ " genre1, genre2, genre3, is_rental, price,"
-//					+ " img_url, update, comment "
-//					+ " FROM BOOK"
-//					+ " VALUES(?, ?)";
-//			pstmt = conn.prepareStatement(sql);
-//			
-////			pstmt.setInt(1, vo.getBookId());
-////			pstmt.setString(2, vo.getBookTitle());
-////			pstmt.setInt(3, vo.getRating());
-////			pstmt.setString(4, vo.getAuthorName());
-////			pstmt.setString(5, vo.getPublisher());
-////			pstmt.setDate(6, ((java.sql.Date)vo.getDate()));
-////			pstmt.setInt(7, vo.getGenre1());
-////			pstmt.setInt(8, vo.getCategoryId());
-////			pstmt.setInt(9, vo.getGenre2());
-////			pstmt.setInt(10, vo.getGenre3());
-////			pstmt.setInt(11, vo.getIsRental());
-////			pstmt.setInt(12, vo.getPrice());
-////			pstmt.setString(13, vo.getImgUrl());
-////			pstmt.setDate(14, ((java.sql.Date)vo.getUpdDate()));
-////			pstmt.setString(15, vo.getComment());
-//			
-//			insertedCount = pstmt.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (pstmt != null) pstmt.close();
-//				if (conn != null) conn.close();
-//			} catch (Exception e) {}
-//		}
-//		return 1 == insertedCount;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int insertedCount = 0;
 		
-		return false;
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT uid, user_id, user_password, address,"
+					+ " phone_number, email, admin"
+					+ " FROM USER"
+					+ " VALUES(?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, vo.getUid());
+			pstmt.setString(2, vo.getUserId());
+			pstmt.setString(3, vo.getUserPassword());
+			pstmt.setString(4, vo.getAddress());
+			pstmt.setString(5, vo.getPhoneNumber());
+			pstmt.setString(6, vo.getEmail());
+			pstmt.setInt(7, vo.getAdmin());
+
+			insertedCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
+		}
+		return 1 == insertedCount;
 	}
+	
 	public boolean update(UserVo vo) {
 		
 		return false;
 	}
-	public boolean delete(int bookId) {
+	
+	public boolean delete(int userId) {
+		UserDao dao = new UserDaoImpl();
+		boolean success = dao.delete(userId);
+		
+		System.out.println("USER_ID DELETE " +
+				(success ? "성공": "실패"));
+		
+		return false;
+	}
 }
+	
