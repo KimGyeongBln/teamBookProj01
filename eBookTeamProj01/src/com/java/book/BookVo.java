@@ -23,7 +23,7 @@ public class BookVo {
 		
 	}
 	
-	BookVo(String bookTitle, String authorName, String publisher, int categoryId, int genre1, int genre2, int genre3, 
+	BookVo(int bookId, String bookTitle, String authorName, String publisher, int categoryId, int genre1, int genre2, int genre3, 
 			int isRental, int price, String imgUrl, Date update, String comment) {
 		this.bookId = bookId;
 		this.bookTitle = bookTitle;
