@@ -55,7 +55,7 @@ public class BookVo {
 		return bookTitle;
 	}
 	
-	public void setBook_title(String book_title) {
+	public void setBookTitle(String book_title) {
 		this.bookTitle = book_title;
 	}
 	
@@ -71,7 +71,7 @@ public class BookVo {
 		return authorName;
 	}
 	
-	public void setAuthor_id(String authorName) {
+	public void setAuthorId(String authorName) {
 		this.authorName = authorName;
 	}
 	
@@ -127,7 +127,7 @@ public class BookVo {
 		return isRental;
 	}
 	
-	public void setIs_rental(int isRental) {
+	public void setIsRental(int isRental) {
 		this.isRental = isRental;
 	}
 	
@@ -143,15 +143,15 @@ public class BookVo {
 		return imgUrl;
 	}
 	
-	public void setImg_url(String imgUrl) {
+	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
 	
-	public Date getUpdDate() {
+	public Date getUpdate() {
 		return update;
 	}
 	
-	public void setUpd_date(Date update) {
+	public void setUpdate(Date update) {
 		this.update = update;
 	}
 	

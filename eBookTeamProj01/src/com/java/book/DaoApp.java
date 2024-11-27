@@ -10,8 +10,6 @@ public class DaoApp {
 		Scanner sc = new Scanner(System.in);
 		
 		init(sc);
-		
-
 	}
 	
 	private static void init(Scanner sc) {
@@ -30,7 +28,7 @@ public class DaoApp {
 		System.out.println("|             3. 회원가입\t\t\t\t\t|");
 		System.out.println("|             4. 나가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.println("명령어를 입력해주세요 : ");
+		System.out.print("명령어를 입력해주세요 : ");
 		int commend = sc.nextInt();
 		
 		switch(commend)
@@ -112,14 +110,14 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 검색\t\t\t\t|");
-		System.out.println("|             2. 대여목록\t\t\t\t|");
-		System.out.println("|             3. 반납\t\t\t\t|");
-		System.out.println("|             4. 추천\t\t\t\t|");
-		System.out.println("|             5. 기록\t\t\t\t|");
+		System.out.println("|             1. 검색\t\t\t\t\t|");
+		System.out.println("|             2. 대여목록\t\t\t\t\t|");
+		System.out.println("|             3. 반납\t\t\t\t\t|");
+		System.out.println("|             4. 추천\t\t\t\t\t|");
+		System.out.println("|             5. 기록\t\t\t\t\t|");
 		System.out.println("|             6. 로그아웃\t\t\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.println("명령어를 입력해주세요 : ");
+		System.out.print("명령어를 입력해주세요 : ");
 		int commend = sc.nextInt();
 		
 		switch(commend)
@@ -132,9 +130,9 @@ public class DaoApp {
 			break;
 		case 3:
 			if(returnRentalBook(sc)) {
-				
+				mainMenu(sc);
 			} else {
-				
+				System.out.println("회원가입 실패. 다시 시도해주세요.");
 			}
 			break;
 		case 4:
@@ -163,10 +161,10 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 검색\t\t\t\t|");
+		System.out.println("|             1. 검색\t\t\t\t\t|");
 		System.out.println("|             2. 이전으로\t\t\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.println("명령어를 입력해주세요 : ");
+		System.out.print("명령어를 입력해주세요 : ");
 		int commend = sc.nextInt();
 		
 		switch(commend)
@@ -194,36 +192,39 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 일반 검색\t\t\t\t|");
-		System.out.println("|             2. 장르 검색\t\t\t\t|");
+		System.out.println("|             1. 일반 검색\t\t\t\t\t|");
+		System.out.println("|             2. 장르 검색\t\t\t\t\t|");
 		System.out.println("|             3. 상세 검색\t\t\t\t\t|");
 		System.out.println("|             4. 뒤로가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.println("명령어를 입력해주세요 : ");
+		System.out.print("명령어를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
 		
 		switch(commend)
 		{
 		case 1:
-			if(generalSearch(sc)) {
-				generalSearchResult(sc);
+			if(generalSearch(sc).size() > 0) {
+				var bookList = generalSearch(sc);
+				searchResult(sc, bookList);
 				init(sc);
 			} else {
 				System.out.println("키워드 검색 실패. 다시 시도해주세요.");
 			}
 			break;
 		case 2:
-			if(gerneSearch(sc)) {
-				gerneSearchResult(sc);
+			if(gerneSearch(sc).size() > 0) {
+				var bookList = gerneSearch(sc);
+				searchResult(sc, bookList);
 				init(sc);
 			} else {
 				System.out.println("장르 검색 실패. 다시 시도해주세요.");
 			}
 			break;
 		case 3:
-			if(detailSearch(sc)) {
-				detailSearchResult(sc);
+			if(detailSearch(sc).size() > 0) {
+				var bookList = detailSearch(sc);
+				searchResult(sc, bookList);
 				init(sc);
 			} else {
 				System.out.println("상세 검색 실패. 다시 시도해주세요.");
@@ -244,32 +245,45 @@ public class DaoApp {
 		System.out.println("책 대여 할께요.");
 	}
 	
-	private static boolean generalSearch(Scanner sc) {
-		return true;
+	private static List<BookVo> generalSearch(Scanner sc) {
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("=========================================================");
+		System.out.print("작가 이름 혹은 작품 제목으로 검색 : ");
+		String keyword = sc.nextLine();
+		
+		BookDao books = new BookDaoImpl();
+		
+		return books.search(keyword);
 	}
 	
-	private static boolean gerneSearch(Scanner sc) {
+	private static List<BookVo> gerneSearch(Scanner sc) {
 		
-		return true;
+		return null;
 	}
 
-	private static boolean detailSearch(Scanner sc) {
+	private static List<BookVo> detailSearch(Scanner sc) {
 		
-		return true;
+		return null;
 	}
 	
-	private static boolean generalSearchResult(Scanner sc) {
-		return true;
-	}
-	
-	private static boolean gerneSearchResult(Scanner sc) {
+	private static void searchResult(Scanner sc, List<BookVo> bookList) {
+		System.out.println("=========================================================");
+		for(var book : bookList) {
+			book.toString();
+		}
+		System.out.println("=========================================================");
+		System.out.print("대여할 책 번호를 입력해주세요 : ");
+		int bookNo = sc.nextInt();
 		
-		return true;
-	}
-	
-	private static boolean detailSearchResult(Scanner sc) {
-		
-		return true;
+		for(var book : bookList) {
+			if (book.getBookId() == bookNo) {
+				book.setIsRental(1);
+				break;
+			}
+		}
 	}
 
 	private static void showRentalBookList(Scanner sc) {

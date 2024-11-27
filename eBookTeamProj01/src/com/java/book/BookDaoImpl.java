@@ -501,9 +501,10 @@ public class BookDaoImpl implements BookDao {
 		
 		return false;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
 }
