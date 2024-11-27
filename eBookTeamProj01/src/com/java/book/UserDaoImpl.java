@@ -106,9 +106,43 @@ public class UserDaoImpl implements UserDao {
 			}
 		return null;
 	}
-	public UserVo get(int bookId) {
+	public UserVo get(int uid) {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		UserVo temp = null;
 		
-		return null;
+		
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			
+			String sql = "SELECT uid, user_id, user_password,"
+					+ " user_name, address, phon_number, email, admin "
+					+ " FROM USER"
+					+ " WHERE (uid)" ;
+			
+			rs = stmt.executeQuery(sql);
+		
+			while (rs.next()) {
+				String userId = rs.getString("user_id");
+				String userPassword = rs.getString("user_password");
+				String userName = rs.getString("userName");
+				String address = rs.getString("address");
+				String phonNumber = rs.getString("phon_number");
+				String email = rs.getString("email");
+				int admin = rs.getInt("admin");
+			
+				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
+						phonNumber, email, admin);
+				
+				temp = vo;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return temp;
 	}
 	
 	public boolean insert(UserVo vo) {
