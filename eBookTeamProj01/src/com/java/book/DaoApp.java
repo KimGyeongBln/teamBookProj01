@@ -31,8 +31,37 @@ public class DaoApp {
 		System.out.print(" ");
 		String text = scanner.nextLine();
 		
-		String title = scanner.nextLine();
+		String bookId = scanner.nextLine();
 		System.out.print(" ");
+		String bookTitle = scanner.nextLine();
+		System.out.print(" ");
+		String rating = scanner.nextLine();
+		System.out.print(" ");
+		String authorName = scanner.nextLine();
+		System.out.print(" ");
+		String publisher = scanner.nextLine();
+		System.out.print(" ");
+		String date = scanner.nextLine();
+		System.out.print(" ");
+		String categoryId = scanner.nextLine();
+		System.out.print(" ");
+		String genre1 = scanner.nextLine();
+		System.out.print(" ");
+		String genre2 = scanner.nextLine();
+		System.out.print(" ");
+		String genre3 = scanner.nextLine();
+		System.out.print(" ");
+		String isRental = scanner.nextLine();
+		System.out.print(" ");
+		String price = scanner.nextLine();
+		System.out.print(" ");
+		String imgUrl = scanner.nextLine();
+		System.out.print(" ");
+		String update = scanner.nextLine();
+		System.out.print(" ");
+		String comment = scanner.nextLine();
+		System.out.print(" ");
+		
 		
 		
 		BookVo vo = new BookVo();
@@ -43,6 +72,16 @@ public class DaoApp {
 		
 	}
 	
+	private static void deletedBook() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("삭제:");
+		
+		BookDao dao = new BookDaoImpl();
+		boolean success = dao.delete(bookId);
+		
+		System.out.println("BOOK DELETE" + (success ? "성공": "실패"));
+		scanner.close();
+	}
 	
 	
 }
