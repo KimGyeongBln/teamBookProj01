@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class BookDaoImpl implements BookDao {
 	static final String dburl = "jdbc:mysql://localhost:3306/e_book";
@@ -76,11 +77,11 @@ public class BookDaoImpl implements BookDao {
 		return list;
 	}
 	
-	
 	public List<BookVo> search(String keyword){
 		
 		return null;
 	}
+	
 	public BookVo get(int bookId) {
 		
 		return null;
@@ -129,13 +130,20 @@ public class BookDaoImpl implements BookDao {
 		}
 		return 1 == insertedCount;
 	}
+	
 	public boolean update(BookVo vo) {
 		
 		return false;
 	}
+	
 	public boolean delete(int bookId) {
+		BookDao dao = new BookDaoImpl();
+		boolean success = dao.delete(bookId);
 		
+		System.out.println("BOOK DELETE " +
+				(success ? "성공": "실패"));
 		return false;
+		
 	}
 	
 	
