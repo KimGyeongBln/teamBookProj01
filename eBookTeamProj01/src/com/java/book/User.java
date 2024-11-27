@@ -8,6 +8,7 @@ public class User {
 	private int phoneNumber;
 	private String email;
 	private String admin;
+	
 	public int getUid() {
 		return uid;
 	}
