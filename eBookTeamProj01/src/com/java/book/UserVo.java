@@ -1,6 +1,6 @@
 package com.java.book;
 
-public class User {
+public class UserVo {
 	private int uid;
 	private int userId;
 	private int userPassword;
