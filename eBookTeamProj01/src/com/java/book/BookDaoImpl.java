@@ -77,8 +77,14 @@ public class BookDaoImpl implements BookDao {
 	}
 	
 	
-	public List<BookVo> search(String keyword){}
-	public BookVo get(int bookId) {}
+	public List<BookVo> search(String keyword){
+		
+		return null;
+	}
+	public BookVo get(int bookId) {
+		
+		return null;
+	}
 	
 	public boolean insert(BookVo vo) {
 		Connection conn = null;
@@ -123,8 +129,14 @@ public class BookDaoImpl implements BookDao {
 		}
 		return 1 == insertedCount;
 	}
-	public boolean update(BookVo vo) {}
-	public boolean delete(int bookId) {}
+	public boolean update(BookVo vo) {
+		
+		return false;
+	}
+	public boolean delete(int bookId) {
+		
+		return false;
+	}
 	
 	
 	
