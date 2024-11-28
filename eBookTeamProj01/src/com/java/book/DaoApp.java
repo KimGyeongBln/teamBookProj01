@@ -195,14 +195,9 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
-		System.out.println("|             1. 기존회원 로그인\t\t\t\t|");
-		System.out.println("|             2. 게스트 로그인\t\t\t\t|");
-		System.out.println("|             3. 회원가입\t\t\t\t\t|");
-		System.out.println("|             4. 나가기\t\t\t\t\t|");
+		System.out.println("|             이용해주셔서 감사합니다.\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
-		
+
 	}
 	
 	private static void mainMenu(Scanner sc) {
@@ -557,7 +552,18 @@ public class DaoApp {
 	}
 	
 	private static void recommandBook(Scanner sc) {
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             회원님께서 선택하신 추천 목록입니다.\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             뒤로가기를 원하신다면 숫자 1을 입력해 주세요.\t|");
+		System.out.println("=========================================================");
+		System.out.print("명령어를 입력해주세요 : ");
 		
+		int commend = sc.nextInt();
 	}
 	
 	private static void showRentalBookLog(Scanner sc) {
