@@ -451,16 +451,17 @@ public class DaoApp {
 		}
 	}
 
-	private static void rentalBook(Scanner sc) {
+	private static void rentalBook(Scanner sc, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 대여목록\t\t\t\t\t|");
-		System.out.println("|             2. 대여하기\t\t\t\t\t|");
-		System.out.println("|             3. 뒤로가기\t\t\t\t\t|");
+		System.out.println("|             대여목록\t\t\t\t\t|");
+		showRentalBookList(sc, rentalBookList);
+		System.out.println("|             1. 대여하기\t\t\t\t\t|");
+		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		
@@ -469,16 +470,13 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-				showRentalBookLog(sc); 
-				break;
-		case 2:
 			System.out.print("대여할 책 제목: ");
 			sc.nextLine();
 			String bookTitle = sc.nextLine();
 //			rentedBooks.add(bookTitle);
 			System.out.println(bookTitle + "책을 대여하였습니다,");
 				break;
-		case 3:
+		case 2:
 				mainMenu(sc);
 				break;
 		}
@@ -576,6 +574,7 @@ public class DaoApp {
 	            for (var book : rentalBookList) {
 	                System.out.println(book);
 		}
+	   }
 		
 	}
 	
