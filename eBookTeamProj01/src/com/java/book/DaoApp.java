@@ -555,6 +555,7 @@ public class DaoApp {
 				break;
 		default:
 			System.out.println("알려주신 지식을 한번 더 확인 후 알려주세요!");
+
             returnRentalBook(sc); 
             break;
 		}
