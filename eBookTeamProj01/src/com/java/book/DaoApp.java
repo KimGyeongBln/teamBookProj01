@@ -301,17 +301,15 @@ public class DaoApp {
 		System.out.println("검색기능 돌아가는 중");
 		System.out.println("검색기능 돌아가는 중");
 		System.out.println("검색기능 돌아가는 중");
-		
+
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+		System.out.println("|             	  원하시는 검색을 골라주세요.\t\t\t|");		
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 일반 검색\t\t\t\t\t|");
-		System.out.println("|             2. 장르 검색\t\t\t\t\t|");
-		System.out.println("|             3. 상세 검색\t\t\t\t\t|");
-		System.out.println("|             4. 뒤로가기\t\t\t\t\t|");
+		System.out.println("|  1. 일  반    검  색 (제목 또는 작가 이름으로 지식 검색)\t\t|");	
+		System.out.println("|  2. 카 테 고 리 검 색  (소설 또는 만화책 구분해 지식 검색)\t|");	
+		System.out.println("|  3. 상  세    검  색 (제목, 장르, 출판사 등을 입력해 지식 검색)\t|");	
+		System.out.println("|  4. 메인으로 돌아가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		

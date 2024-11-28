@@ -318,7 +318,6 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 
-	
 	// 유저 정보 가져오기
 	@Override
 	public UserVo get(int uid) {
