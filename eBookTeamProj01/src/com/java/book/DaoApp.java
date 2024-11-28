@@ -426,6 +426,8 @@ public class DaoApp {
 			if(categoryId == "5") {
 				searchMenu(sc);				
 			}
+			
+			return null;
 	}
 	
 	private static void searchResult(Scanner sc, List<BookVo> bookList) {
