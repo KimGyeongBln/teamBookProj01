@@ -241,7 +241,7 @@ public class DaoApp {
 			recommandBook(sc);
 			break;
 		case 5:
-			showRentalBookLog(sc);
+			showRentalBookLog(sc, null);
 			break;
 		case 6:
 			logout(sc);
@@ -464,7 +464,6 @@ public class DaoApp {
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
 		System.out.println("|             대여목록\t\t\t\t\t|");
-//		showRentalBookList(sc, rentalBookList);
 		for(var rentalBook : rentalBookList) {
 			rentalBook.toString();
 		}
