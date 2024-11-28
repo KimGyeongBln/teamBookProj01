@@ -403,9 +403,7 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. \t\t\t\t\t|");
-		System.out.println("|             2. \t\t\t\t\t|");
+		System.out.println("|             지금까지 읽은 책 목록입니다.");
 		System.out.println("=========================================================");
 		
 		int commend = sc.nextInt();
@@ -417,7 +415,15 @@ public class DaoApp {
 	}
 	
 	private static void showRentalBookList(Scanner sc) {
-		
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             1. \t\t\t\t\t|");
+		System.out.println("|             2. \t\t\t\t\t|");
+		System.out.println("=========================================================");
 	}
 	
 	private static boolean returnRentalBook(Scanner sc) {
