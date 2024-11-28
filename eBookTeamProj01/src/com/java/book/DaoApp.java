@@ -44,7 +44,8 @@ public class DaoApp {
 			if(login(sc)) {
 				mainMenu(sc);
 			} else {
-				System.out.println("로그인 실패. 다시 시도해주세요.");
+				System.out.println("로그인에 실패했어요.");
+				System.out.println("아이디와 비밀번호를 확인해 주세요.");
 				init(sc);
 			}
 			break;
@@ -52,16 +53,22 @@ public class DaoApp {
 			if(guestLogin(sc)) {
 				mainMenuForGuest(sc);
 			} else {
-				System.out.println("게스트 로그인 실패. 다시 시도해주세요.");
+				System.out.println("게스트 로그인에 실패했어요.");
+				System.out.println("다시 시도해주세요.");
 				init(sc);
 			}
 			break;
 		case 3:
 			if(register(sc)) {
-				System.out.println("회원가입 성공");
+				System.out.println("=========================================================");
+				System.out.println("|             		  환영합니다!\t\t\t|");			
+				System.out.println("|             	      앞으로 지식방의 서비스를 \t\t\t|");
+				System.out.println("|             	      자유롭게 이용해 주세요!\t\t\t|");
+				System.out.println("=========================================================");
 				init(sc);
 			} else {
-				System.out.println("회원가입 실패. 다시 시도해주세요.");
+				System.out.println("회원가입 실패했어요.");
+				System.out.println("다시 시도해주세요.");
 				init(sc);
 			}
 			break;
