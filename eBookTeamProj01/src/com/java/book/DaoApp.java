@@ -403,13 +403,37 @@ public class DaoApp {
 		System.out.println("|             2. 작가\t\t\t\t\t|");
 		System.out.println("|             3. 출판사\t\t\t\t\t|");
 		System.out.println("|             4. 출판일\t\t\t\t\t|");
-		System.out.println("|             4. 장르\t\t\t\t\t|");
+		System.out.println("|             5. 장르\t\t\t\t\t|");
+		System.out.println("|             6. 뒤로가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		
+		int commend = sc.nextInt();
+		switch(commend) {
+			case 1:
+				System.out.println("제목: ");
+				break;
+				
+			case 2: 
+				System.out.println("작가: ");
+				break;
+				
+			case 3:
+				System.out.println("출판사: ");
+				break;
+				
+			case 4:
+				System.out.println("출판사: ");
+				break;
+				
+			case 5:
+				searchMenu(sc);
+				break;
+			default:
+				
+		}
 		
-		
-		return null;
+
 	}
 	
 	private static void searchResult(Scanner sc, List<BookVo> bookList) {
