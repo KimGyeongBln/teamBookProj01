@@ -371,7 +371,6 @@ public class DaoApp {
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		
-		int commend = sc.nextInt();
 		
 		
 		return null;
@@ -414,16 +413,35 @@ public class DaoApp {
 		}
 	}
 	
-	private static void showRentalBookList(Scanner sc) {
+	private static void showRentalBookList(Scanner sc, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. \t\t\t\t\t|");
-		System.out.println("|             2. \t\t\t\t\t|");
+		System.out.println("|             지금까지 대여한 도서 목록입니다.");
 		System.out.println("=========================================================");
+		for(var book : rentalBookList) {
+			book.toString();
+		}
+		System.out.println("=========================================================");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             1. 반납하기\t\t\t\t\t|");
+		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
+		System.out.println("=========================================================");
+		System.out.print("명령어를 입력해주세요 : ");
+		int commend = sc.nextInt();
+		
+		switch(commend)
+		{
+		case 1:
+			rentalBook(sc);
+			break;
+		case 2:
+			mainMenu(sc);
+			break;
+		}
+		
 	}
 	
 	private static boolean returnRentalBook(Scanner sc) {
