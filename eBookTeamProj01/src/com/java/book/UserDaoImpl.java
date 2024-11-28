@@ -51,9 +51,9 @@ public class UserDaoImpl implements UserDao {
 				int uid = rs.getInt("uid");
 				String userId = rs.getString("user_id");
 				String userPassword = rs.getString("user_password");
-				String userName = rs.getString("userName");
+				String userName = rs.getString("user_name");
 				String address = rs.getString("address");
-				String phoneNumber = rs.getString("phoneNumber");
+				String phoneNumber = rs.getString("phone_number");
 				String email = rs.getString("email");
 				int admin = rs.getInt("admin");
 				
@@ -159,25 +159,46 @@ public class UserDaoImpl implements UserDao {
 		UserVo user = null;
 		Connection conn = null;
 		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
 			conn = getConnection();
-			stmt = conn.createStatement();
-
 			double ranValue = Math.random();
 			
-			String userId = String.format("guest_%d", (ranValue*1000) + 1);
-			String userPassword = String.format("%d", (ranValue*1000000) + 1);
+			String userId = String.format("guest_%d", (int)(ranValue*1000) + 1);
+			String userPassword = String.format("%d", (int)(ranValue*1000000) + 1);
 			String userName = "guest";
-			String address = "";
-			String phoneNumber = "";
-			String email = "";
+			String address = "guest";
+			String phoneNumber = "guest";
+			String email = "guest";
+			int admin = 3;
 			
-			String sql = String.format("INSERT INTO USER (user_id, user_password, userName, address, phone_number, email, admin) VALUES (%s, %s);", 
-									userId, userPassword, userName, address, phoneNumber, email, 3);
+			String sql = "INSERT INTO USER (user_id, user_password, user_name, address, phone_number, email, admin) VALUES "
+					+ " (?, ?, ?, ?, ?, ?, ?);";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPassword);
+			pstmt.setString(3, userName);
+			pstmt.setString(4, address);
+			pstmt.setString(5, phoneNumber);
+			pstmt.setString(6, email);
+			pstmt.setInt(7, admin);
 			
+			pstmt.execute();
+			
+			stmt = conn.createStatement();
+			sql = "SELECT * FROM USER WHERE user_id='" + userId + "';";
 			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				int uid = rs.getInt("uid");
+			
+				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
+						phoneNumber, email, admin);
+				
+				user = vo;
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

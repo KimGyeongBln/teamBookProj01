@@ -120,8 +120,9 @@ public class DaoApp {
 		System.out.println("게스트 로그인 시도합니다.");
 		System.out.println("게스트 로그인 시도합니다.");
 		
+		currentUser = userDAO.guestLogin();
 		
-		return true;
+		return currentUser == null;
 	}
 	
 	// 회원가입 기능
