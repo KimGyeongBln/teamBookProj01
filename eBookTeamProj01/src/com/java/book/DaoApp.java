@@ -349,11 +349,51 @@ public class DaoApp {
 		}
 	}
 
+	private static void rentalBook(Scanner sc) {
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             1. \t\t\t\t\t|");
+		System.out.println("|             2. \t\t\t\t\t|");
+		System.out.println("=========================================================");
+		
+		int commend = sc.nextInt();
+		
+		switch(commend)
+		{
+		case 1:
+		}
+	}
+	
 	private static void showRentalBookList(Scanner sc) {
 		
 	}
 	
 	private static boolean returnRentalBook(Scanner sc) {
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             1. 반납할 책 제목\t\t\t\t\t|");
+		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
+		System.out.println("=========================================================");
+		System.out.print("반납할 책 제목 : ");
+		
+		int commend = sc.nextInt();
+		
+		switch(commend)
+		{
+		case 1:
+				
+		case 2:
+				mainMenu(sc);
+				break;
+		}
 		
 		return true;
 	}
