@@ -496,7 +496,7 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             지금까지 대여한 도서 목록입니다.");
+		System.out.println("|             대여중인 도서 목록입니다.");
 		System.out.println("=========================================================");
 		for(var book : rentalBookList) {
 			book.toString();
