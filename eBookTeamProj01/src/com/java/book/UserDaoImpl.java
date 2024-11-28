@@ -275,6 +275,12 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
+	public List<Integer> getMyRentalBookList(int uid) {
+		
+		return null;
+	}
+	
+	@Override
 	public UserVo get(int uid) {
 		Connection conn = null;
 		Statement stmt = null;
