@@ -444,13 +444,14 @@ public class DaoApp {
 		System.out.println("|             2. 대여하기\t\t\t\t\t|");
 		System.out.println("|             3. 뒤로가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
+		System.out.print("명령어를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
 		
 		switch(commend)
 		{
 		case 1:
-			
+				showRentalBookLog(sc); 
 				break;
 		case 2:
 			System.out.print("대여할 책 제목: ");
@@ -506,17 +507,23 @@ public class DaoApp {
 		System.out.println("|             1. 반납할 책 제목\t\t\t\t\t|");
 		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("반납할 책 제목 : ");
+		System.out.print("명령어를 입력해주세요: ");
 		
 		int commend = sc.nextInt();
 		
 		switch(commend)
 		{
 		case 1:
-				if();
+				System.out.print("반납할 책 제목: ");
+				rentalBook(sc);
+				break;
 		case 2:
 				mainMenu(sc);
 				break;
+		default:
+			System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+            returnRentalBook(sc); 
+            break;
 		}
 		
 		return true;
