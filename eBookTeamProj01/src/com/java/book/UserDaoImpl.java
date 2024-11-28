@@ -86,12 +86,16 @@ public class UserDaoImpl implements UserDao {
 		
 		try {
 			conn = getConnection();
-			stmt = conn.createStatement();
-			String sql = String.format("SELECT * FROM USER WHERE user_id = %s;", id);
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			String sql = String.format("SELECT * FROM USER WHERE user_id='%s';", id);
 			
 			rs = stmt.executeQuery(sql);
 			
-			if(rs.getRow() > 1) {
+			rs.last();
+			int rowCount = rs.getRow();
+			rs.beforeFirst();
+			
+			if(rowCount > 0) {
 				return true; 
 			} else {
 				return false;
@@ -124,14 +128,14 @@ public class UserDaoImpl implements UserDao {
 				int uid = rs.getInt("uid");
 				String userId = rs.getString("user_id");
 				String userPassword = rs.getString("user_password");
-				String userName = rs.getString("userName");
+				String userName = rs.getString("user_name");
 				String address = rs.getString("address");
-				String phonNumber = rs.getString("phon_number");
+				String phoneNumber = rs.getString("phone_number");
 				String email = rs.getString("email");
 				int admin = rs.getInt("admin");
 			
 				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
-						phonNumber, email, admin);
+						phoneNumber, email, admin);
 				
 				user = vo;
 			}
