@@ -443,7 +443,7 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-				
+				if();
 		case 2:
 				mainMenu(sc);
 				break;
