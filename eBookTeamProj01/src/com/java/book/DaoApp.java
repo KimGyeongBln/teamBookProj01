@@ -45,6 +45,7 @@ public class DaoApp {
 				mainMenu(sc);
 			} else {
 				System.out.println("로그인 실패. 다시 시도해주세요.");
+				init(sc);
 			}
 			break;
 		case 2:
@@ -52,6 +53,7 @@ public class DaoApp {
 				mainMenuForGuest(sc);
 			} else {
 				System.out.println("게스트 로그인 실패. 다시 시도해주세요.");
+				init(sc);
 			}
 			break;
 		case 3:
@@ -60,6 +62,7 @@ public class DaoApp {
 				init(sc);
 			} else {
 				System.out.println("회원가입 실패. 다시 시도해주세요.");
+				init(sc);
 			}
 			break;
 		case 4:
