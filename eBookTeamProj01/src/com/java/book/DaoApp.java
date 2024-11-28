@@ -1,6 +1,6 @@
 package com.java.book;
 
-import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class DaoApp {

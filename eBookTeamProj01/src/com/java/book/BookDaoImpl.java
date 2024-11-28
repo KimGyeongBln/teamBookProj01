@@ -522,7 +522,7 @@ public class BookDaoImpl implements BookDao {
 			pstmt.setInt(11, vo.getIsRental());
 			pstmt.setInt(12, vo.getPrice());
 			pstmt.setString(13, vo.getImgUrl());
-			pstmt.setDate(14, ((java.sql.Date)vo.getUpdDate()));
+			pstmt.setDate(14, ((java.sql.Date)vo.getUpdate()));
 			pstmt.setString(15, vo.getComment());
 			
 			insertedCount = pstmt.executeUpdate();
