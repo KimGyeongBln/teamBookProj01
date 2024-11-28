@@ -1,5 +1,6 @@
 package com.java.book;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -439,18 +440,24 @@ public class DaoApp {
 		if(currentUser.getAdmin() < 3) {
 			System.out.print("대여할 책 번호를 입력해주세요 : ");
 			int bookNo = sc.nextInt();
+			BookVo book = bookDAO.get(bookNo);
 			
-			rentalBook(bookNo);
-//			for(var book : bookList) {
-//				if (book.getBookId() == bookNo) {
-//					book.setIsRental(1);
-//					break;
-//				}
-//			}
+			List<BookVo> container = new ArrayList<BookVo>();
+			
+			// 내가 빌린 책 아이디 리스트
+			List<Integer> bookIdList = userDAO.getMyRentalBookList(currentUser.getUid());
+			
+			for(var bookId : bookIdList) {
+				var bookTemp = bookDAO.get(bookId);
+				
+				container.add(bookTemp);
+			}
+			
+			rentalBook(sc, book, container);
 		}
 	}
 
-	private static void rentalBook(Scanner sc, List<BookVo> rentalBookList) {
+	private static void rentalBook(Scanner sc, BookVo book, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
@@ -459,8 +466,8 @@ public class DaoApp {
 		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
 		System.out.println("|             대여목록\t\t\t\t\t|");
 //		showRentalBookList(sc, rentalBookList);
-		for(var book : rentalBookList) {
-			book.toString();
+		for(var rentalBook : rentalBookList) {
+			rentalBook.toString();
 		}
 		System.out.println("|             1. 대여하기\t\t\t\t\t|");
 		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
