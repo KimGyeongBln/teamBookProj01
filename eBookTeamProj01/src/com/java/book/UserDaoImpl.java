@@ -239,7 +239,7 @@ public class UserDaoImpl implements UserDao {
 			conn = getConnection();
 			
 			String sql = "SELECT uid, user_id, user_password,"
-					+ " user_name, address, phon_number, email, admin "
+					+ " user_name, address, phone_number, email, admin "
 					+ " FROM USER"
 					+ " WHERE (user_id) LIKE ?" ;
 			pstmt = conn.prepareStatement(sql);
@@ -253,7 +253,7 @@ public class UserDaoImpl implements UserDao {
 				String userPassword = rs.getString("user_password");
 				String userName = rs.getString("userName");
 				String address = rs.getString("address");
-				String phonNumber = rs.getString("phon_number");
+				String phonNumber = rs.getString("phone_number");
 				String email = rs.getString("email");
 				int admin = rs.getInt("admin");
 			
@@ -276,6 +276,7 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public List<Integer> getMyRentalBookList(int uid) {
+		List<Integer> list = new ArrayList<>();
 		
 		return null;
 	}
@@ -293,7 +294,7 @@ public class UserDaoImpl implements UserDao {
 			stmt = conn.createStatement();
 			
 			String sql = "SELECT uid, user_id, user_password,"
-					+ " user_name, address, phon_number, email, admin "
+					+ " user_name, address, phone_number, email, admin "
 					+ " FROM USER"
 					+ " WHERE (uid)" ;
 			
@@ -304,7 +305,7 @@ public class UserDaoImpl implements UserDao {
 				String userPassword = rs.getString("user_password");
 				String userName = rs.getString("userName");
 				String address = rs.getString("address");
-				String phonNumber = rs.getString("phon_number");
+				String phonNumber = rs.getString("phone_number");
 				String email = rs.getString("email");
 				int admin = rs.getInt("admin");
 			
