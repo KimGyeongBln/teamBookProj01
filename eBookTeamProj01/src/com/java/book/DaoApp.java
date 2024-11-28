@@ -560,7 +560,7 @@ public class DaoApp {
 		int commend = sc.nextInt();
 	}
 	
-	private static void showRentalBookLog(Scanner sc, List<BookVo> rentalBookList) {
+	private static void showRentalBookLog(Scanner sc,  List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
@@ -568,8 +568,11 @@ public class DaoApp {
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             지금까지 대여한 도서 목록입니다.\t\t\t\t\t|");
 		System.out.println("=========================================================");
-		for(var book : rentalBookList) {
-			book.toString();
+		 if (rentalBookList.isEmpty()) {
+	            System.out.println("대여한 책이 없습니다.");
+	        } else {
+	            for (var book : rentalBookList) {
+	                System.out.println(book);
 		}
 		
 	}
