@@ -86,13 +86,20 @@ public class UserDaoImpl implements UserDao {
 		
 		try {
 			conn = getConnection();
+			
+//			ResultSet.TYPE_SCROLL_INSENSITIVE : 양방향 이동은 가능하지만 데이터의 변경이 바로 적용되지 않는다.
+//			ResultSet.CONCUR_READ_ONLY : 데이터를 읽을 수만 있다.
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			String sql = String.format("SELECT * FROM USER WHERE user_id='%s';", id);
 			
 			rs = stmt.executeQuery(sql);
 			
+			// resultSet의 마지막 데이터로 이동 
 			rs.last();
+			// 마지막 데이터가 몇번째 열인지 숫자를 가져온다 (이것이 곧 데이터가 몇개인지)
 			int rowCount = rs.getRow();
+			
+			// 다시 처음으로 돌리기
 			rs.beforeFirst();
 			
 			if(rowCount > 0) {
