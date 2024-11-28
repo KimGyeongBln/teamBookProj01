@@ -15,6 +15,7 @@ public class UserDaoImpl implements UserDao {
 	static final String dbuser = "testuser";
 	static final String dbpass = "test";
 	
+	// sql에 연결
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
 		try {
@@ -29,6 +30,7 @@ public class UserDaoImpl implements UserDao {
 		return conn;
 	}
 	
+	// 유저 리스트 호출
 	@Override
 	public List<UserVo> getList(){
 		List<UserVo> list = new ArrayList<>();
@@ -77,7 +79,8 @@ public class UserDaoImpl implements UserDao {
 	// 유저 회원가입 기능
 	@Override
 	public boolean register(String userId, String userPassword, String userName, 
-							String address, String phoneNumber, String email) {
+							String address, String phoneNumber, String email) {	
+		
 		UserVo user = new UserVo(userId, userPassword, userName, address, phoneNumber, email, 1);
 				
 		return insert(user);

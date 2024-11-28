@@ -160,32 +160,38 @@ public class DaoApp {
 		
 		System.out.print("아이디 : ");
 		String userId = sc.next();
-		if(userId == "0")
+		if(userId.equals("0"))
 			return false;
+		
+		// 아이디 중복체크
+		if(userDAO.isUserRegistered(userId)) {
+			System.out.println("이미 사용 중인 아이디입니다.");
+			return false;
+		}
 		
 		System.out.print("비밀번호 : ");
 		String userPassword = sc.next();
-		if(userPassword == "0")
+		if(userPassword.equals("0"))
 			return false;
 		
 		System.out.print("이름 : ");
 		String userName = sc.next();
-		if(userName == "0")
+		if(userName.equals("0"))
 			return false;
 		
 		System.out.print("이메일 : ");
 		String email = sc.next();
-		if(email == "0")
+		if(email.equals("0"))
 			return false;
 		
 		System.out.print("전화번호 : ");
 		String phoneNumber = sc.next();
-		if(phoneNumber == "0")
+		if(phoneNumber.equals("0"))
 			return false;
 		
 		System.out.print("주소 : ");
 		String address = sc.next();
-		if(address == "0")
+		if(address.equals("0"))
 			return false;
 				
 		return userDAO.register(userId, userPassword, userName, address, phoneNumber, email);
