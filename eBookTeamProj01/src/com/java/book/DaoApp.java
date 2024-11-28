@@ -491,11 +491,11 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-			System.out.print("대여할 책 제목: ");
+			System.out.print("대여하실 지식의 지식은 저에게 알려주세요!");
 			sc.nextLine();
 			String bookTitle = sc.nextLine();
 //			rentedBooks.add(bookTitle);
-			System.out.println(bookTitle + "책을 대여하였습니다,");
+			System.out.println(bookTitle + "지식이 추가 되었습니다!");
 				break;
 		case 2:
 				mainMenu(sc);
@@ -506,19 +506,16 @@ public class DaoApp {
 	
 	private static void showRentalBookList(Scanner sc, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|                                        \t\t|");
-		System.out.println("|             대여중인 도서 목록입니다.");
+		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t|");
+		System.out.println("|             현재 회원님의 지식 게이지가 궁금합니다!\t\t|");
 		System.out.println("=========================================================");
 		for(var book : rentalBookList) {
 			book.toString();
 		}
 		System.out.println("=========================================================");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 반납하기\t\t\t\t\t|");
-		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
+		System.out.println("|          아쉬운 반납 시간입니다 하지만 항상 열려있는 지식방!\t|");
+		System.out.println("|       1번을 누르신 후 반납 해 주실 책의 제목은 저에게 알려주세요! |");
+		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		int commend = sc.nextInt();
@@ -537,13 +534,11 @@ public class DaoApp {
 	
 	private static boolean returnRentalBook(Scanner sc) {
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             읽다보니 벌써 반납시간이?\t\t\t|");
+		System.out.println("|             저희 지식방은 언제나 회원님께 열려있습니다!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 반납할 책 제목\t\t\t\t\t|");
-		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
+		System.out.println("|             1번을 누르신 후 반납 해 주실 지식을 알려주세요!\t\t|");
+		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요: ");
 		
@@ -552,14 +547,14 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-				System.out.print("반납할 책 제목: ");
+				System.out.print(" 반납 해 주실 지식은 저에게 알려주세요!");
 				rentalBook(sc ,null);
 				break;
 		case 2:
 				mainMenu(sc);
 				break;
 		default:
-			System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+			System.out.println("알려주신 지식을 한번 더 확인 후 알려주세요!");
             returnRentalBook(sc); 
             break;
 		}
@@ -569,13 +564,10 @@ public class DaoApp {
 	
 	private static void recommandBook(Scanner sc) {
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             이런 지식은 어떨까요?\t\t\t\t|");
+		System.out.println("|             회원님께 추천 드리고싶은 지식의 목록입니다!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             회원님께서 선택하신 추천 목록입니다.\t\t|");
-		System.out.println("|                                        \t\t|");
-		System.out.println("|             뒤로가기를 원하신다면 숫자 1을 입력해 주세요.\t|");
+		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		
@@ -584,14 +576,13 @@ public class DaoApp {
 	
 	private static void showRentalBookLog(Scanner sc,  List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             플러스 된 지식들은 재미있으셨나요?\t\t|");
+		System.out.println("|             플러스 된 회원님의 지식을 알려드립니다!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             지금까지 대여한 도서 목록입니다.\t\t\t\t\t|");
+		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		 if (rentalBookList.isEmpty()) {
-	            System.out.println("대여한 책이 없습니다.");
+	            System.out.println("플러스 된 지식이 아직 없습니다 지식을 플러스 해 보세요!");
 	        } else {
 	            for (var book : rentalBookList) {
 	                System.out.println(book);
