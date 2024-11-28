@@ -35,7 +35,7 @@ public class DaoApp {
 		System.out.println("|            	    3. 회  원    가  입\t\t\t|");
 		System.out.println("|             	    4. 나    가     기\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
+		System.out.print("번호를 입력해주세요 : ");
 		int commend = sc.nextInt();
 		
 		switch(commend)
@@ -86,7 +86,8 @@ public class DaoApp {
 	
 	// 로그인 기능
 	private static boolean login(Scanner sc) {
-		System.out.println("로그인 시도합니다.");
+		System.out.println("다시 방문해 주셨군요!");
+		System.out.println("로그인 정보를 입력해 주세요.");
 		boolean isSucceed = false;
 		
 		// 아이디 비번 입력
