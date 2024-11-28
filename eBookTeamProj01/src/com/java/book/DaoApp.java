@@ -373,13 +373,13 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1: 
-			fantasiaManu(sc);
+			gerne1Manu(sc);
 			break;
 		case  2:
-			romanceManu(sc);
+			gerne2Manu(sc);
 			break;
 		case 3:
-			literatureManu(sc);
+			gerne3Manu(sc);
 			break;
 		case 4:
 			searchMenu(sc);
@@ -470,6 +470,12 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
+<<<<<<< Updated upstream
+=======
+				showRentalBookLog(sc);
+				break;
+		case 2:
+>>>>>>> Stashed changes
 			System.out.print("대여할 책 제목: ");
 			sc.nextLine();
 			String bookTitle = sc.nextLine();
@@ -573,8 +579,12 @@ public class DaoApp {
 	        } else {
 	            for (var book : rentalBookList) {
 	                System.out.println(book);
+<<<<<<< Updated upstream
 		}
 	   }
+=======
+	            }
+>>>>>>> Stashed changes
 		
 	}
 	
