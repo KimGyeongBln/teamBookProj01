@@ -400,38 +400,32 @@ public class DaoApp {
 		System.out.println("|             1. 제목\t\t\t\t\t|");
 		System.out.println("|             2. 작가\t\t\t\t\t|");
 		System.out.println("|             3. 출판사\t\t\t\t\t|");
-		System.out.println("|             4. 출판일\t\t\t\t\t|");
-		System.out.println("|             5. 장르\t\t\t\t\t|");
-		System.out.println("|             6. 뒤로가기\t\t\t\t\t|");
+		System.out.println("|             4. 카테고리\t\t\t\t\t|");
+		System.out.println("|             5. 뒤로가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		
-		int commend = sc.nextInt();
-		switch(commend) {
-			case 1:
-				System.out.println("제목: ");
-				break;
-				
-			case 2: 
-				System.out.println("작가: ");
-				break;
-				
-			case 3:
-				System.out.println("출판사: ");
-				break;
-				
-			case 4:
-				System.out.println("출판사: ");
-				break;
-				
-			case 5:
-				searchMenu(sc);
-				break;
-			default:
-				
-		}
+		System.out.print("제목: ");
+		String bookTitle = sc.next();
+			if(bookTitle == "5") {
+				searchMenu(sc);				
+			}
 		
-
+		System.out.print("작가: ");
+		String authorName = sc.next();
+			if(authorName == "5") {
+				searchMenu(sc);				
+			}
+		System.out.print("출판사: ");
+		String publisher = sc.next();
+			if(publisher == "5") {
+				searchMenu(sc);				
+			}
+		System.out.print("카테고리: ");
+		String categoryId = sc.next();
+			if(categoryId == "5") {
+				searchMenu(sc);				
+			}
 	}
 	
 	private static void searchResult(Scanner sc, List<BookVo> bookList) {
