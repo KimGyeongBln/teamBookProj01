@@ -402,7 +402,10 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             지금까지 읽은 책 목록입니다.");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             1. 대여목록\t\t\t\t\t|");
+		System.out.println("|             2. 대여하기\t\t\t\t\t|");
+		System.out.println("|             3. 뒤로가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		
 		int commend = sc.nextInt();
@@ -410,6 +413,18 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
+			
+				break;
+		case 2:
+			System.out.print("대여할 책 제목: ");
+			sc.nextLine();
+			String bookTitle = sc.nextLine();
+//			rentedBooks.add(bookTitle);
+			System.out.println(bookTitle + "책을 대여하였습니다,");
+				break;
+		case 3:
+				mainMenu(sc);
+				break;
 		}
 	}
 	
