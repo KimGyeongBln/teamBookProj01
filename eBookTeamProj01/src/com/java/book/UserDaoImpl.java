@@ -67,12 +67,32 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 	
+	@Override
 	public boolean isUserRegistered (String id) {
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		Statement stmt = null;
 		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			String sql = String.format("SELECT * FROM USER WHERE user_id = %s;", id);
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.getRow() > 1) {
+				return true; 
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
+	@Override
 	public UserVo login(String id, String password) {
 		UserVo user = null;
 		Connection conn = null;
@@ -110,6 +130,7 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 	
+	@Override
 	public List<UserVo> search(String keyword){
 		List<UserVo> list = new ArrayList<>();
 		Connection conn = null;
@@ -149,6 +170,7 @@ public class UserDaoImpl implements UserDao {
 		return null;
 	}
 	
+	@Override
 	public UserVo get(int uid) {
 		Connection conn = null;
 		Statement stmt = null;
