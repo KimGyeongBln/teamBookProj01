@@ -14,8 +14,23 @@ public class UserVo {
 		
 	}
 	
+	public UserVo(String userId, String userPassword, String address, 
+			String userName, String phoneNumber, String email, int admin) {
+		super();
+		
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userName = userName;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.admin = admin;
+	}
+	
 	public UserVo(int uid, String userId, String userPassword, String address, 
 			String userName, String phoneNumber, String email, int admin) {
+		super();
+		
 		this.uid = uid;
 		this.userId = userId;
 		this.userPassword = userPassword;

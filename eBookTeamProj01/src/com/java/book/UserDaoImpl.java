@@ -64,6 +64,11 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) stmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
 		
 		return list;
@@ -71,10 +76,11 @@ public class UserDaoImpl implements UserDao {
 	
 	// 유저 회원가입 기능
 	@Override
-	public boolean register(String userId, String userPassword, String userName, String address, String PhoneNumber, String email) {
-		
-		
-		return false;
+	public boolean register(String userId, String userPassword, String userName, 
+							String address, String phoneNumber, String email) {
+		UserVo user = new UserVo(userId, userPassword, userName, address, phoneNumber, email, 1);
+				
+		return insert(user);
 	}
 	
 	// 해당 아이디 가입 여부
@@ -109,6 +115,11 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) stmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
 		
 		return false;
@@ -148,6 +159,11 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
 		
 		return user;
@@ -202,6 +218,11 @@ public class UserDaoImpl implements UserDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
 		
 		return user;
@@ -243,7 +264,13 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			}
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
+		}
+		
 		return null;
 	}
 	
@@ -282,6 +309,11 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) stmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
 		
 		return temp;
@@ -295,20 +327,18 @@ public class UserDaoImpl implements UserDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "SELECT uid, user_id, user_password, user_name, address,"
-					+ " phone_number, email, admin"
-					+ " FROM USER"
-					+ " VALUES(?, ?)";
+			String sql = "INSERT INTO USER (user_id, user_password, user_name, address,"
+					+ " phone_number, email, admin) "
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, vo.getUid());
-			pstmt.setString(2, vo.getUserId());
-			pstmt.setString(3, vo.getUserPassword());
-			pstmt.setString(4, vo.getUserName());
-			pstmt.setString(5, vo.getAddress());
-			pstmt.setString(6, vo.getPhoneNumber());
-			pstmt.setString(7, vo.getEmail());
-			pstmt.setInt(8, vo.getAdmin());
+			pstmt.setString(1, vo.getUserId());
+			pstmt.setString(2, vo.getUserPassword());
+			pstmt.setString(3, vo.getUserName());
+			pstmt.setString(4, vo.getAddress());
+			pstmt.setString(5, vo.getPhoneNumber());
+			pstmt.setString(6, vo.getEmail());
+			pstmt.setInt(7, vo.getAdmin());
 
 			insertedCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
