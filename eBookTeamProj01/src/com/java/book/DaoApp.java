@@ -20,11 +20,11 @@ public class DaoApp {
 		System.out.println("라이브러리를 시작합니다.");
 		
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");			
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
 		System.out.println("|             1. 기존회원 로그인\t\t\t\t|");
 		System.out.println("|             2. 게스트 로그인\t\t\t\t|");
 		System.out.println("|             3. 회원가입\t\t\t\t\t|");
@@ -122,6 +122,25 @@ public class DaoApp {
 		System.out.println("회원가입 시도합니다.");
 		System.out.println("회원가입 시도합니다.");
 		
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
+		System.out.println("|             1. 아이디\t\t\t\t\t|");
+		System.out.println("|             2. 비밀번호\t\t\t\t\t|");
+		System.out.println("|             3. 비밀번호 확인\t\t\t\t|");
+		System.out.println("|             4. 이름\t\t\t\t\t|");
+		System.out.println("|             5. 이메일\t\t\t\t\t|");
+		System.out.println("|             6. 전화번호\t\t\t\t\t|");
+		System.out.println("|             7. 생년월일\t\t\t\t\t|");
+		System.out.println("|             8. 성별\t\t\t\t\t|");
+		System.out.println("|             9. 주소\t\t\t\t\t|");
+		System.out.println("=========================================================");
+		System.out.print("명령어를 입력해주세요 : ");
+		int commend = sc.nextInt();
+		
 		return true;
 	}
 
@@ -129,6 +148,20 @@ public class DaoApp {
 		System.out.println("프로그램 종료합니다.");
 		System.out.println("프로그램 종료합니다.");
 		System.out.println("프로그램 종료합니다.");
+		
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
+		System.out.println("|             1. 기존회원 로그인\t\t\t\t|");
+		System.out.println("|             2. 게스트 로그인\t\t\t\t|");
+		System.out.println("|             3. 회원가입\t\t\t\t\t|");
+		System.out.println("|             4. 나가기\t\t\t\t\t|");
+		System.out.println("=========================================================");
+		System.out.print("명령어를 입력해주세요 : ");
+		int commend = sc.nextInt();
 		
 	}
 	
@@ -142,7 +175,7 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
 		System.out.println("|             1. 검색\t\t\t\t\t|");
 		System.out.println("|             2. 대여목록\t\t\t\t\t|");
 		System.out.println("|             3. 반납\t\t\t\t\t|");
