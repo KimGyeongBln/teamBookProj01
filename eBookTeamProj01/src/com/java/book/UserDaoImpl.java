@@ -67,6 +67,48 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 	
+	public boolean isUserRegistered (String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	}
+
+	public UserVo login(String id, String password) {
+		UserVo user = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			String sql = "SELECT * FROM USER WHERE user_id = ? AND user_password = ?;";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int uid = rs.getInt("uid");
+				String userId = rs.getString("user_id");
+				String userPassword = rs.getString("user_password");
+				String userName = rs.getString("userName");
+				String address = rs.getString("address");
+				String phonNumber = rs.getString("phon_number");
+				String email = rs.getString("email");
+				int admin = rs.getInt("admin");
+			
+				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
+						phonNumber, email, admin);
+				
+				user = vo;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
 	
 	public List<UserVo> search(String keyword){
 		List<UserVo> list = new ArrayList<>();
@@ -106,6 +148,7 @@ public class UserDaoImpl implements UserDao {
 			}
 		return null;
 	}
+	
 	public UserVo get(int uid) {
 		Connection conn = null;
 		Statement stmt = null;

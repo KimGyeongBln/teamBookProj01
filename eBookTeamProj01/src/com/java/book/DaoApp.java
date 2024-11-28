@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class DaoApp {
 
+	// 현재 접속할 유저의 객체를 저장하는 클래스
+	private static UserVo currentUser = null;
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
@@ -79,16 +82,15 @@ public class DaoApp {
 		if(!id.equals("") && !password.equals("")) {
 			try {
 				
-				String sql = "select user_id, user_password "
-						+ " form USER";
+				String sql = "SELECT user_id, user_password FROM USER;";
+				
+				
 			} catch(Exception e){
 				
 			}
 		} else {
 			System.out.println("다시 입력해 주세요.");
 		}
-		
-		
 		
 		return true;
 	}
@@ -108,7 +110,6 @@ public class DaoApp {
 		
 		return true;
 	}
-	
 
 	private static void exit() {
 		System.out.println("프로그램 종료합니다.");
@@ -257,10 +258,23 @@ public class DaoApp {
 		}
 	}
 	
-	private static void searchForGuest(Scanner sc) {
-		System.out.println("책 대여 할께요.");
-		System.out.println("책 대여 할께요.");
-		System.out.println("책 대여 할께요.");
+	private static void searchMenuForGuest(Scanner sc) {
+		System.out.println("게스트 책 대여 할께요.");
+		System.out.println("게스트 책 대여 할께요.");
+		System.out.println("게스트 책 대여 할께요.");
+		
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             1. 일반 검색\t\t\t\t\t|");
+		System.out.println("|             2. 장르 검색\t\t\t\t\t|");
+		System.out.println("|             3. 상세 검색\t\t\t\t\t|");
+		System.out.println("|             4. 뒤로가기\t\t\t\t\t|");
+		System.out.println("=========================================================");
+		System.out.print("명령어를 입력해주세요 : ");
 	}
 	
 	private static List<BookVo> generalSearch(Scanner sc) {
