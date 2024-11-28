@@ -4,8 +4,10 @@ import java.util.List;
 
 public interface UserDao {
 	public List<UserVo> getList(); // 전체 유 목록
+	public boolean register(String userId, String userPassword, String userName, String address, String PhoneNumber, String email);
 	public boolean isUserRegistered(String id);
 	public UserVo login(String id, String password);
+	public UserVo guestLogin();
 	public List<UserVo> search(String keyword); //@dhkim: 일부 문자로 유저를 검색할 수 있는 기능
 	
 	public UserVo get(int userId);		// 리스트에서 객체 가져오기

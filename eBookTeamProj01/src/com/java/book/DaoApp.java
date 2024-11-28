@@ -4,12 +4,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DaoApp {
-
+	// 유저 기능
+	private static UserDao userDAO = null;
+	// 책 기능
+	private static BookDao bookDAO = null;
 	// 현재 접속할 유저의 객체를 저장하는 클래스
 	private static UserVo currentUser = null;
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		userDAO = new UserDaoImpl();
+		bookDAO = new BookDaoImpl();
 		
 		init(sc);
 	}
@@ -79,9 +84,9 @@ public class DaoApp {
 		
 		// 아이디 비번 입력
 		System.out.print("아이디: ");
-		String id = sc.nextLine();
+		String id = sc.next();
 		System.out.print("비밀번호: ");
-		String password = sc.nextLine();
+		String password = sc.next();
 		
 		// 아이디나 비번을 입력 안했을 경우 다시 입력하라고 처리
 		if(!id.equals("") && !password.equals("")) {
@@ -109,6 +114,7 @@ public class DaoApp {
 		return isSucceed;
 	}
 	
+	// 게스트 로그인 기능
 	private static boolean guestLogin(Scanner sc) {
 		System.out.println("게스트 로그인 시도합니다.");
 		System.out.println("게스트 로그인 시도합니다.");
@@ -118,6 +124,7 @@ public class DaoApp {
 		return true;
 	}
 	
+	// 회원가입 기능
 	private static boolean register(Scanner sc) {
 		System.out.println("회원가입 시도합니다.");
 		System.out.println("회원가입 시도합니다.");
@@ -128,19 +135,49 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
+		System.out.println("|             순서대로 정보를 입력해주세요.\t|");
 		System.out.println("|             1. 아이디\t\t\t\t\t|");
 		System.out.println("|             2. 비밀번호\t\t\t\t\t|");
-		System.out.println("|             3. 비밀번호 확인\t\t\t\t|");
-		System.out.println("|             4. 이름\t\t\t\t\t|");
-		System.out.println("|             5. 이메일\t\t\t\t\t|");
-		System.out.println("|             6. 전화번호\t\t\t\t\t|");
-		System.out.println("|             7. 생년월일\t\t\t\t\t|");
-		System.out.println("|             8. 성별\t\t\t\t\t|");
-		System.out.println("|             9. 주소\t\t\t\t\t|");
+		System.out.println("|             3. 이름\t\t\t\t\t|");
+		System.out.println("|             4. 이메일\t\t\t\t\t|");
+		System.out.println("|             5. 전화번호\t\t\t\t\t|");
+//		System.out.println("|             7. 생년월일\t\t\t\t\t|");
+//		System.out.println("|             8. 성별\t\t\t\t\t|");
+		System.out.println("|             6. 주소\t\t\t\t\t|");
+		System.out.println("|             뒤로가기 버튼은 언제든지 0을 입력하고 엔터 쳐주세요.\t\t\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
-		int commend = sc.nextInt();
+		
+		System.out.print("아이디 : ");
+		String userId = sc.next();
+		if(userId == "0")
+			return false;
+		
+		System.out.print("비밀번호 : ");
+		String userPassword = sc.next();
+		if(userPassword == "0")
+			return false;
+		
+		System.out.print("이름 : ");
+		String userName = sc.next();
+		if(userName == "0")
+			return false;
+		
+		System.out.print("이메일 : ");
+		String email = sc.next();
+		if(email == "0")
+			return false;
+		
+		System.out.print("전화번호 : ");
+		String phoneNumber = sc.next();
+		if(phoneNumber == "0")
+			return false;
+		
+		System.out.print("주소 : ");
+		String address = sc.next();
+		if(address == "0")
+			return false;
+		
+		
 		
 		return true;
 	}
@@ -162,7 +199,6 @@ public class DaoApp {
 		System.out.println("|             4. 나가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
-		int commend = sc.nextInt();
 		
 	}
 	
@@ -387,12 +423,13 @@ public class DaoApp {
 			System.out.print("대여할 책 번호를 입력해주세요 : ");
 			int bookNo = sc.nextInt();
 			
-			for(var book : bookList) {
-				if (book.getBookId() == bookNo) {
-					book.setIsRental(1);
-					break;
-				}
-			}
+			rentalBook(bookNo);
+//			for(var book : bookList) {
+//				if (book.getBookId() == bookNo) {
+//					book.setIsRental(1);
+//					break;
+//				}
+//			}
 		}
 	}
 

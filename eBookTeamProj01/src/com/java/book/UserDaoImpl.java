@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class UserDaoImpl implements UserDao {
 	static final String dburl = "jdbc:mysql://localhost:3306/e_book";
@@ -24,6 +25,7 @@ public class UserDaoImpl implements UserDao {
 		} catch (ClassNotFoundException e) {
 			System.err.println("드라이버 로드 실패!");
 		}
+		
 		return conn;
 	}
 	
@@ -67,6 +69,15 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 	
+	// 유저 회원가입 기능
+	@Override
+	public boolean register(String userId, String userPassword, String userName, String address, String PhoneNumber, String email) {
+		
+		
+		return false;
+	}
+	
+	// 해당 아이디 가입 여부
 	@Override
 	public boolean isUserRegistered (String id) {
 		Connection conn = null;
@@ -92,6 +103,7 @@ public class UserDaoImpl implements UserDao {
 		return false;
 	}
 
+	// 로그인 기능
 	@Override
 	public UserVo login(String id, String password) {
 		UserVo user = null;
@@ -123,6 +135,39 @@ public class UserDaoImpl implements UserDao {
 				
 				user = vo;
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
+	
+	// 게스트 로그인 기능
+	@Override
+	public UserVo guestLogin() {
+		UserVo user = null;
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+
+			double ranValue = Math.random();
+			
+			String userId = String.format("guest_%d", (ranValue*1000) + 1);
+			String userPassword = String.format("%d", (ranValue*1000000) + 1);
+			String userName = "guest";
+			String address = "";
+			String phoneNumber = "";
+			String email = "";
+			
+			String sql = String.format("INSERT INTO USER (user_id, user_password, userName, address, phone_number, email, admin) VALUES (%s, %s);", 
+									userId, userPassword, userName, address, phoneNumber, email, 3);
+			
+			rs = stmt.executeQuery(sql);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
