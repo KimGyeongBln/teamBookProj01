@@ -258,25 +258,6 @@ public class DaoApp {
 		}
 	}
 	
-	private static void searchMenuForGuest(Scanner sc) {
-		System.out.println("게스트 책 대여 할께요.");
-		System.out.println("게스트 책 대여 할께요.");
-		System.out.println("게스트 책 대여 할께요.");
-		
-		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 일반 검색\t\t\t\t\t|");
-		System.out.println("|             2. 장르 검색\t\t\t\t\t|");
-		System.out.println("|             3. 상세 검색\t\t\t\t\t|");
-		System.out.println("|             4. 뒤로가기\t\t\t\t\t|");
-		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
-	}
-	
 	private static List<BookVo> generalSearch(Scanner sc) {
 		System.out.println("=========================================================");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
@@ -307,13 +288,16 @@ public class DaoApp {
 			book.toString();
 		}
 		System.out.println("=========================================================");
-		System.out.print("대여할 책 번호를 입력해주세요 : ");
-		int bookNo = sc.nextInt();
 		
-		for(var book : bookList) {
-			if (book.getBookId() == bookNo) {
-				book.setIsRental(1);
-				break;
+		if(currentUser.getAdmin() < 3) {
+			System.out.print("대여할 책 번호를 입력해주세요 : ");
+			int bookNo = sc.nextInt();
+			
+			for(var book : bookList) {
+				if (book.getBookId() == bookNo) {
+					book.setIsRental(1);
+					break;
+				}
 			}
 		}
 	}
