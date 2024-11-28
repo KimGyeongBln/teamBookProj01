@@ -26,15 +26,14 @@ public class DaoApp {
 		System.out.println("라이브러리를 시작합니다.");
 		
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");			
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             		  어서오세요!\t\t\t|");			
+		System.out.println("|             	   하이미디어 디지털 도서관입니다.\t\t|");
+		System.out.println("|                고객님께서 원하시는 걸 선택해 주세요.\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
-		System.out.println("|             1. 기존회원 로그인\t\t\t\t|");
-		System.out.println("|             2. 게스트 로그인\t\t\t\t|");
-		System.out.println("|             3. 회원가입\t\t\t\t\t|");
-		System.out.println("|             4. 나가기\t\t\t\t\t|");
+		System.out.println("|             	    1. 기 존 회 원 로그인\t\t\t|");
+		System.out.println("|            	    2. 게 스 트 로 그 인\t\t\t|");
+		System.out.println("|            	    3. 회  원    가  입\t\t\t|");
+		System.out.println("|             	    4. 나    가     기\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		int commend = sc.nextInt();
