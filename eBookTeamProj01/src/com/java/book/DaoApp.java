@@ -114,6 +114,7 @@ public class DaoApp {
 		System.out.println("게스트 로그인 시도합니다.");
 		System.out.println("게스트 로그인 시도합니다.");
 		
+		
 		return true;
 	}
 	
@@ -320,11 +321,58 @@ public class DaoApp {
 	}
 	
 	private static List<BookVo> gerneSearch(Scanner sc) {
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             다음 중 원하시는 장르의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             1. 판타지\t\t\t\t\t|");
+		System.out.println("|             2. 로맨스\t\t\t\t\t|");
+		System.out.println("|             3. 문학\t\t\t\t\t|");
+		System.out.println("|             4. 뒤로가기\t\t\t\t\t|");
+		System.out.println("=========================================================");
+		System.out.print("명령어를 입력해주세요 : ");
 		
-		return null;
+		int commend = sc.nextInt();
+		
+		switch(commend)
+		{
+		case 1: 
+			fantasiaManu(sc);
+			break;
+		case  2:
+			romanceManu(sc);
+			break;
+		case 3:
+			literatureManu(sc);
+			break;
+		case 4:
+			searchMenu(sc);
+		default:
+			init(sc);
+			break;
+		}
+		
 	}
 
 	private static List<BookVo> detailSearch(Scanner sc) {
+		System.out.println("=========================================================");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             다음 중 원하시는 장르의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             1. 제목\t\t\t\t\t|");
+		System.out.println("|             2. 작가\t\t\t\t\t|");
+		System.out.println("|             3. 출판사\t\t\t\t\t|");
+		System.out.println("|             4. 출판일\t\t\t\t\t|");
+		System.out.println("|             4. 장르\t\t\t\t\t|");
+		System.out.println("=========================================================");
+		System.out.print("명령어를 입력해주세요 : ");
+		
+		int commend = sc.nextInt();
+		
 		
 		return null;
 	}
