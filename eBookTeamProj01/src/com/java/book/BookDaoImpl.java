@@ -72,7 +72,13 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) stmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
+		
 		return list;
 	}
 	
@@ -125,7 +131,13 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
+		
 		return list;	
 	}
 	
@@ -176,7 +188,13 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
+		
 		return list;
 	}
 	
@@ -226,7 +244,13 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
+		
 		return list;
 	}
 	
@@ -279,7 +303,13 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
+		
 		return list;	
 	}
 	
@@ -331,7 +361,13 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
+		
 		return list;	
 	}
 	
@@ -384,7 +420,13 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
+		
 		return list;	
 	}
 	
@@ -438,7 +480,13 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
+		
 		return list;	
 	}
 	
@@ -487,6 +535,11 @@ public class BookDaoImpl implements BookDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) stmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
 		}
 		
 		return temp;
@@ -534,6 +587,7 @@ public class BookDaoImpl implements BookDao {
 				if (conn != null) conn.close();
 			} catch (Exception e) {}
 		}
+		
 		return 1 == insertedCount;
 	}
 	public boolean update(BookVo vo) {

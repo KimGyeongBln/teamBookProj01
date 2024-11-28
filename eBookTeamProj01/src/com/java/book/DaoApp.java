@@ -186,10 +186,8 @@ public class DaoApp {
 		String address = sc.next();
 		if(address == "0")
 			return false;
-		
-		
-		
-		return true;
+				
+		return userDAO.register(userId, userPassword, userName, address, phoneNumber, email);
 	}
 
 	private static void exit() {
