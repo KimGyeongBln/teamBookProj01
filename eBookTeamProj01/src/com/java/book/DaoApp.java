@@ -82,9 +82,6 @@ public class DaoApp {
 		System.out.println("로그인 시도합니다.");
 		boolean isSucceed = false;
 		
-		// 기능 호출
-		UserDao user = new UserDaoImpl();
-		
 		// 아이디 비번 입력
 		System.out.print("아이디: ");
 		String id = sc.next();
@@ -94,9 +91,9 @@ public class DaoApp {
 		// 아이디나 비번을 입력 안했을 경우 다시 입력하라고 처리
 		if(!id.equals("") && !password.equals("")) {
 			//유저 등록 되어있는지 여부 확인. 없으면 회원가입이 안되어있는 아이디
-			if(user.isUserRegistered(id)) {
+			if(userDAO.isUserRegistered(id)) {
 				// 현재 유저 정보 받아놓음
-				currentUser = user.login(id, password);
+				currentUser = userDAO.login(id, password);
 				
 				// 입력한 아이디 비번으로 유저를 찾으면 성공, 못찾으면 실패
 				if(currentUser != null) {
@@ -198,6 +195,9 @@ public class DaoApp {
 		System.out.println("|             이용해주셔서 감사합니다.\t\t\t|");
 		System.out.println("=========================================================");
 
+		userDAO = null;
+		bookDAO = null;
+		currentUser = null;
 	}
 	
 	private static void mainMenu(Scanner sc) {
