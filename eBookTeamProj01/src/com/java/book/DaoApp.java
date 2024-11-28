@@ -99,15 +99,17 @@ public class DaoApp {
 				if(currentUser != null) {
 					isSucceed = true;
 				} else {
-					System.out.println("아이디 혹은 비번이 틀렸습니다.");
+					System.out.println("회원 정보가 틀려요.");
+					System.out.println("아이디나 비밀번호를 확인해 주세요.");
 					isSucceed = false;
 				}
 			} else {
-				System.out.println("회원가입이 안되어있습니다.");
+				System.out.println("회원 정보를 찾을 수 없습니다.");
+				System.out.println("기존 유저 로그인을 원하시면 회원가입 해 주세요.");
 				isSucceed = false;
 			}
 		} else {
-			System.out.println("다시 입력해 주세요.");
+			System.out.println("로그인 정보를 다시 입력해 주세요.");
 			isSucceed = false;
 		}
 		
