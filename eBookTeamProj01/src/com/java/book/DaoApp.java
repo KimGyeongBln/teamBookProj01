@@ -460,7 +460,10 @@ public class DaoApp {
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
 		System.out.println("|             대여목록\t\t\t\t\t|");
-		showRentalBookList(sc, rentalBookList);
+//		showRentalBookList(sc, rentalBookList);
+		for(var book : rentalBookList) {
+			book.toString();
+		}
 		System.out.println("|             1. 대여하기\t\t\t\t\t|");
 		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
