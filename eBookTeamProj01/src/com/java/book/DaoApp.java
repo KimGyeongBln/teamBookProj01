@@ -350,9 +350,7 @@ public class DaoApp {
 		System.out.print("작가 이름 혹은 작품 제목으로 검색 : ");
 		String keyword = sc.nextLine();
 		
-		BookDao books = new BookDaoImpl();
-		
-		return books.search(keyword);
+		return bookDAO.search(keyword);
 	}
 	
 	private static List<BookVo> gerneSearch(Scanner sc) {
