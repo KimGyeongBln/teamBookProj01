@@ -280,9 +280,50 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<Integer> getMyRentalBookList(int uid) {
 		List<Integer> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Integer temp = null;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT uid, user_id, user_password,"
+					+ " user_name, address, phone_number, email, admin "
+					+ " FROM USER"
+					+ " WHERE (uid) LIKE ?" ;
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uid);
+			
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				String userId = rs.getString("user_id");
+				String userPassword = rs.getString("user_password");
+				String userName = rs.getString("userName");
+				String address = rs.getString("address");
+				String phonNumber = rs.getString("phone_number");
+				String email = rs.getString("email");
+				int admin = rs.getInt("admin");
+			
+				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
+						phonNumber, email, admin);
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
+		}
 		
 		return null;
 	}
+
 	
 	@Override
 	public UserVo get(int uid) {
