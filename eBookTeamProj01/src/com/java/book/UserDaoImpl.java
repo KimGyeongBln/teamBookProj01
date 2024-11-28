@@ -409,17 +409,16 @@ public class UserDaoImpl implements UserDao {
 	public boolean delete(int uid) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int insertedCount = 0;
+		int deletedCount = 0;
 		
 		try {
 			conn = getConnection();
 			
 			String sql = "DELETE FROM USER WHERE uid = ?;";
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, uid);
+			pstmt.setInt(1, uid);
 
-			insertedCount = pstmt.executeUpdate();
+			deletedCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -428,7 +427,7 @@ public class UserDaoImpl implements UserDao {
 				if (conn != null) conn.close();
 			} catch (Exception e) {}
 		}
-		return 1 == insertedCount;
+		return 1 == deletedCount;
 	}
 }
 	
