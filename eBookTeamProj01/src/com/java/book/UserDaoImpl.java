@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 public class UserDaoImpl implements UserDao {
 	static final String dburl = "jdbc:mysql://localhost:3306/e_book";
@@ -231,6 +231,7 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 	
+	// 유저 검색
 	@Override
 	public List<UserVo> search(String keyword){
 		List<UserVo> list = new ArrayList<>();
@@ -277,21 +278,20 @@ public class UserDaoImpl implements UserDao {
 		return null;
 	}
 	
+	// 유저가 대여한 책 목록
 	@Override
 	public List<Integer> getMyRentalBookList(int uid) {
 		List<Integer> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Integer temp = null;
 		
 		try {
 			conn = getConnection();
 			
-			String sql = "SELECT uid, user_id, user_password,"
-					+ " user_name, address, phone_number, email, admin "
-					+ " FROM USER"
-					+ " WHERE (uid) LIKE ?" ;
+			String sql = "SELECT book_id, reg_date"
+					+ " FROM BOOK_RENTAL_HISTORY"
+					+ " WHERE uid = ?;";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
@@ -299,18 +299,12 @@ public class UserDaoImpl implements UserDao {
 			rs = pstmt.executeQuery();
 		
 			while (rs.next()) {
-				String userId = rs.getString("user_id");
-				String userPassword = rs.getString("user_password");
-				String userName = rs.getString("userName");
-				String address = rs.getString("address");
-				String phonNumber = rs.getString("phone_number");
-				String email = rs.getString("email");
-				int admin = rs.getInt("admin");
-			
-				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
-						phonNumber, email, admin);
+				int bookId = rs.getInt("book_id");
 				
-				list.add(vo);
+				//TODO:날짜도 컨테이너에 받아서 리턴하고 싶다.
+				Date regDate = rs.getDate("reg_date");
+			
+				list.add(bookId);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -321,10 +315,11 @@ public class UserDaoImpl implements UserDao {
 			} catch (Exception e) {}
 		}
 		
-		return null;
+		return list;
 	}
 
 	
+	// 유저 정보 가져오기
 	@Override
 	public UserVo get(int uid) {
 		Connection conn = null;
@@ -370,6 +365,7 @@ public class UserDaoImpl implements UserDao {
 		return temp;
 	}
 	
+	// 유저 정보 추가
 	public boolean insert(UserVo vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -403,19 +399,36 @@ public class UserDaoImpl implements UserDao {
 		return 1 == insertedCount;
 	}
 	
+	// 유저 정보 업데이트 (TODO : 관리자 기능으로)
 	public boolean update(UserVo vo) {
 		
 		return false;
 	}
 	
-	public boolean delete(int userId) {
-		UserDao dao = new UserDaoImpl();
-		boolean success = dao.delete(userId);
+	// 유저 정보 삭제
+	public boolean delete(int uid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int insertedCount = 0;
 		
-		System.out.println("USER_ID DELETE " +
-				(success ? "성공": "실패"));
-		
-		return false;
+		try {
+			conn = getConnection();
+			
+			String sql = "DELETE FROM USER WHERE uid = ?;";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, uid);
+
+			insertedCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
+		}
+		return 1 == insertedCount;
 	}
 }
 	
