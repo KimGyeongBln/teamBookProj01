@@ -531,7 +531,7 @@ public class DaoApp {
 		{
 		case 1:
 				System.out.print("반납할 책 제목: ");
-				rentalBook(sc);
+				rentalBook(sc ,null);
 				break;
 		case 2:
 				mainMenu(sc);
