@@ -421,7 +421,7 @@ public class UserDaoImpl implements UserDao {
 			
 			String sql = "INSERT INTO USER (user_id, user_password, user_name, address,"
 					+ " phone_number, email, birthday, sex, admin) "
-					+ " VALUES(?, ?, ?, ?, ?, ?, ?);";
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, vo.getUserId());
@@ -432,7 +432,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(6, vo.getEmail());
 			pstmt.setString(7, vo.getBirthday());
 			pstmt.setString(8, vo.getSex());
-			pstmt.setInt(8, vo.getAdmin());
+			pstmt.setInt(9, vo.getAdmin());
 
 			insertedCount = pstmt.executeUpdate();
 		} catch (SQLException e) {

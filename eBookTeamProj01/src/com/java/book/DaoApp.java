@@ -22,9 +22,7 @@ public class DaoApp {
 	
 	private static void init(Scanner sc) {
 		System.out.println("라이브러리를 시작합니다.");
-		System.out.println("라이브러리를 시작합니다.");
-		System.out.println("라이브러리를 시작합니다.");
-		
+
 		System.out.println("=========================================================");
 		System.out.println("|             		  어서오세요!\t\t\t|");			
 		System.out.println("|             	   하이미디어 디지털 지식방입니다.\t\t|");
@@ -144,7 +142,7 @@ public class DaoApp {
 		System.out.println("회원가입 시도합니다.");
 
 		System.out.println("=========================================================");
-		System.out.println("|                  신규 가입을 환영합니다.\t\t\t|");	
+		System.out.println("|                  신규 가입을 환영합니다.\t\t|");	
 		System.out.println("|          회원 가입을 위한 정보를 안내에 따라 입력해 주세요.\t\t|");		
 		System.out.println("|        회원 가입을 취소하고 싶으시다면 '0'번을 입력해 주세요. \t|");
 		System.out.println("=========================================================");
@@ -227,13 +225,12 @@ public class DaoApp {
 	
 	private static void mainMenu(Scanner sc) {
 		System.out.println("메인메뉴 진입");
-		System.out.println("메인메뉴 진입");
-		System.out.println("메인메뉴 진입");
+
 
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
 		System.out.println("|             	  하이미디어 디지털 지식방입니다.\t\t\t|");		
-		System.out.println("|             	      무엇을 원하실까요?\t\t\t|");	
+		System.out.println("|             	      무엇을 원하실까요?\t\t|");	
 		System.out.println("|                                        \t\t|");
 		System.out.println("|            	    1. 지  식    검  색\t\t\t|");
 		System.out.println("|            	    2. 대  여    목  록\t\t\t|");
@@ -277,6 +274,7 @@ public class DaoApp {
 	}
 	
 	private static void mainMenuForGuest(Scanner sc) {
+		
 		System.out.println("=========================================================");
 		System.out.println("|             	      게스트님 어서오세요!\t\t\t|");	
 		System.out.println("|             	  하이미디어 디지털 지식방입니다.\t\t|");		
@@ -305,9 +303,6 @@ public class DaoApp {
 	}
 	
 	private static void searchMenu(Scanner sc) {
-		System.out.println("검색기능 돌아가는 중");
-		System.out.println("검색기능 돌아가는 중");
-		System.out.println("검색기능 돌아가는 중");
 
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
@@ -318,7 +313,7 @@ public class DaoApp {
 		System.out.println("|  3. 상  세    검  색 (제목, 장르, 출판사 등을 입력해 지식 검색)\t|");	
 		System.out.println("|  4. 메인으로 돌아가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
 		List<BookVo> bookList = null;
@@ -353,7 +348,7 @@ public class DaoApp {
 			}
 			break;
 		case 4:
-			exit();
+			searchMenu(sc);
 			break;
 		default:
 			init(sc);

@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface UserDao {
 	public List<UserVo> getList(); // 전체 유 목록
-	public boolean register(String userId, String userPassword, String userName, String address, String PhoneNumber, String email, String birthday, String sex );
+	public boolean register(String userId, String userPassword, String userName, String address, 
+								String PhoneNumber, String email, String birthday, String sex );
 	public boolean isUserRegistered(String id);
 	public UserVo login(String id, String password);
 	public UserVo guestLogin();
