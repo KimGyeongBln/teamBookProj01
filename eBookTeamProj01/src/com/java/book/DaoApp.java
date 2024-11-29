@@ -330,8 +330,10 @@ public class DaoApp {
 			}
 			break;
 		case 2:
-			if(gerneSearch(sc).size() > 0) {
-				bookList = gerneSearch(sc);
+			int categoryId = categorySearch(sc);
+			
+			if(genreSearch(sc, categoryId).size() > 0) {
+				bookList = genreSearch(sc, categoryId);
 				searchResult(sc, bookList);
 				mainMenu(sc);
 			} else {
@@ -378,9 +380,24 @@ public class DaoApp {
 //	System.out.println("|            	    3. 뒤  로    가  기\t\t\t|");	
 //	System.out.println("=========================================================");
 //	System.out.print("원하시는 번호를 입력해주세요 : ");
-
+	
+	private static int categorySearch(Scanner sc) {
+		System.out.println("=========================================================");
+		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+		System.out.println("|             	    원하시는 장르를 골라주세요.\t\t\t|");		
+		System.out.println("|                                        \t\t|");
+		System.out.println("|            	    1. 소           설\t\t\t|");
+		System.out.println("|            	    2. 만           화\t\t\t|");
+		System.out.println("|            	    3. 뒤  로    가  기\t\t\t|");	
+		System.out.println("=========================================================");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
+		
+		int commend = sc.nextInt();
+		
+		return commend;
 	}
-	private static List<BookVo> gerneSearch(Scanner sc, int categoryId) {
+	
+	private static List<BookVo> genreSearch(Scanner sc, int categoryId) {
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
 		System.out.println("|             	  원하시는 장르를 골라주세요.\t\t\t|");		
@@ -400,7 +417,9 @@ public class DaoApp {
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
-		bookDAO.gerneSearch(, commend);
+		
+		bookDAO.gerneSearch(categoryId, commend);
+		
 		switch(commend)
 		{
 		case 1: 
