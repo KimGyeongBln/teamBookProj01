@@ -27,14 +27,18 @@ public class DaoApp {
 		
 		System.out.println("=========================================================");
 		System.out.println("|             		  어서오세요!\t\t\t|");			
-		System.out.println("|             	   하이미디어 디지털 도서관입니다.\t\t|");
+		System.out.println("|             	   하이미디어 디지털 지식방입니다.\t\t|");
 		System.out.println("|                고객님께서 원하시는 걸 선택해 주세요.\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             	    1. 기 존 회 원 로그인\t\t\t|");
-		System.out.println("|            	    2. 게 스 트 로 그 인\t\t\t|");
-		System.out.println("|            	    3. 회  원    가  입\t\t\t|");
-		System.out.println("|             	    4. 나    가     기\t\t\t|");
+		System.out.println("|             	      1. 기 존 회 원 로그인\t\t\t|");
+		System.out.println("|            	      2. 게 스 트 로 그 인\t\t\t|");
+		System.out.println("|            	      3. 회  원    가  입\t\t\t|");
+		System.out.println("|             	      4. 나    가     기\t\t\t|");
+		System.out.println("|                                        \t\t|");
+		System.out.println("|             지식방의 모든 도서는 '지식'으로 통일 됩니다!\t\t|");
+		System.out.println("|                   이용에 참고 부탁드립니다.\t\t\t|");
 		System.out.println("=========================================================");
+
 		System.out.print("번호를 입력해주세요 : ");
 		int commend = sc.nextInt();
 		
@@ -314,12 +318,13 @@ public class DaoApp {
 		System.out.print("명령어를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
+		List<BookVo> bookList = null;
 		
 		switch(commend)
 		{
 		case 1:
 			if(generalSearch(sc).size() > 0) {
-				var bookList = generalSearch(sc);
+				bookList = generalSearch(sc);
 				searchResult(sc, bookList);
 				init(sc);
 			} else {
@@ -328,7 +333,7 @@ public class DaoApp {
 			break;
 		case 2:
 			if(gerneSearch(sc).size() > 0) {
-				var bookList = gerneSearch(sc);
+				bookList = gerneSearch(sc);
 				searchResult(sc, bookList);
 				init(sc);
 			} else {
@@ -337,7 +342,7 @@ public class DaoApp {
 			break;
 		case 3:
 			if(detailSearch(sc).size() > 0) {
-				var bookList = detailSearch(sc);
+				bookList = detailSearch(sc);
 				searchResult(sc, bookList);
 				init(sc);
 			} else {
@@ -384,13 +389,13 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1: 
-			gerne1Menu(sc);
+//			gerne1Menu(sc);
 			break;
 		case  2:
-			gerne2Menu(sc);
+//			gerne2Menu(sc);
 			break;
 		case 3:
-			gerne3Menu(sc);
+//			gerne3Menu(sc);
 			break;
 		case 4:
 			searchMenu(sc);
@@ -399,6 +404,7 @@ public class DaoApp {
 			break;
 		}
 		
+		return null;
 	}
 
 	private static List<BookVo> detailSearch(Scanner sc) {
@@ -521,7 +527,7 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-			rentalBook(sc, null);
+//			rentalBook(sc, null);
 			break;
 		case 2:
 			mainMenu(sc);
@@ -546,7 +552,7 @@ public class DaoApp {
 		{
 		case 1:
 				System.out.print(" 반납 해 주실 지식은 저에게 알려주세요!");
-				rentalBook(sc ,null);
+//				rentalBook(sc ,null);
 				break;
 		case 2:
 				mainMenu(sc);
