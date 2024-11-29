@@ -564,6 +564,37 @@ public class BookDaoImpl implements BookDao {
 	    return false;
 	}
 	
+	public boolean updateHistory(int book_id, int reg_date) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int insertedCount = 0;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "INSERT INTO book_rental_history (book_id, reg_date) VALUES (?, ?)";
+			
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, book_id);
+		pstmt.setInt(2, reg_date);
+		
+		insertedCount = pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return insertedCount > 0 ;
+	}
+	
 	public boolean insert(BookVo vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -608,10 +639,12 @@ public class BookDaoImpl implements BookDao {
 		
 		return 1 == insertedCount;
 	}
+	
 	public boolean update(BookVo vo) {
 		
 		return false;
 	}
+	
 	public boolean delete(int bookId) {
 		
 		return false;
