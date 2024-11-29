@@ -1,7 +1,5 @@
 package com.java.book;
 
-import java.util.Date;
-
 public class UserVo {
 	private int uid;
 	private String userId;
@@ -10,8 +8,8 @@ public class UserVo {
 	private String address;
 	private String phoneNumber;
 	private String email;
-	private Date birthday;
-	private int sex;
+	private String birthday;
+	private String sex;
 	private int admin;
 	
 	public UserVo() {
@@ -19,7 +17,7 @@ public class UserVo {
 	}
 	
 	public UserVo(String userId, String userPassword, String address, 
-			String userName, String phoneNumber, String email, Date birthday, int sex, int admin) {
+			String userName, String phoneNumber, String email, String birthday, String sex, int admin) {
 		super();
 		
 		this.userId = userId;
@@ -34,7 +32,7 @@ public class UserVo {
 	}
 	
 	public UserVo(int uid, String userId, String userPassword, String address, 
-			String userName, String phoneNumber, String email, Date birthday, int sex, int admin) {
+			String userName, String phoneNumber, String email, String birthday, String sex, int admin) {
 		super();
 		
 		this.uid = uid;
@@ -109,19 +107,19 @@ public class UserVo {
 //	this.birthday = birthday;
 //	this.sex = sex;
 	
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 	
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
 	
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	

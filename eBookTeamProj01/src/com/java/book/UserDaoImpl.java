@@ -43,7 +43,7 @@ public class UserDaoImpl implements UserDao {
 			stmt = conn.createStatement();
 			
 			String sql = "SELECT uid, user_id, user_password, user_name, address,"
-					+ " phoneNumber, email, admin"
+					+ " phoneNumber, email, birthday, sex, admin"
 					+ " FROM USER;";
 			
 			rs = stmt.executeQuery(sql);
@@ -57,10 +57,12 @@ public class UserDaoImpl implements UserDao {
 				String address = rs.getString("address");
 				String phoneNumber = rs.getString("phone_number");
 				String email = rs.getString("email");
+				String birthday = rs.getString("birthday");
+				String sex = rs.getString("sex");
 				int admin = rs.getInt("admin");
 				
 				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, phoneNumber,
-						email, admin);
+						email, birthday, sex, admin);
 				
 				list.add(vo);
 			}
@@ -79,9 +81,9 @@ public class UserDaoImpl implements UserDao {
 	// 유저 회원가입 기능
 	@Override
 	public boolean register(String userId, String userPassword, String userName, 
-							String address, String phoneNumber, String email) {	
+							String address, String phoneNumber, String email, String birthday, String sex) {	
 		
-		UserVo user = new UserVo(userId, userPassword, userName, address, phoneNumber, email, 1);
+		UserVo user = new UserVo(userId, userPassword, userName, address, phoneNumber, email, birthday, sex, 1);
 				
 		return insert(user);
 	}
@@ -153,10 +155,12 @@ public class UserDaoImpl implements UserDao {
 				String address = rs.getString("address");
 				String phoneNumber = rs.getString("phone_number");
 				String email = rs.getString("email");
+				String birthday = rs.getString("birthday");
+				String sex = rs.getString("sex");
 				int admin = rs.getInt("admin");
 			
 				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
-						phoneNumber, email, admin);
+						phoneNumber, email, birthday, sex, admin);
 				
 				user = vo;
 			}
@@ -191,10 +195,12 @@ public class UserDaoImpl implements UserDao {
 			String address = "guest";
 			String phoneNumber = "guest";
 			String email = "guest";
+			String birthday = "birthday";
+			String sex = "sex";
 			int admin = 3;
 			
-			String sql = "INSERT INTO USER (user_id, user_password, user_name, address, phone_number, email, admin) VALUES "
-					+ " (?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO USER (user_id, user_password, user_name, address, phone_number, email, birthday, sex, admin) VALUES "
+					+ " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPassword);
@@ -202,7 +208,9 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(4, address);
 			pstmt.setString(5, phoneNumber);
 			pstmt.setString(6, email);
-			pstmt.setInt(7, admin);
+			pstmt.setString(7, birthday);
+			pstmt.setString(8, sex);
+			pstmt.setInt(9, admin);
 			
 			pstmt.execute();
 			
@@ -214,7 +222,7 @@ public class UserDaoImpl implements UserDao {
 				int uid = rs.getInt("uid");
 			
 				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
-						phoneNumber, email, admin);
+						phoneNumber, email, birthday, sex, admin);
 				
 				user = vo;
 			}
@@ -243,7 +251,7 @@ public class UserDaoImpl implements UserDao {
 			conn = getConnection();
 			
 			String sql = "SELECT uid, user_id, user_password,"
-					+ " user_name, address, phone_number, email, admin "
+					+ " user_name, address, phone_number, email, birthday, sex, admin "
 					+ " FROM USER"
 					+ " WHERE (user_id) LIKE ?" ;
 			pstmt = conn.prepareStatement(sql);
@@ -259,10 +267,12 @@ public class UserDaoImpl implements UserDao {
 				String address = rs.getString("address");
 				String phonNumber = rs.getString("phone_number");
 				String email = rs.getString("email");
+				String birthday = rs.getString("birthday");
+				String sex = rs.getString("sex");
 				int admin = rs.getInt("admin");
 			
 				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
-						phonNumber, email, admin);
+						phonNumber, email, birthday, sex, admin);
 				
 				list.add(vo);
 			}
@@ -332,7 +342,7 @@ public class UserDaoImpl implements UserDao {
 			stmt = conn.createStatement();
 			
 			String sql = "SELECT uid, user_id, user_password,"
-					+ " user_name, address, phone_number, email, admin "
+					+ " user_name, address, phone_number, email, birthday, sex, admin "
 					+ " FROM USER"
 					+ " WHERE (uid)" ;
 			
@@ -345,10 +355,12 @@ public class UserDaoImpl implements UserDao {
 				String address = rs.getString("address");
 				String phonNumber = rs.getString("phone_number");
 				String email = rs.getString("email");
+				String birthday = rs.getString("birthday");
+				String sex = rs.getString("sex");
 				int admin = rs.getInt("admin");
 			
 				UserVo vo = new UserVo(uid, userId, userPassword, userName, address, 
-						phonNumber, email, admin);
+						phonNumber, email, birthday, sex, admin);
 				
 				temp = vo;
 			}
@@ -374,7 +386,7 @@ public class UserDaoImpl implements UserDao {
 			conn = getConnection();
 			
 			String sql = "INSERT INTO USER (user_id, user_password, user_name, address,"
-					+ " phone_number, email, admin) "
+					+ " phone_number, email, birthday, sex, admin) "
 					+ " VALUES(?, ?, ?, ?, ?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			
@@ -384,7 +396,9 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(4, vo.getAddress());
 			pstmt.setString(5, vo.getPhoneNumber());
 			pstmt.setString(6, vo.getEmail());
-			pstmt.setInt(7, vo.getAdmin());
+			pstmt.setString(7, vo.getBirthday());
+			pstmt.setString(8, vo.getSex());
+			pstmt.setInt(8, vo.getAdmin());
 
 			insertedCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
