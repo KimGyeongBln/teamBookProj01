@@ -550,7 +550,7 @@ public class BookDaoImpl implements BookDao {
 			rs = stmt.executeQuery(sql);
 		
 			while (rs.next()) {
-				int bookId = rs.getInt("book_id");
+				int bId = rs.getInt("book_id");  // bId = bookId
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
 				String authorName = rs.getString("author_name");
@@ -567,7 +567,7 @@ public class BookDaoImpl implements BookDao {
 				String comment = rs.getString("comment");
 				int rentCnt = rs.getInt("rentCnt");
 				
-				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName, publisher, 
+				BookVo vo = new BookVo(bId, bookTitle, rating, authorName, publisher, 
 						date, categoryId,  genre1, genre2, genre3, 
 						isRental, price, imgUrl, update, comment, rentCnt);
 				
