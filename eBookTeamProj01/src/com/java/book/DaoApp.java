@@ -149,10 +149,6 @@ public class DaoApp {
 		System.out.println("|        회원 가입을 취소하고 싶으시다면 '0'번을 입력해 주세요. \t|");
 		System.out.println("=========================================================");
 
-//		아직 테이블에 없는 내용입니다. 만들어지면 생성해주세요.
-//		System.out.println("6. 생년월일 : ");
-//		System.out.println("7. 성별 : ");
-
 		
 		System.out.println("1. 사용하실 아이디 : ");
 		String userId = sc.next();
@@ -185,6 +181,16 @@ public class DaoApp {
 		if(phoneNumber.equals("0"))
 			return false;
 		
+		System.out.println("6. 생년월일 : ");
+		String birthday = sc.next();
+		if(birthday.equals("0"))
+			return false;
+		
+		System.out.println("7. 성별 : ");
+		String sex = sc.next();
+		if(sex.equals("0"))
+			return false;
+		
 		System.out.println("8. 주소 : ");
 		String address = sc.next();
 		if(address.equals("0"))
@@ -200,7 +206,7 @@ public class DaoApp {
 //		System.out.println("=========================================================");
 
 		
-		return userDAO.register(userId, userPassword, userName, address, phoneNumber, email);
+		return userDAO.register(userId, userPassword, userName, address, phoneNumber, email, birthday, sex);
 	}
 
 	private static void exit() {
