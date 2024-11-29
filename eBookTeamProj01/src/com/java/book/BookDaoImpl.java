@@ -141,7 +141,6 @@ public class BookDaoImpl implements BookDao {
 		return list;	
 	}
 	
-	
 	public List<BookVo> searchPublisher(String pulisher){
 		List<BookVo> list = new ArrayList<>();
 		Connection conn = null;
@@ -313,7 +312,6 @@ public class BookDaoImpl implements BookDao {
 		return list;	
 	}
 	
-
 	public List<BookVo> searchRating(int minRating){
 		List<BookVo> list = new ArrayList<>();
 		Connection conn = null;
@@ -490,8 +488,6 @@ public class BookDaoImpl implements BookDao {
 		return list;	
 	}
 	
-	
-	
 	public BookVo get(int bookId) {
 		Connection conn = null;
 		Statement stmt = null;
@@ -564,7 +560,7 @@ public class BookDaoImpl implements BookDao {
 	    return false;
 	}
 	
-	public boolean updateHistory(int book_id, int reg_date) {
+	public boolean updateHistory(int uid, int book_id, int reg_date) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int insertedCount = 0;
@@ -572,12 +568,13 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "INSERT INTO book_rental_history (book_id, reg_date) VALUES (?, ?)";
+			String sql = "INSERT INTO BOOK_RENTAL_HISTORY (uid, book_id, reg_date) VALUES (?, ?, ?)";
 			
 		pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setInt(1, book_id);
-		pstmt.setInt(2, reg_date);
+		pstmt.setInt(1, uid);
+		pstmt.setInt(2, book_id);
+		pstmt.setInt(3, reg_date);
 		
 		insertedCount = pstmt.executeUpdate();
 		
