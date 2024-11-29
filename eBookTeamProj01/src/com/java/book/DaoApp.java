@@ -32,7 +32,7 @@ public class DaoApp {
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             	      1. 기 존 회 원 로그인\t\t\t|");
 		System.out.println("|            	      2. 게 스 트 로 그 인\t\t\t|");
-		System.out.println("|            	      3. 회  원    가  입\t\t\t|");
+		System.out.println("|            	      3. 회   원   가  입\t\t\t|");
 		System.out.println("|             	      4. 나    가     기\t\t\t|");
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             지식방의 모든 도서는 '지식'으로 통일 됩니다!\t\t|");
@@ -142,27 +142,19 @@ public class DaoApp {
 	// 회원가입 기능
 	private static boolean register(Scanner sc) {
 		System.out.println("회원가입 시도합니다.");
-		System.out.println("회원가입 시도합니다.");
-		System.out.println("회원가입 시도합니다.");
-		
+
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|                                        \t\t|");
-		System.out.println("|             순서대로 정보를 입력해주세요.\t|");
-		System.out.println("|             1. 아이디\t\t\t\t\t|");
-		System.out.println("|             2. 비밀번호\t\t\t\t\t|");
-		System.out.println("|             3. 이름\t\t\t\t\t|");
-		System.out.println("|             4. 이메일\t\t\t\t\t|");
-		System.out.println("|             5. 전화번호\t\t\t\t\t|");
-//		System.out.println("|             7. 생년월일\t\t\t\t\t|");
-//		System.out.println("|             8. 성별\t\t\t\t\t|");
-		System.out.println("|             6. 주소\t\t\t\t\t|");
-		System.out.println("|             뒤로가기 버튼은 언제든지 0을 입력하고 엔터 쳐주세요.\t\t\t\t\t|");
+		System.out.println("|                  신규 가입을 환영합니다.\t\t\t|");	
+		System.out.println("|          회원 가입을 위한 정보를 안내에 따라 입력해 주세요.\t\t|");		
+		System.out.println("|        회원 가입을 취고하고 싶으시다면 '0'번을 입력해 주세요. \t|");
 		System.out.println("=========================================================");
+
+//		아직 테이블에 없는 내용입니다. 만들어지면 생성해주세요.
+//		System.out.println("6. 생년월일 : ");
+//		System.out.println("7. 성별 : ");
+
 		
-		System.out.print("아이디 : ");
+		System.out.println("1. 사용하실 아이디 : ");
 		String userId = sc.next();
 		if(userId.equals("0"))
 			return false;
@@ -173,45 +165,53 @@ public class DaoApp {
 			return false;
 		}
 		
-		System.out.print("비밀번호 : ");
+		System.out.println("2. 사용하실 비밀번호 : ");
 		String userPassword = sc.next();
 		if(userPassword.equals("0"))
 			return false;
 		
-		System.out.print("이름 : ");
+		System.out.println("3. 이름 : ");
 		String userName = sc.next();
 		if(userName.equals("0"))
 			return false;
 		
-		System.out.print("이메일 : ");
+		System.out.println("4. 이메일 : ");
 		String email = sc.next();
 		if(email.equals("0"))
 			return false;
 		
-		System.out.print("전화번호 : ");
+		System.out.println("5. 전화번호 : ");
 		String phoneNumber = sc.next();
 		if(phoneNumber.equals("0"))
 			return false;
 		
-		System.out.print("주소 : ");
+		System.out.println("8. 주소 : ");
 		String address = sc.next();
 		if(address.equals("0"))
 			return false;
-				
+		
+		//	0입력했을 떄 뜰 수 있게 해 주세요.
+//		System.out.println("=========================================================");
+//		System.out.println("|               회원 가입 없이 로그인을 하시게 되면\t\t|");	
+//		System.out.println("|                  지식 검색만 가능합니다.\t\t\t|");
+//		System.out.println("|          저희 지식방이 제공하는 모든 서비스를 이용하기 위해서는\t|");
+//		System.out.println("|                  회원가입이 필요합니다.\t\t\t|");;		
+//		System.out.println("|           생각이 바뀌시면 언제든 회원가입 해 주세요!\t\t|");
+//		System.out.println("=========================================================");
+
+		
 		return userDAO.register(userId, userPassword, userName, address, phoneNumber, email);
 	}
 
 	private static void exit() {
 		System.out.println("프로그램 종료합니다.");
-		System.out.println("프로그램 종료합니다.");
-		System.out.println("프로그램 종료합니다.");
 		
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|                                        \t\t|");
-		System.out.println("|             이용해주셔서 감사합니다.\t\t\t|");
+		System.out.println("|           저희 하이디미어 디지털 지식방 이용은 즐거우셨나요?\t\t|");
+		System.out.println("|              지금까지 언제나 최상의 서비스를 생각하는\t\t|");
+		System.out.println("|                하이미디어 디지털 지식방이었습니다.\t\t|");;		
+		System.out.println("|               고객님께 도움이 되었다면 좋겠습니다.\t\t|");
+		System.out.println("|                    이용해주셔서 감사합니다.\t\t\t|");
 		System.out.println("=========================================================");
 
 		userDAO = null;
@@ -223,21 +223,21 @@ public class DaoApp {
 		System.out.println("메인메뉴 진입");
 		System.out.println("메인메뉴 진입");
 		System.out.println("메인메뉴 진입");
-		
+
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+		System.out.println("|             	  하이미디어 디지털 지식방입니다.\t\t\t|");		
+		System.out.println("|             	      무엇을 원하실까요?\t\t\t|");	
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
-		System.out.println("|             1. 검색\t\t\t\t\t|");
-		System.out.println("|             2. 대여목록\t\t\t\t\t|");
-		System.out.println("|             3. 반납\t\t\t\t\t|");
-		System.out.println("|             4. 추천\t\t\t\t\t|");
-		System.out.println("|             5. 기록\t\t\t\t\t|");
-		System.out.println("|             6. 로그아웃\t\t\t\t\t|");
+		System.out.println("|            	    1. 지  식    검  색\t\t\t|");
+		System.out.println("|            	    2. 대  여    목  록\t\t\t|");
+		System.out.println("|            	    3. 지  식    반  납\t\t\t|");
+		System.out.println("|            	    4. 추  천    지  식\t\t\t|");
+		System.out.println("|            	    5. 대  여    기  록\t\t\t|");
+		System.out.println("|            	    6. 로  그    아  웃\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
+		
 		int commend = sc.nextInt();
 		
 		switch(commend)
@@ -252,7 +252,7 @@ public class DaoApp {
 			if(returnRentalBook(sc)) {
 				mainMenu(sc);
 			} else {
-				System.out.println("회원가입 실패. 다시 시도해주세요.");
+				System.out.println("회원가입에 실패했어요. 다시 시도해주세요.");
 			}
 			break;
 		case 4:
@@ -271,20 +271,17 @@ public class DaoApp {
 	}
 	
 	private static void mainMenuForGuest(Scanner sc) {
-		System.out.println("게스트 메인메뉴 진입");
-		System.out.println("게스트 메인메뉴 진입");
-		System.out.println("게스트 메인메뉴 진입");
-		
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             	      게스트님 어서오세요!\t\t\t|");	
+		System.out.println("|             	  하이미디어 디지털 지식방입니다.\t\t\t|");		
+		System.out.println("|              게스트 로그인은 도서 검색만 가능합니다.\t\t|");	
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 검색\t\t\t\t\t|");
-		System.out.println("|             2. 이전으로\t\t\t\t\t|");
+		System.out.println("|            	    1. 지  식    검  색\t\t\t|");
+		System.out.println("|            	    2. 회  원    가  입\t\t\t|");
+		System.out.println("|            	    3. 로  그    아  웃\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
+
 		int commend = sc.nextInt();
 		
 		switch(commend)
