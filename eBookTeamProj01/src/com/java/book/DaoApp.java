@@ -229,8 +229,8 @@ public class DaoApp {
 
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
-		System.out.println("|             	  하이미디어 디지털 지식방입니다.\t\t\t|");		
-		System.out.println("|             	      무엇을 원하실까요?\t\t|");	
+		System.out.println("|             	  하이미디어 디지털 지식방입니다.\t\t|");		
+		System.out.println("|             	      무엇을 원하실까요?\t\t\t|");	
 		System.out.println("|                                        \t\t|");
 		System.out.println("|            	    1. 지  식    검  색\t\t\t|");
 		System.out.println("|            	    2. 대  여    목  록\t\t\t|");
@@ -540,6 +540,7 @@ public class DaoApp {
 		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t|");
 		System.out.println("|             현재 회원님의 지식 게이지가 궁금합니다!\t\t|");
 		System.out.println("|                                        \t\t|");
+		// 대여중인 리스트 System.out.println()
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
@@ -552,10 +553,7 @@ public class DaoApp {
 		
 		switch(commend)
 		{
-		case 1:
-			rentalBook(sc, null, null);  // 다시 확인.
-			break;
-		case 2:
+		case 0:
 			mainMenu(sc);
 			break;
 		}
@@ -578,7 +576,7 @@ public class DaoApp {
 		{
 		case 1:
 				System.out.print(" 반납 해 주실 지식은 저에게 알려주세요!");
-//				rentalBook(sc ,null);
+//				리스트 나와야한다( 함수 하나 만들기)
 				break;
 		case 2:
 				mainMenu(sc);
@@ -598,6 +596,7 @@ public class DaoApp {
 		System.out.println("|             이런 지식은 어떨까요?\t\t\t\t|");
 		System.out.println("|             회원님께 추천 드리고싶은 지식의 목록입니다!\t\t|");
 		System.out.println("|                                        \t\t|");
+		// 추천
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
@@ -610,6 +609,7 @@ public class DaoApp {
 		System.out.println("|             플러스 된 지식들은 재미있으셨나요?\t\t|");
 		System.out.println("|             플러스 된 회원님의 지식을 알려드립니다!\t\t|");
 		System.out.println("|                                        \t\t|");
+		// 렌탈리스트
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		 if (rentalBookList == null || rentalBookList.isEmpty()) {
