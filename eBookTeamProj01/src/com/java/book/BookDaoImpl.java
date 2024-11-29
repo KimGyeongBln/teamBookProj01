@@ -384,7 +384,7 @@ public class BookDaoImpl implements BookDao {
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, update, comment "
 					+ " FROM BOOK"
-					+ " WHERE WHERE price BETWEEN ? AND ?" ;
+					+ " WHERE price BETWEEN ? AND ?" ;
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, minPrice);
@@ -487,6 +487,41 @@ public class BookDaoImpl implements BookDao {
 		
 		return list;	
 	}
+
+	public String findBookNameFromId(int bookId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String bookTitle = null;
+		
+		try {
+			conn = getConnection();
+
+			String sql = "SELECT book_title "
+					+ " FROM BOOK "
+					+ " WHERE book_id = ?;";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bookId);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				//temporary : 임시
+				String temp = rs.getString("book_title");
+				
+				bookTitle = temp;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
+		}
+		
+		return bookTitle;
+	}
 	
 	public BookVo get(int bookId) {
 		Connection conn = null;
@@ -496,7 +531,7 @@ public class BookDaoImpl implements BookDao {
 		
 		try {
 			conn = getConnection();
-			stmt          = conn.createStatement();
+			stmt = conn.createStatement();
 			
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
