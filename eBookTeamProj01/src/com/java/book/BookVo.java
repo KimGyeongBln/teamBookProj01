@@ -23,7 +23,7 @@ public class BookVo {
 		
 	}
 	
-	BookVo(int bookId, String bookTitle, int rating, String authorName, String publisher, Date date, int categoryId, int novel, int carton, int genre1, int genre2, int genre3, 
+	BookVo(int bookId, String bookTitle, int rating, String authorName, String publisher, Date date, int categoryId, int genre1, int genre2, int genre3, 
 			int isRental, int price, String imgUrl, Date update, String comment) {
 		this.bookId = bookId;
 		this.bookTitle = bookTitle;
@@ -31,8 +31,6 @@ public class BookVo {
 		this.authorName = authorName;
 		this.publisher = publisher;
 		this.categoryId = categoryId;
-		this.novel = novel;
-		this.carton = carton;
 		this.genre1 = genre1;
 		this.genre2 = genre2;
 		this.genre2 = genre2;
@@ -103,22 +101,6 @@ public class BookVo {
 	
 	public int getCategoryId() {
 		return categoryId;
-	}
-	
-	public int novel() {
-		return novel;
-	}
-	
-	public int carton() {
-		return carton;
-	}
-	
-	public void setNovel(int novel) {
-		this.novel = novel;
-	}
-	
-	public void setCarton(int carton) {
-		this.carton = carton;
 	}
 	
 	public void setGenre1(int genre1) {
