@@ -10,8 +10,6 @@ public class BookVo {
 	private String publisher;
 	private	Date date;
 	private int categoryId;
-	private int novel;
-	private int carton;
 	private int genre1;
 	private int genre2;
 	private int genre3;
