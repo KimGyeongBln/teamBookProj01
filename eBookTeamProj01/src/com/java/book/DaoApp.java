@@ -379,8 +379,8 @@ public class DaoApp {
 //	System.out.println("=========================================================");
 //	System.out.print("원하시는 번호를 입력해주세요 : ");
 
-	
-	private static List<BookVo> gerneSearch(Scanner sc) {
+	}
+	private static List<BookVo> gerneSearch(Scanner sc, int categoryId) {
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
 		System.out.println("|             	  원하시는 장르를 골라주세요.\t\t\t|");		
@@ -400,7 +400,7 @@ public class DaoApp {
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
-		
+		bookDAO.gerneSearch(, commend);
 		switch(commend)
 		{
 		case 1: 
