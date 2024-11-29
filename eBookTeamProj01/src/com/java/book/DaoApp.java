@@ -584,9 +584,9 @@ public class DaoApp {
 		System.out.println("|             플러스 된 지식들은 재미있으셨나요?\t\t|");
 		System.out.println("|             플러스 된 회원님의 지식을 알려드립니다!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t\t\t\t|");
+		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
-		 if (rentalBookList.isEmpty()) {
+		 if (rentalBookList == null || rentalBookList.isEmpty()) {
 	            System.out.println("플러스 된 지식이 아직 없습니다 지식을 플러스 해 보세요!");
 	        } else {
 	            for (var book : rentalBookList) {
