@@ -10,6 +10,7 @@ public interface BookDao {
 	public List<BookVo> searchGenre(int gerneId); //@hsNa: 장르검색
 	public List<BookVo> searchRating(int minRating); //@hsNa : 평점 검색
 	public List<BookVo> searchPrice(int minPrice, int maxPrice); //@hsNa : 가격 검색
+	public List<BookVo> gerneSearch(int categoryId, int genreId); // 장르 검색(예진)
 	public boolean updateRental(int book_id, int isRental); //@hsNa : 책 대여 기능
 	public boolean updateHistory(int uid, int book_id, int reg_date); //@hsNa: 책 대여 기록 기능
 	public BookVo get(int bookId);		// 리스트에서 객체 가져오기

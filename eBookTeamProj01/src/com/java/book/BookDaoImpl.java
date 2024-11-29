@@ -494,7 +494,68 @@ public class BookDaoImpl implements BookDao {
 		
 		return list;	
 	}
+	
+	public List<BookVo> gerneSearch(int categoryId, int genreId) {
+		List<BookVo> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT book_id, book_title, rating, author_name,"
+					+ " publisher, date, category_id,"
+					+ " genre1, genre2, genre3, is_rental, price,"
+					+ " img_url, upd_date, comment, rent_cnt "
+					+ " FROM BOOK "
+					+ " WHERE category_id = ? AND genre1 = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, categoryId);
+			pstmt.setInt(2, genreId);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int bookId = rs.getInt("book_id");
+				String bookTitle = rs.getString("book_title");
+				int rating = rs.getInt("rating");
+				String authorName = rs.getString("author_name");
+				String publisher = rs.getString("publisher");
+				Date date = rs.getDate("date");
+				int cateId = rs.getInt("category_id");
+				int genre1 = rs.getInt("genre1");
+				int genre2 = rs.getInt("genre2");
+				int genre3 = rs.getInt("genre3");
+				int isRental = rs.getInt("is_rental");
+				int price = rs.getInt("price");
+				String imgUrl = rs.getString("img_url");
+				Date update = rs.getDate("upd_date");
+				String comment = rs.getString("comment");
+				int rent_cnt = rs.getInt("rent_cnt");
+				
+				BookVo vo = new BookVo(bookId, bookTitle, rating, authorName, publisher, 
+						date, cateId,  genre1, genre2, genre3, 
+						isRental, price, imgUrl, update, comment, rent_cnt);
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
+		}
+		
+		return list;	
+	}
 
+	
+	
+	
 	public String findBookNameFromId(int bookId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -696,4 +757,5 @@ public class BookDaoImpl implements BookDao {
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
+	
 }
