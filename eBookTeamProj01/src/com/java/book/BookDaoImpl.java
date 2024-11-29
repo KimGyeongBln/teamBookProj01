@@ -98,7 +98,7 @@ public class BookDaoImpl implements BookDao {
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, update, comment "
 					+ " FROM BOOK"
-					+ " WHERE UPPER(book_title) LIKE ? OR UPPER(author_name) LIKE ?" ;
+					+ " WHERE book_title = ? OR author_name = ?" ;
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword.toUpperCase() + "%");
@@ -156,7 +156,7 @@ public class BookDaoImpl implements BookDao {
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, update, comment "
 					+ " FROM BOOK"
-					+ " WHERE UPPER(pulisher) LIKE ?";
+					+ " WHERE pulisher = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + pulisher.toUpperCase() + "%");
@@ -269,7 +269,7 @@ public class BookDaoImpl implements BookDao {
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, update, comment "
 					+ " FROM BOOK"
-					+ " WHERE UPPER(genre1) LIKE ? OR UPPER(genre2) LIKE ? OR UPPER(genre3) LIKE ?" ;
+					+ " WHERE genre1 = ? OR genre2 = ? OR genre3 = ?" ;
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword.toUpperCase() + "%");
@@ -445,7 +445,7 @@ public class BookDaoImpl implements BookDao {
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, update, comment "
 					+ " FROM BOOK"
-					+ " WHERE UPPER(is_rental) LIKE ?" ;
+					+ " WHERE is_rental = ?" ;
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + IsRental.toUpperCase() + "%");
@@ -545,6 +545,24 @@ public class BookDaoImpl implements BookDao {
 		return temp;
 	}
 	
+	@Override
+	public boolean updateRental(int bookId, int isRental) {
+	    try (Connection conn = getConnection(); 
+	         Statement stmt = conn.createStatement()) {
+
+	       
+	        String sql = "UPDATE BOOK SET is_rental = " + isRental 
+	                   + " WHERE book_id = " + bookId;
+
+	        return stmt.executeUpdate(sql) > 0;  // 영향을 받은 행 수가 1 이상이면 true, 아니면 false
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	      
+	    }
+	    
+	    return false;
+	}
 	
 	public boolean insert(BookVo vo) {
 		Connection conn = null;
