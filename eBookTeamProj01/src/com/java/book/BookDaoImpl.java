@@ -42,7 +42,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK;";
 			
 			rs = stmt.executeQuery(sql);
@@ -62,7 +62,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -98,7 +98,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
 					+ " WHERE UPPER(book_title) LIKE ? OR UPPER(author_name) LIKE ?" ;
 			
@@ -122,7 +122,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -156,7 +156,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
 					+ " WHERE pulisher = ?";
 			
@@ -179,7 +179,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -213,7 +213,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
 					+ " WHERE UPPER(category_id) LIKE ?";
 			
@@ -236,7 +236,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -271,7 +271,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
 					+ " WHERE genre1 = ? OR genre2 = ? OR genre3 = ?" ;
 			
@@ -296,7 +296,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -331,7 +331,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
 					+ " WHERE UPPER(rating) LIKE ?" ;
 			
@@ -354,7 +354,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -389,7 +389,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
 					+ " WHERE price BETWEEN ? AND ?" ;
 			
@@ -414,7 +414,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -449,7 +449,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
 					+ " WHERE is_rental = ?" ;
 			
@@ -473,7 +473,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -543,7 +543,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment, rent_cnt "
+					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
 					+ " WHERE UPPER(book_id)" ;
 			
@@ -563,7 +563,7 @@ public class BookDaoImpl implements BookDao {
 				int isRental = rs.getInt("is_rental");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				Date update = rs.getDate("update");
+				Date update = rs.getDate("upd_date");
 				String comment = rs.getString("comment");
 				int rent_cnt = rs.getInt("rent_cnt");
 				
@@ -647,7 +647,7 @@ public class BookDaoImpl implements BookDao {
 			String sql = "SELECT book_id, book_title, rating, author_name,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
-					+ " img_url, update, comment "
+					+ " img_url, upd_date, comment "
 					+ " FROM BOOK"
 					+ " VALUES(?, ?)";
 			pstmt = conn.prepareStatement(sql);
