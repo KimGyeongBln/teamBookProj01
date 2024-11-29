@@ -396,7 +396,6 @@ public class DaoApp {
 		System.out.println("|            	    9. 	   시	 \t\t\t|");
 		System.out.println("|            	   10. 일  반    소  설\t\t\t|");
 		System.out.println("|            	   11. 뒤  로    가  기\t\t\t|");
-		System.out.println("|                    최대 3개까지 동시 검색 가능합니다.\t\t|");	
 		System.out.println("=========================================================");
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
