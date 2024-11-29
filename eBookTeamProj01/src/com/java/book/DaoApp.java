@@ -519,17 +519,16 @@ public class DaoApp {
 		System.out.println("=========================================================");
 		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t|");
 		System.out.println("|             현재 회원님의 지식 게이지가 궁금합니다!\t\t|");
-		System.out.println("=========================================================");
-		for(var book : rentalBookList) {
-			book.toString();
-		}
-		System.out.println("=========================================================");
-		System.out.println("|          아쉬운 반납 시간입니다 하지만 항상 열려있는 지식방!\t|");
-		System.out.println("|       1번을 누르신 후 반납 해 주실 책의 제목은 저에게 알려주세요! |");
+		System.out.println("|                                        \t\t|");
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
+		
 		int commend = sc.nextInt();
+		
+		for(var book : rentalBookList) {
+			book.toString();
+		}
 		
 		switch(commend)
 		{
