@@ -325,7 +325,7 @@ public class DaoApp {
 				searchResult(sc, bookList);
 				init(sc);
 			} else {
-				System.out.println("키워드 검색 실패. 다시 시도해주세요.");
+				System.out.println("키워드 검색에 실패했어요. 다시 입력해주세요.");
 			}
 			break;
 		case 2:
@@ -334,7 +334,7 @@ public class DaoApp {
 				searchResult(sc, bookList);
 				init(sc);
 			} else {
-				System.out.println("장르 검색 실패. 다시 시도해주세요.");
+				System.out.println("장르 검색에 실패했어요. 다시 입력해주세요.");
 			}
 			break;
 		case 3:
@@ -343,7 +343,7 @@ public class DaoApp {
 				searchResult(sc, bookList);
 				init(sc);
 			} else {
-				System.out.println("상세 검색 실패. 다시 시도해주세요.");
+				System.out.println("상세 검색에 실패했어요. 다시 입력해주세요.");
 			}
 			break;
 		case 4:
@@ -357,29 +357,47 @@ public class DaoApp {
 	
 	private static List<BookVo> generalSearch(Scanner sc) {
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+		System.out.println("|             찾으시는 지식의 이름이나 작가의 이름을 적어주세요.\t\t|");		
 		System.out.println("=========================================================");
-		System.out.print("작가 이름 혹은 작품 제목으로 검색 : ");
+		System.out.print("작가 이름 혹은 작품 제목 : ");
 		String keyword = sc.nextLine();
 		
 		return bookDAO.search(keyword);
 	}
 	
+	
+//	카테고리 출력부분입니다.
+//	System.out.println("=========================================================");
+//	System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+//	System.out.println("|             	    원하시는 장르를 골라주세요.\t\t\t|");		
+//	System.out.println("|                                        \t\t|");
+//	System.out.println("|            	    1. 소           설\t\t\t|");
+//	System.out.println("|            	    2. 만           화\t\t\t|");
+//	System.out.println("|            	    3. 뒤  로    가  기\t\t\t|");	
+//	System.out.println("=========================================================");
+//	System.out.print("원하시는 번호를 입력해주세요 : ");
+
+	
 	private static List<BookVo> gerneSearch(Scanner sc) {
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
+		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+		System.out.println("|             	  원하시는 장르를 골라주세요.\t\t|");		
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 장르의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 판타지\t\t\t\t\t|");
-		System.out.println("|             2. 로맨스\t\t\t\t\t|");
-		System.out.println("|             3. 문학\t\t\t\t\t|");
-		System.out.println("|             4. 뒤로가기\t\t\t\t\t|");
+		System.out.println("|            	    1. 판      타     지\t\t\t|");
+		System.out.println("|            	    2. 로      맨     스\t\t\t|");
+		System.out.println("|            	    3. 무              협\t\t\t|");
+		System.out.println("|            	    4. 추              리\t\t\t|");
+		System.out.println("|            	    5. 스      릴     러\t\t\t|");
+		System.out.println("|            	    6. 코      미     디\t\t\t|");
+		System.out.println("|            	    7. 현대   판 타 지\t\t\t|");
+		System.out.println("|            	    8. 게임   판 타 지\t\t\t|");
+		System.out.println("|            	    9. 	   시	 \t\t\t|");
+		System.out.println("|            	   10. 일  반    소  설\t\t\t|");
+		System.out.println("|            	   11. 뒤  로    가  기\t\t\t|");
+		System.out.println("|                    최대 3개까지 동시 검색 가능합니다.\t\t|");	
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
 		
@@ -406,18 +424,10 @@ public class DaoApp {
 
 	private static List<BookVo> detailSearch(Scanner sc) {
 		System.out.println("=========================================================");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
-		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 장르의 번호를 선택해주세요.\t\t|");
-		System.out.println("|             1. 제목\t\t\t\t\t|");
-		System.out.println("|             2. 작가\t\t\t\t\t|");
-		System.out.println("|             3. 출판사\t\t\t\t\t|");
-		System.out.println("|             4. 카테고리\t\t\t\t\t|");
-		System.out.println("|             5. 뒤로가기\t\t\t\t\t|");
+		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+		System.out.println("|               찾으시는 지식의 정보를 입력해 주세요.\t\t|");		
+		System.out.println("|             뒤로가기를 원하신다면 5번을 입력해 주세요.\t\t|");	
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
 		
 		System.out.print("제목: ");
 		String bookTitle = sc.next();
@@ -452,7 +462,7 @@ public class DaoApp {
 		System.out.println("=========================================================");
 		
 		if(currentUser.getAdmin() < 3) {
-			System.out.print("대여할 책 번호를 입력해주세요 : ");
+			System.out.print("대여할 지식의 번호를 입력해주세요 : ");
 			int bookNo = sc.nextInt();
 			BookVo book = bookDAO.get(bookNo);
 			
