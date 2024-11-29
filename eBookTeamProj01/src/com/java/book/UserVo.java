@@ -1,5 +1,7 @@
 package com.java.book;
 
+import java.util.Date;
+
 public class UserVo {
 	private int uid;
 	private String userId;
@@ -8,6 +10,8 @@ public class UserVo {
 	private String address;
 	private String phoneNumber;
 	private String email;
+	private Date birthday;
+	private int sex;
 	private int admin;
 	
 	public UserVo() {
@@ -15,7 +19,7 @@ public class UserVo {
 	}
 	
 	public UserVo(String userId, String userPassword, String address, 
-			String userName, String phoneNumber, String email, int admin) {
+			String userName, String phoneNumber, String email, Date birthday, int sex, int admin) {
 		super();
 		
 		this.userId = userId;
@@ -24,11 +28,13 @@ public class UserVo {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+		this.birthday = birthday;
+		this.sex = sex;
 		this.admin = admin;
 	}
 	
 	public UserVo(int uid, String userId, String userPassword, String address, 
-			String userName, String phoneNumber, String email, int admin) {
+			String userName, String phoneNumber, String email, Date birthday, int sex, int admin) {
 		super();
 		
 		this.uid = uid;
@@ -38,6 +44,8 @@ public class UserVo {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+		this.birthday = birthday;
+		this.sex = sex;
 		this.admin = admin;
 	}
 	
@@ -96,6 +104,25 @@ public class UserVo {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+//	this.birthday = birthday;
+//	this.sex = sex;
+	
+	public Date getBirthday() {
+		return birthday;
+	}
+	
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	
+	public int getSex() {
+		return sex;
+	}
+	
+	public void setSex(int sex) {
+		this.sex = sex;
 	}
 	
 	public int getAdmin() {
