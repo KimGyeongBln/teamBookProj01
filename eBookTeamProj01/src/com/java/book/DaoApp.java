@@ -324,7 +324,7 @@ public class DaoApp {
 			if(generalSearch(sc).size() > 0) {
 				bookList = generalSearch(sc);
 				searchResult(sc, bookList);
-				init(sc);
+				mainMenu(sc);
 			} else {
 				System.out.println("키워드 검색에 실패했어요. 다시 입력해주세요.");
 			}
@@ -333,7 +333,7 @@ public class DaoApp {
 			if(gerneSearch(sc).size() > 0) {
 				bookList = gerneSearch(sc);
 				searchResult(sc, bookList);
-				init(sc);
+				mainMenu(sc);
 			} else {
 				System.out.println("장르 검색에 실패했어요. 다시 입력해주세요.");
 			}
@@ -342,7 +342,7 @@ public class DaoApp {
 			if(detailSearch(sc).size() > 0) {
 				bookList = detailSearch(sc);
 				searchResult(sc, bookList);
-				init(sc);
+				mainMenu(sc);
 			} else {
 				System.out.println("상세 검색에 실패했어요. 다시 입력해주세요.");
 			}
@@ -457,8 +457,9 @@ public class DaoApp {
 	private static void searchResult(Scanner sc, List<BookVo> bookList) {
 		System.out.println("=========================================================");
 		for(var book : bookList) {
-			book.toString();
+			System.out.println(book.toString());
 		}
+//		System.out.println(bookList.size());
 		System.out.println("=========================================================");
 		
 		if(currentUser.getAdmin() < 3) {
@@ -490,7 +491,7 @@ public class DaoApp {
 		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
 		System.out.println("|             대여목록\t\t\t\t\t|");
 		for(var rentalBook : rentalBookList) {
-			rentalBook.toString();
+			System.out.println(rentalBook.toString());
 		}
 		System.out.println("|             1. 대여하기\t\t\t\t\t|");
 		System.out.println("|             2. 뒤로가기\t\t\t\t\t|");
@@ -526,8 +527,8 @@ public class DaoApp {
 		
 		int commend = sc.nextInt();
 		
-		for(var book : rentalBookList) {
-			book.toString();
+		for(var rentalBook : rentalBookList) {
+			System.out.println(rentalBook.toString());
 		}
 		
 		switch(commend)
@@ -606,6 +607,8 @@ public class DaoApp {
 	
 	
 	private static void logout(Scanner sc) {
-		
+		currentUser = null;
+		init(sc);
+	
 	}
 }

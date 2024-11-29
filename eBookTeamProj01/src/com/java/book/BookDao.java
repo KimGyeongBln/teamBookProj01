@@ -7,7 +7,7 @@ public interface BookDao {
 	public List<BookVo> search(String keyword); //@dhkim: 일부 문자로 책을 검색할 수 있는 기능
 	public List<BookVo> searchPublisher(String pulisher); //@hsNa: 저자 검색
 	public List	<BookVo> searchCategoryId(String category_id); //@hsNa: 카테고리 검색
-	public List<BookVo> searchGenre(String keyword); //@hsNa: 장르검색
+	public List<BookVo> searchGenre(int gerneId); //@hsNa: 장르검색
 	public List<BookVo> searchRating(int minRating); //@hsNa : 평점 검색
 	public List<BookVo> searchPrice(int minPrice, int maxPrice); //@hsNa : 가격 검색
 	public boolean updateRental(int book_id, int isRental); //@hsNa : 책 대여 기능

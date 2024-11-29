@@ -39,8 +39,8 @@ public class BookDaoImpl implements BookDao {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK;";
@@ -52,9 +52,9 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -95,12 +95,12 @@ public class BookDaoImpl implements BookDao {
 			conn = getConnection();
 	
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
-					+ " WHERE UPPER(book_title) LIKE ? OR UPPER(author_name) LIKE ?" ;
+					+ " WHERE UPPER(book_title) LIKE ? OR UPPER(author) LIKE ?" ;
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword.toUpperCase() + "%");
@@ -112,9 +112,9 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -153,8 +153,8 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
@@ -169,9 +169,9 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -210,8 +210,8 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
@@ -226,9 +226,9 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -258,7 +258,7 @@ public class BookDaoImpl implements BookDao {
 		return list;
 	}
 	
-	public List<BookVo> searchGenre(String keyword){
+	public List<BookVo> searchGenre(int genreId){
 		List<BookVo> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -268,17 +268,17 @@ public class BookDaoImpl implements BookDao {
 			conn = getConnection();
 	
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
-					+ " WHERE genre1 = ? OR genre2 = ? OR genre3 = ?" ;
+					+ " WHERE genre1 = ?" ;
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%" + keyword.toUpperCase() + "%");
-			pstmt.setString(2, "%" + keyword.toUpperCase() + "%");
-			pstmt.setString(3, "%" + keyword.toUpperCase() + "%");
+			pstmt.setInt(1, genreId);
+//			pstmt.setString(2, "%" + keyword.toUpperCase() + "%");
+//			pstmt.setString(3, "%" + keyword.toUpperCase() + "%");
 			
 			rs = pstmt.executeQuery();
 			
@@ -286,9 +286,9 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -328,8 +328,8 @@ public class BookDaoImpl implements BookDao {
 			conn = getConnection();
 	
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
@@ -344,9 +344,9 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -386,8 +386,8 @@ public class BookDaoImpl implements BookDao {
 			conn = getConnection();
 	
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
@@ -404,9 +404,9 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -446,8 +446,8 @@ public class BookDaoImpl implements BookDao {
 			conn = getConnection();
 	
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
@@ -463,9 +463,9 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -540,8 +540,8 @@ public class BookDaoImpl implements BookDao {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
@@ -553,9 +553,9 @@ public class BookDaoImpl implements BookDao {
 				int bId = rs.getInt("book_id");  // bId = bookId
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int categoryId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
@@ -644,8 +644,8 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
-					+ " publisher, date, category_id,"
+			String sql = "SELECT book_id, book_title, rating, author,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment "
 					+ " FROM BOOK"

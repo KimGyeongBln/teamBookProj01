@@ -25,7 +25,7 @@ public class BookVo {
 	}
 	
 	BookVo(int bookId, String bookTitle, int rating, String authorName, String publisher, Date date, int categoryId, int genre1, int genre2, int genre3, 
-			int isRental, int price, String imgUrl, Date update, String comment, int rentCNt) {
+			int isRental, int price, String imgUrl, Date update, String comment, int rentCnt) {
 		this.bookId = bookId;
 		this.bookTitle = bookTitle;
 		this.rating = rating;
@@ -181,8 +181,13 @@ public class BookVo {
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "BookVo [책번호: " + bookId + ", 책이름: " + bookTitle + ", 평점: " + rating + ", 작가이름: "
+				+ authorName + ", 출판사: " + publisher + ", 출판일: " + date + ", 카테고리: " + categoryId
+				+ ", genre1=" + genre1 + ", genre2=" + genre2 + ", genre3=" + genre3 + ", isRental=" + isRental
+				+ ", 가격: " + price + ", 이미지: " + imgUrl + ", update=" + update + ", comment=" + comment
+				+ ", rentCnt=" + rentCnt + "]";
+	}
 }
