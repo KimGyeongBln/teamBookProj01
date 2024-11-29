@@ -18,13 +18,14 @@ public class BookVo {
 	private String imgUrl;
 	private Date update;
 	private String comment;
+	private int rentCnt;
 	
 	BookVo() {
 		
 	}
 	
 	BookVo(int bookId, String bookTitle, int rating, String authorName, String publisher, Date date, int categoryId, int genre1, int genre2, int genre3, 
-			int isRental, int price, String imgUrl, Date update, String comment) {
+			int isRental, int price, String imgUrl, Date update, String comment, int rentCNt) {
 		this.bookId = bookId;
 		this.bookTitle = bookTitle;
 		this.rating = rating;
@@ -39,6 +40,7 @@ public class BookVo {
 		this.imgUrl = imgUrl;
 		this.update = update;
 		this.comment = comment;
+		this.rentCnt = rentCnt;
 	}
 	
 	// Getter, Setter
@@ -163,4 +165,24 @@ public class BookVo {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+	public int getRentCnt() {
+		return rentCnt;
+	}
+
+	public void setRentCnt(int rentCnt) {
+		this.rentCnt = rentCnt;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	
+	
+	
+	
 }
