@@ -327,7 +327,41 @@ public class UserDaoImpl implements UserDao {
 		
 		return list;
 	}
-
+	
+	public List<Date> regDateReturn(int uid) {
+		List<Date> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT reg_date"
+					+ " FROM BOOK_RENTAL_HISTORY"
+					+ " WHERE uid = ?;";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uid);
+			
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				Date regDate = rs.getDate("reg_date");
+			
+				list.add(regDate);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
+		}
+		
+		return list;
+	}
 	// 유저 정보 가져오기
 	@Override
 	public UserVo get(int uid) {
