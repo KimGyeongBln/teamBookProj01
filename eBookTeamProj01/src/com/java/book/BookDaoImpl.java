@@ -553,6 +553,44 @@ public class BookDaoImpl implements BookDao {
 		return list;	
 	}
 
+	
+	public List<BookVo> recommandBook(int genreId){
+		List<BookVo> list = new ArrayList<>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT us.uid, gen.genre_name, book.book_title, book.rent_cnt "
+					+ "	FROM book book JOIN book_genre gen ON book.genre1 = gen.genre_id "
+					+ " JOIN book_rental_history ren ON book.book_id = ren.book_id "
+					+ " JOIN user us ON us.uid = ren.uid "
+					+ " ORDER BY rent_cnt LIMIT 10;";
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				int uid = rs.getInt("us.uid");
+				String genreName = rs.getString("gen.genre_name");
+				String bookTitle = rs.getString("book.book_title");
+				int rentCnt = rs.getInt("book.rent_cnt");
+			}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (stmt != null) stmt.close();
+					if (conn != null) conn.close();
+				} catch (Exception e) {}
+			}
+		
+		return list;
+	}
+		
+	
 	public String findBookNameFromId(int bookId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
