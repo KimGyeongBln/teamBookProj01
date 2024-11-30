@@ -553,9 +553,6 @@ public class BookDaoImpl implements BookDao {
 		return list;	
 	}
 
-	
-	
-	
 	public String findBookNameFromId(int bookId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

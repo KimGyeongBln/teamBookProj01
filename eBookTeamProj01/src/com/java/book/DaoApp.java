@@ -442,9 +442,9 @@ public class DaoApp {
 			if(publisher.equals("5")) {
 				searchMenu(sc);				
 			}
-		System.out.print("카테고리: ");
-		String categoryId = sc.next();
-			if(categoryId.equals("5")) {
+		System.out.print("카테고리 (소설: 1, 만화: 2): ");
+		int categoryId = sc.nextInt();
+			if(categoryId == 5) {
 				searchMenu(sc);				
 			}
 			
