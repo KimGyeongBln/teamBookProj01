@@ -364,13 +364,7 @@ public class DaoApp {
 		}
 	}
 	
-	private static List<BookVo> generalSearch(Scanner sc) {
-		System.out.println("=========================================================");
-		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
-		System.out.println("|             찾으시는 지식의 이름이나 작가의 이름을 적어주세요.\t|");		
-		System.out.println("=========================================================");
-		System.out.print("작가 이름 혹은 작품 제목 : ");
-		
+	private static List<BookVo> generalSearch(Scanner sc) {		
 		String keyword = sc.nextLine();
 		
 		return bookDAO.search(keyword);
