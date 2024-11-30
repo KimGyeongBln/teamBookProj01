@@ -662,7 +662,7 @@ public class BookDaoImpl implements BookDao {
 	    return false;
 	}
 	
-	public boolean updateHistory(int uid, int book_id, int reg_date) {
+	public boolean updateHistory(int uid, int book_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int insertedCount = 0;
@@ -670,13 +670,13 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "INSERT INTO BOOK_RENTAL_HISTORY (uid, book_id, reg_date) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO BOOK_RENTAL_HISTORY (uid, book_id) VALUES (?, ?)";
 			
 		pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setInt(1, uid);
 		pstmt.setInt(2, book_id);
-		pstmt.setInt(3, reg_date);
+		
 		
 		insertedCount = pstmt.executeUpdate();
 		
@@ -692,6 +692,104 @@ public class BookDaoImpl implements BookDao {
 			}
 		}
 		return insertedCount > 0 ;
+	}
+	
+	public boolean rentalBook(int book_id, int uid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int rentCount = 0;
+		
+		try {
+			conn = getConnection();
+			
+			String sql  ="SELECT rent_cnt, is_rental FROM book WHERE book_id = ?";
+		
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, book_id);
+		
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			int isRental = rs.getInt("is_rental");
+			if (isRental == 1) {
+				return false;  // 이미 대출중인 경우
+			}
+			rentCount = rs.getInt("rent_cnt");
+		}else {
+			return false; // book_id가 존재하지 않을경우
+		}
+		rentCount++;
+		
+		String updateSql ="UPDATE Book SET is_rental = ?, rent_cnt =? WHERE book_id =?";
+		 pstmt = conn.prepareStatement(updateSql);
+	        pstmt.setInt(1, 1); 
+	        pstmt.setInt(2, rentCount); 
+	        pstmt.setInt(3, book_id); 
+	        
+	        int updatedCount = pstmt.executeUpdate();
+
+	        if(updatedCount > 0) {
+	        	
+	        	boolean historyUpdated = updateHistory(uid, book_id);
+	        	return historyUpdated;
+	        }
+	        return false;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			try {
+				if(rs != null)rs.close();
+				if(pstmt != null)pstmt.close();
+				if(conn != null)conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public boolean returnBook(int bookId) {
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+
+	    try {
+	        conn = getConnection();
+
+	        String selectSql = "SELECT is_rental FROM Book WHERE book_id = ?";
+	        pstmt = conn.prepareStatement(selectSql);
+	        pstmt.setInt(1, bookId); 
+
+	        ResultSet rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            int isRental = rs.getInt("is_rental");
+	            if (isRental == 0) {
+	                return false;
+	            }
+	        } else {
+	            return false; 
+	        }
+
+	        String updateSql = "UPDATE Book SET is_rental = 0 WHERE book_id = ?";
+	        pstmt = conn.prepareStatement(updateSql);
+	        pstmt.setInt(1, bookId);
+
+	        int updatedCount = pstmt.executeUpdate();
+
+	        return updatedCount > 0; 
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    } finally {
+	        try {
+	            if (pstmt != null) pstmt.close();
+	            if (conn != null) conn.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
 	}
 	
 	public boolean insert(BookVo vo) {

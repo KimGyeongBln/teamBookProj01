@@ -587,6 +587,8 @@ public class DaoApp {
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
 		
+		// switch
+		
 		int commend = sc.nextInt();
 		
 		switch(commend) {
