@@ -504,11 +504,11 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-			System.out.print("대여하실 지식의 지식은 저에게 알려주세요!");
-			sc.nextLine();
-			String bookTitle = sc.nextLine();
+			System.out.print("대여하실 지식은 저에게 알려주세요!");
+//			sc.nextLine();
+//			String bookTitle = sc.nextLine();
 //			rentedBooks.add(bookTitle);
-			System.out.println(bookTitle + "지식이 추가 되었습니다!");
+			System.out.println(book.getBookTitle() + "지식이 추가 되었습니다!");
 			break;
 		case 2:
 			mainMenu(sc);
