@@ -422,36 +422,7 @@ public class DaoApp {
 		
 		switch(commend)
 		{
-		case 1: 
-//			gerne1Menu(sc);
-			break;
-		case  2:
-//			gerne2Menu(sc);
-			break;
-		case 3:
-//			gerne3Menu(sc);
-			break;
-		case 4:
-//			gerne3Menu(sc);
-			break;
-		case 5:
-//			gerne3Menu(sc);
-			break;
-		case 6:
-//			gerne3Menu(sc);
-			break;
-		case 7:
-//			gerne3Menu(sc);
-			break;	
-		case 8:
-//			gerne3Menu(sc);
-			break;	
-		case 9:
-//			gerne3Menu(sc);
-			break;	
-		case 10:
-//			gerne3Menu(sc);
-			break;
+
 		case 11:
 			searchMenu(sc);
 		default:
