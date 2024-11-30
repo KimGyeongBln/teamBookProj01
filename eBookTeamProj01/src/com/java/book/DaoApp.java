@@ -383,6 +383,9 @@ public class DaoApp {
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
+		if(commend == 3) {
+			searchMenu(sc);
+		}
 		
 		return commend;
 	}
@@ -408,19 +411,11 @@ public class DaoApp {
 		
 		int commend = sc.nextInt();
 		
-		bookDAO.gerneSearch(categoryId, commend);
-		
-		switch(commend)
-		{
-
-		case 11:
-			searchMenu(sc);
-		default:
-			init(sc);
-			break;
+		if(commend == 11) {
+			categorySearch(sc);
 		}
 		
-		return null;
+		return bookDAO.gerneSearch(categoryId, commend);
 	}
 
 	private static List<BookVo> detailSearch(Scanner sc) {
