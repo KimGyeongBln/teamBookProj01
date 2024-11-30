@@ -563,11 +563,12 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "SELECT us.uid, gen.genre_name, book.book_title, book.rent_cnt "
-					+ "	FROM book book JOIN book_genre gen ON book.genre1 = gen.genre_id "
-					+ " JOIN book_rental_history ren ON book.book_id = ren.book_id "
-					+ " JOIN user us ON us.uid = ren.uid "
-					+ " ORDER BY rent_cnt LIMIT 10;";
+//			String sql = "SELECT us.uid, gen.genre_name, book.book_title, book.rent_cnt "
+//					+ "	FROM book book JOIN book_genre gen ON book.genre1 = gen.genre_id "
+//					+ " JOIN book_rental_history ren ON book.book_id = ren.book_id "
+//					+ " JOIN user us ON us.uid = ren.uid "
+//					+ " ORDER BY rent_cnt LIMIT 10;";
+			// 추천 리스트 쿼리 만들던 것.
 			
 			rs = stmt.executeQuery(sql);
 			
