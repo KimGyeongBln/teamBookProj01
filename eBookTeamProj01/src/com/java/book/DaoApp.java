@@ -519,7 +519,7 @@ public class DaoApp {
 	
 	private static void showRentalBookList(Scanner sc, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
-		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t\t|");
+		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t|");
 		System.out.println("|             현재 회원님의 지식 게이지가 궁금합니다!\t\t|");
 		System.out.println("|                                        \t\t|");
 		// 대여중인 리스트 System.out.println()
