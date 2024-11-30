@@ -364,6 +364,9 @@ public class DaoApp {
 		System.out.println("|             찾으시는 지식의 이름이나 작가의 이름을 적어주세요.\t|");		
 		System.out.println("=========================================================");
 		System.out.print("작가 이름 혹은 작품 제목 : ");
+		
+		int num = sc.nextInt();   // 문제있으면 빼기
+		
 		String keyword = sc.nextLine();
 		
 		return bookDAO.search(keyword);
@@ -542,8 +545,8 @@ public class DaoApp {
 		System.out.println("|             읽다보니 벌써 반납시간이?\t\t\t|");
 		System.out.println("|             저희 지식방은 언제나 회원님께 열려있습니다!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             1번을 누르신 후 반납 해 주실 지식을 알려주세요!\t\t|");
-		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t\t\t\t|");
+		System.out.println("|             1번을 누르신 후 반납 해 주실 지식을 알려주세요!\t|");
+		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요: ");
 		
@@ -587,6 +590,7 @@ public class DaoApp {
 		System.out.println("|             플러스 된 회원님의 지식을 알려드립니다!\t\t|");
 		System.out.println("|                                        \t\t|");
 		// 렌탈리스트
+		
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		 if (rentalBookList == null || rentalBookList.isEmpty()) {
