@@ -428,27 +428,31 @@ public class DaoApp {
 		
 		System.out.print("제목: ");
 		String bookTitle = sc.next();
-			if(bookTitle.equals("5")) {
-				searchMenu(sc);				
-			}
+		
+		if(bookTitle.equals("5")) {
+			searchMenu(sc);				
+		}
 		
 		System.out.print("작가: ");
 		String authorName = sc.next();
-			if(authorName.equals("5")) {
-				searchMenu(sc);				
-			}
+		
+		if(authorName.equals("5")) {
+			searchMenu(sc);				
+		}
 		System.out.print("출판사: ");
 		String publisher = sc.next();
-			if(publisher.equals("5")) {
-				searchMenu(sc);				
-			}
+		
+		if(publisher.equals("5")) {
+			searchMenu(sc);				
+		}
 		System.out.print("카테고리 (소설: 1, 만화: 2): ");
 		int categoryId = sc.nextInt();
-			if(categoryId == 5) {
-				searchMenu(sc);				
-			}
+		
+		if(categoryId == 5) {
+			searchMenu(sc);				
+		}
 			
-			return null;
+		return null;
 	}
 	
 	private static void searchResult(Scanner sc, List<BookVo> bookList) {
@@ -505,10 +509,10 @@ public class DaoApp {
 			String bookTitle = sc.nextLine();
 //			rentedBooks.add(bookTitle);
 			System.out.println(bookTitle + "지식이 추가 되었습니다!");
-				break;
+			break;
 		case 2:
-				mainMenu(sc);
-				break;
+			mainMenu(sc);
+			break;
 		
 		}
 	}
@@ -554,12 +558,12 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-				System.out.print(" 반납 해 주실 지식은 저에게 알려주세요!");
-//				리스트 나와야한다( 함수 하나 만들기)
-				break;
+			System.out.print(" 반납 해 주실 지식은 저에게 알려주세요!");
+//			리스트 나와야한다( 함수 하나 만들기)
+			break;
 		case 2:
-				mainMenu(sc);
-				break;
+			mainMenu(sc);
+			break;
 		default:
 			System.out.println("알려주신 지식을 한번 더 확인 후 알려주세요!");
 
@@ -593,15 +597,12 @@ public class DaoApp {
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		 if (rentalBookList == null || rentalBookList.isEmpty()) {
-	            System.out.println("플러스 된 지식이 아직 없습니다 지식을 플러스 해 보세요!");
-	        } else {
-	            for (var book : rentalBookList) {
-	                System.out.println(book);
-		}
-	            
-	   }
-
-		
+			 System.out.println("플러스 된 지식이 아직 없습니다 지식을 플러스 해 보세요!");
+	     } else {
+	    	 for (var book : rentalBookList) {
+	    		 System.out.println(book);
+	    	 }    
+	     }
 	}
 	
 	
