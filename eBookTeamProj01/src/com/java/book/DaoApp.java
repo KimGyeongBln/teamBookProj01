@@ -33,7 +33,7 @@ public class DaoApp {
 		System.out.println("|            	      3. 회   원   가  입\t\t\t|");
 		System.out.println("|             	      4. 나    가     기\t\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             지식방의 모든 도서는 '지식'으로 통일 됩니다!\t\t|");
+		System.out.println("|             지식방의 모든 도서는 '지식'으로 통일 됩니다!\t|");
 		System.out.println("|                   이용에 참고 부탁드립니다.\t\t\t|");
 		System.out.println("=========================================================");
 
@@ -64,8 +64,8 @@ public class DaoApp {
 			if(register(sc)) {
 				System.out.println("=========================================================");
 				System.out.println("|             		  환영합니다!\t\t\t|");			
-				System.out.println("|             	      앞으로 지식방의 서비스를 \t\t\t|");
-				System.out.println("|             	      자유롭게 이용해 주세요!\t\t\t|");
+				System.out.println("|             	      앞으로 지식방의 서비스를 \t\t|");
+				System.out.println("|             	      자유롭게 이용해 주세요!\t\t|");
 				System.out.println("=========================================================");
 				init(sc);
 			} else {
@@ -142,8 +142,8 @@ public class DaoApp {
 		System.out.println("회원가입 시도합니다.");
 
 		System.out.println("=========================================================");
-		System.out.println("|                  신규 가입을 환영합니다.\t\t|");	
-		System.out.println("|          회원 가입을 위한 정보를 안내에 따라 입력해 주세요.\t\t|");		
+		System.out.println("|                  신규 가입을 환영합니다.\t\t\t|");	
+		System.out.println("|          회원 가입을 위한 정보를 안내에 따라 입력해 주세요.\t|");		
 		System.out.println("|        회원 가입을 취소하고 싶으시다면 '0'번을 입력해 주세요. \t|");
 		System.out.println("=========================================================");
 
@@ -211,7 +211,7 @@ public class DaoApp {
 		System.out.println("프로그램 종료합니다.");
 		
 		System.out.println("=========================================================");
-		System.out.println("|           저희 하이디미어 디지털 지식방 이용은 즐거우셨나요?\t\t|");
+		System.out.println("|           저희 하이디미어 디지털 지식방 이용은 즐거우셨나요?\t|");
 		System.out.println("|              지금까지 언제나 최상의 서비스를 생각하는\t\t|");
 		System.out.println("|                하이미디어 디지털 지식방이었습니다.\t\t|");;		
 		System.out.println("|               고객님께 도움이 되었다면 좋겠습니다.\t\t|");
@@ -308,7 +308,7 @@ public class DaoApp {
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
 		System.out.println("|             	  원하시는 검색을 골라주세요.\t\t\t|");		
 		System.out.println("|                                        \t\t|");
-		System.out.println("|  1. 일  반    검  색 (제목 또는 작가 이름으로 지식 검색)\t\t|");	
+		System.out.println("|  1. 일  반    검  색 (제목 또는 작가 이름으로 지식 검색)\t|");	
 		System.out.println("|  2. 카 테 고 리 검 색  (소설 또는 만화책 구분해 지식 검색)\t|");	
 		System.out.println("|  3. 상  세    검  색 (제목, 장르, 출판사 등을 입력해 지식 검색)\t|");	
 		System.out.println("|  4. 메인으로 돌아가기\t\t\t\t\t|");
@@ -365,6 +365,12 @@ public class DaoApp {
 	}
 	
 	private static List<BookVo> generalSearch(Scanner sc) {
+		System.out.println("=========================================================");
+		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+		System.out.println("|             찾으시는 지식의 이름이나 작가의 이름을 적어주세요.\t|");		
+		System.out.println("=========================================================");
+		System.out.print("작가 이름 혹은 작품 제목 : ");
+		
 		String keyword = sc.nextLine();
 		
 		return bookDAO.search(keyword);
@@ -375,7 +381,7 @@ public class DaoApp {
 	private static int categorySearch(Scanner sc) {
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
-		System.out.println("|             	    원하시는 장르를 골라주세요.\t\t\t|");		
+		System.out.println("|             	    원하시는 장르를 골라주세요.\t\t|");		
 		System.out.println("|                                        \t\t|");
 		System.out.println("|            	    1. 소           설\t\t\t|");
 		System.out.println("|            	    2. 만           화\t\t\t|");
@@ -398,8 +404,8 @@ public class DaoApp {
 		System.out.println("|                                        \t\t|");
 		System.out.println("|            	    1. 판      타     지\t\t\t|");
 		System.out.println("|            	    2. 로      맨     스\t\t\t|");
-		System.out.println("|            	    3. 무              협\t\t\t|");
-		System.out.println("|            	    4. 추              리\t\t\t|");
+		System.out.println("|            	    3. 무              협\t\t|");
+		System.out.println("|            	    4. 추              리\t\t|");
 		System.out.println("|            	    5. 스      릴     러\t\t\t|");
 		System.out.println("|            	    6. 코      미     디\t\t\t|");
 		System.out.println("|            	    7. 현대   판 타 지\t\t\t|");
@@ -489,7 +495,7 @@ public class DaoApp {
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|             월컴 투 하이미디어 도서관 프로젝트!\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t\t|");
+		System.out.println("|             다음 중 원하시는 기능의 번호를 선택해주세요.\t|");
 		System.out.println("|             대여목록\t\t\t\t\t|");
 		for(var rentalBook : rentalBookList) {
 			System.out.println(rentalBook.toString());
@@ -571,7 +577,10 @@ public class DaoApp {
             break;
 		}
 		
+		
 		return true;
+		
+		
 	}
 	
 	private static void recommandBook(Scanner sc) {
@@ -585,6 +594,12 @@ public class DaoApp {
 		System.out.print("명령어를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
+		
+		switch(commend) {
+		case 0:
+			mainMenu(sc);
+			break;
+	  }
 	}
 	
 	private static void showRentalBookLog(Scanner sc,  List<BookVo> rentalBookList) {
@@ -603,7 +618,27 @@ public class DaoApp {
 	    		 System.out.println(book);
 	    	 }    
 	     }
+		System.out.println("명령어를 입력해주세요 : ");
+		
+		
+		
+		int commend = sc.nextInt();
+		if (rentalBookList == null || rentalBookList.isEmpty()) {
+	        System.out.println("플러스 된 지식이 아직 없습니다 지식을 플러스 해 보세요!");
+	    } else {
+            for (var book : rentalBookList) {
+                System.out.println(book);
+            }
+	     }
+		
+		switch(commend) {
+			case 0:
+				mainMenu(sc);
+				break;
+		}
 	}
+		
+	
 	
 	
 	private static void logout(Scanner sc) {
