@@ -321,6 +321,12 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
+			System.out.println("=========================================================");
+			System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
+			System.out.println("|             찾으시는 지식의 이름이나 작가의 이름을 적어주세요.\t|");		
+			System.out.println("=========================================================");
+			System.out.print("작가 이름 혹은 작품 제목 : ");
+			
 			if(generalSearch(sc).size() > 0) {
 				bookList = generalSearch(sc);
 				searchResult(sc, bookList);
@@ -350,7 +356,7 @@ public class DaoApp {
 			}
 			break;
 		case 4:
-			searchMenu(sc);
+			mainMenu(sc);
 			break;
 		default:
 			init(sc);
@@ -359,14 +365,6 @@ public class DaoApp {
 	}
 	
 	private static List<BookVo> generalSearch(Scanner sc) {
-		System.out.println("=========================================================");
-		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
-		System.out.println("|             찾으시는 지식의 이름이나 작가의 이름을 적어주세요.\t|");		
-		System.out.println("=========================================================");
-		System.out.print("작가 이름 혹은 작품 제목 : ");
-		
-		int num = sc.nextInt();   // 문제있으면 빼기
-		
 		String keyword = sc.nextLine();
 		
 		return bookDAO.search(keyword);
@@ -517,7 +515,7 @@ public class DaoApp {
 	
 	private static void showRentalBookList(Scanner sc, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
-		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t|");
+		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t\t|");
 		System.out.println("|             현재 회원님의 지식 게이지가 궁금합니다!\t\t|");
 		System.out.println("|                                        \t\t|");
 		// 대여중인 리스트 System.out.println()
@@ -527,10 +525,11 @@ public class DaoApp {
 		
 		int commend = sc.nextInt();
 		
-		for(var rentalBook : rentalBookList) {
-			System.out.println(rentalBook.toString());
+		if(rentalBookList != null) { 
+			for(var rentalBook : rentalBookList) {
+				System.out.println(rentalBook.toString());
+			}
 		}
-		
 		switch(commend)
 		{
 		case 0:
