@@ -161,52 +161,68 @@ public class DaoApp {
 		
 		System.out.println("2. 사용하실 비밀번호 : ");
 		String userPassword = sc.next();
-		if(userPassword.equals("0"))
-			return false;
+		if(userPassword.equals("0")) {
+			exitRegisterMenu();
+			return false; 
+		}
 		
 		System.out.println("3. 이름 : ");
 		String userName = sc.next();
-		if(userName.equals("0"))
+		if(userName.equals("0")) {
+			exitRegisterMenu();
 			return false;
+		}
 		
 		System.out.println("4. 이메일 : ");
 		String email = sc.next();
-		if(email.equals("0"))
+		if(userName.equals("0")) {
+			exitRegisterMenu();
 			return false;
+		}
 		
 		System.out.println("5. 전화번호 : ");
 		String phoneNumber = sc.next();
-		if(phoneNumber.equals("0"))
+		if(userName.equals("0")) {
+			exitRegisterMenu();
 			return false;
+		}
 		
 		System.out.println("6. 생년월일 : ");
 		String birthday = sc.next();
-		if(birthday.equals("0"))
+		if(userName.equals("0")) {
+			exitRegisterMenu();
 			return false;
+		}
 		
 		System.out.println("7. 성별 : ");
 		String sex = sc.next();
-		if(sex.equals("0"))
+		if(userName.equals("0")) {
+			exitRegisterMenu();
 			return false;
+		}
 		
 		System.out.println("8. 주소 : ");
 		String address = sc.next();
-		if(address.equals("0"))
+		if(userName.equals("0")) {
+			exitRegisterMenu();
 			return false;
-		
-		//	0입력했을 떄 뜰 수 있게 해 주세요.
-//		System.out.println("=========================================================");
-//		System.out.println("|               회원 가입 없이 로그인을 하시게 되면\t\t|");	
-//		System.out.println("|                  지식 검색만 가능합니다.\t\t\t|");
-//		System.out.println("|          저희 지식방이 제공하는 모든 서비스를 이용하기 위해서는\t|");
-//		System.out.println("|                  회원가입이 필요합니다.\t\t\t|");;		
-//		System.out.println("|           생각이 바뀌시면 언제든 회원가입 해 주세요!\t\t|");
-//		System.out.println("=========================================================");
-
+		}
 		
 		return userDAO.register(userId, userPassword, userName, address, phoneNumber, email, birthday, sex);
 	}
 
+	private static void exitRegisterMenu() {
+		//	0입력했을 떄 뜰 수 있게 해 주세요.
+		System.out.println("=========================================================");
+		System.out.println("|               회원 가입 없이 로그인을 하시게 되면\t\t|");	
+		System.out.println("|                  지식 검색만 가능합니다.\t\t\t|");
+		System.out.println("|          저희 지식방이 제공하는 모든 서비스를 이용하기 위해서는\t|");
+		System.out.println("|                  회원가입이 필요합니다.\t\t\t|");;		
+		System.out.println("|           생각이 바뀌시면 언제든 회원가입 해 주세요!\t\t|");
+		System.out.println("=========================================================");
+	}
+	
+	
 	private static void exit() {
 		System.out.println("프로그램 종료합니다.");
 		
