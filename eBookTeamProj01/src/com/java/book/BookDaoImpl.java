@@ -703,22 +703,24 @@ public class BookDaoImpl implements BookDao {
 	
 	public BookVo get(int bookId) {
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		BookVo temp = null;
 		
 		try {
 			conn = getConnection();
-			stmt = conn.createStatement();
 			
 			String sql = "SELECT book_id, book_title, rating, author,"
 					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK"
-					+ " WHERE UPPER(book_id)" ;
+					+ " WHERE book_id = ?" ;
 			
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bookId);
+			
+			rs = pstmt.executeQuery();
 		
 			while (rs.next()) {
 				int bId = rs.getInt("book_id");  // bId = bookId
@@ -748,7 +750,7 @@ public class BookDaoImpl implements BookDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (stmt != null) stmt.close();
+				if (pstmt != null) pstmt.close();
 				if (conn != null) conn.close();
 			} catch (Exception e) {}
 		}
