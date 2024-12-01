@@ -646,11 +646,17 @@ public class DaoApp {
 	}
    
 	private static void recommandBook(Scanner sc) {
+		List<BookVo> recommandBookList = new ArrayList<>();
+		recommandBookList = bookDAO.recommandBook(currentUser.getUid());
+		
 		System.out.println("=========================================================");
 		System.out.println("|             이런 지식은 어떨까요?\t\t\t\t|");
 		System.out.println("|             회원님께 추천 드리고싶은 지식의 목록입니다!\t\t|");
 		System.out.println("|                                        \t\t|");
 		// 추천
+		for(BookVo book : recommandBookList) {
+			System.out.println(book.toString());
+		}
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("명령어를 입력해주세요 : ");
