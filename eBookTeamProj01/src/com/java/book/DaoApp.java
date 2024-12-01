@@ -241,8 +241,7 @@ public class DaoApp {
 	
 	private static void mainMenu(Scanner sc) {
 		System.out.println("메인메뉴 진입");
-
-
+		
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
 		System.out.println("|             	  하이미디어 디지털 지식방입니다.\t\t|");		
@@ -258,14 +257,19 @@ public class DaoApp {
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
-		
+		List<BookVo> bookList = new ArrayList<>();
+		List<Integer> bookIdList = new ArrayList<>();
 		switch(commend)
 		{
 		case 1:
 			searchMenu(sc);
 			break;
 		case 2:
-			showRentalBookList(sc, null);
+			bookIdList = userDAO.getMyRentalBookList(currentUser.getUid());
+			for(int i = 0; i < bookIdList.size(); ++i) {
+				bookList.add(bookDAO.get(bookIdList.get(i)));
+			}
+			showRentalBookList(sc, bookList);
 			break;
 		case 3:
 			if(returnRentalBook(sc)) {
@@ -278,7 +282,11 @@ public class DaoApp {
 			recommandBook(sc);
 			break;
 		case 5:
-			showRentalBookLog(sc, null);
+			bookIdList = userDAO.getMyRentalBookList(currentUser.getUid());
+			for(int i = 0; i < bookIdList.size(); ++i) {
+				bookList.add(bookDAO.get(bookIdList.get(i)));
+			}
+			showRentalBookLog(sc, bookList);
 			break;
 		case 6:
 			logout(sc);
@@ -501,11 +509,12 @@ public class DaoApp {
 
 	private static void rentalBook(Scanner sc, BookVo book, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
-		System.out.println("|                 대여 가능한 지식 목록이에요.\t\t\t|");
+		System.out.println("|                 현재까지 대여하신 지식 목록이에요.\t\t\t|");
 		for(var rentalBook : rentalBookList) {
 			System.out.println(rentalBook.toString());
 		}
-		System.out.println("|                 원하시는 번호를 눌러주세요.\t\t\t|");
+		System.out.println("=========================================================");
+		System.out.println("|                 "+book.getBookTitle()+"을 대여하실껀가요?\t" );
 		System.out.println("|                     1. 대여하기\t\t\t\t|");
 		System.out.println("|                     2. 뒤로가기\t\t\t\t|");
 		System.out.println("=========================================================");
@@ -516,10 +525,8 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-			System.out.print("대여하실 지식은 저에게 알려주세요!");
-//			sc.nextLine();
-//			String bookTitle = sc.nextLine();
-//			rentedBooks.add(bookTitle);
+			bookDAO.updateHistory(currentUser.getUid(), book.getBookId());
+			bookDAO.updateRental(book.getBookId(), 1);
 			System.out.println(book.getBookTitle() + "지식이 추가 되었습니다!");
 			break;
 		case 2:
@@ -532,7 +539,7 @@ public class DaoApp {
 	private static void showRentalBookList(Scanner sc, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
 		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t|");
-		System.out.println("|             현재 회원님의 지식 게이지가 궁금합니다!\t\t|");
+		System.out.println("|             현재 회원님의 지식 목록이 궁금합니다!\t\t|");
 		System.out.println("|                                        \t\t|");
 		// 대여중인 리스트 
 		if(rentalBookList != null) { 
@@ -575,11 +582,9 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-//			System.out.print(" 반납 해 주실 지식은 저에게 알려주세요!");
-//			리스트 나와야한다( 함수 하나 만들기) 여기도 건들어야해요
-//			confirmReturnBookList(sc); 나중에 밑에 만들고 주석 풀기
+			return confirmReturnBookList(sc); 
 			break;
-		case 2:
+		case 0:
 			mainMenu(sc);
 			break;
 		default:
@@ -591,43 +596,54 @@ public class DaoApp {
 		return true;
 	}
 	
-	/* 여기 해야합니다...
-	   private static void confirmReturnBookList (Scanner sc)	{
-		  System.out.println("=========================================================");
-		  System.out.println("|             현재 대여중인 책 목록입니다.                |");
-		  List<BookVo> rentalBookList = getRentalBookList();
-		  for (int i = 0; i < rentalBookList.size(); i++) {
-		        BookVo rentalBook = rentalBookList.get(i);
-		        System.out.println((i + 1) + ". " + rentalBook.toString()); // 책 번호와 함께 출력
-		    }
-		  System.out.println("=========================================================");
-		  System.out.println("|             0번을 입력하면 뒤로 가기입니다.            |");
-		  System.out.print("반납할 책의 번호를 입력해주세요: ");
-		  
-		  int bookNumber = sc.nextInt();
-		  
-		  if (bookNumber == 0) {
-		        // 뒤로 가기 (메인 메뉴로 돌아가기)
-		        returnRentalBook(sc); // 반납 메뉴로 돌아가기
-		    } else if (bookNumber > 0 && bookNumber <= rentalBookList.size()) {
-		        // 책 번호가 유효한 경우 해당 책을 반납 처리
-		        BookVo selectedBook = rentalBookList.get(bookNumber - 1); // 선택된 책
-		        System.out.println("선택하신 책: " + ((BookVo) selectedBook).getBookTitle() + " 입니다.");
-		        
-		        // 반납 처리 메서드 호출
-		        boolean isReturned = returnBook(selectedBook.getBookId());
-		        
-		        if (isReturned) {
-		            System.out.println("책이 정상적으로 반납되었습니다.");
-		        } else {
-		            System.out.println("반납 처리 중 오류가 발생했습니다.");
-		        }
-		    } else {
-		        System.out.println("잘못된 번호입니다. 다시 시도해주세요.");
-		        confirmReturnBookList(sc); // 잘못된 번호일 경우 재귀적으로 다시 시도
-		    }
-		}
-	*/
+   private static boolean confirmReturnBookList (Scanner sc) {
+	   List<Integer> rentalBookIdList = new ArrayList<>();
+	   List<BookVo> rentalBookList = new ArrayList<>();
+
+	   rentalBookIdList = userDAO.getMyRentalBookList(currentUser.getUid());
+	   for (int i = 0; i < rentalBookIdList.size(); i++) {
+	       BookVo rentalBook = bookDAO.get(rentalBookIdList.get(i));
+	       rentalBookList.add(rentalBook);
+	   }
+	   
+	   System.out.println("=========================================================");
+	   System.out.println("|             현재 대여중인 책 목록입니다.                |");
+
+	   for(BookVo book : rentalBookList) {
+		   System.out.println(book.toString());
+	   }
+	  
+	   System.out.println("=========================================================");
+	   System.out.println("|             0번을 입력하면 뒤로 가기입니다.            |");
+	   System.out.print("반납할 책의 번호를 입력해주세요: ");
+	  
+	   int bookNumber = sc.nextInt();
+	  
+	   if (bookNumber == 0) {
+		   // 뒤로 가기 (메인 메뉴로 돌아가기)
+	       returnRentalBook(sc); // 반납 메뉴로 돌아가기
+	   } else {
+	       // 책 번호가 유효한 경우 해당 책을 반납 처리
+	       BookVo selectedBook = rentalBookList.get(bookNumber); // 선택된 책
+	       System.out.println("선택하신 책: " + selectedBook.getBookTitle() + " 입니다.");
+	       
+	       // 반납 처리 메서드 호출
+//	       boolean isReturned = bookDAO.returnBook(selectedBook.getBookId());
+	       boolean isReturned = bookDAO.updateRental(selectedBook.getBookId(), 0);
+	       boolean isUpdated = bookDAO.updateHistory(currentUser.getUid(), selectedBook.getBookId());
+	      
+	       if (isReturned && isUpdated) {
+	    	   System.out.println("책이 정상적으로 반납되었습니다.");
+	          
+	           return true;
+	       } else {
+	           System.out.println("반납 처리 중 오류가 발생했습니다.");
+	       }
+	   }
+	   
+	   return false;
+	}
+   
 	private static void recommandBook(Scanner sc) {
 		System.out.println("=========================================================");
 		System.out.println("|             이런 지식은 어떨까요?\t\t\t\t|");
@@ -684,13 +700,9 @@ public class DaoApp {
 				break;
 		}
 	}
-		
-	
-	
 	
 	private static void logout(Scanner sc) {
 		currentUser = null;
 		init(sc);
-	
 	}
 }

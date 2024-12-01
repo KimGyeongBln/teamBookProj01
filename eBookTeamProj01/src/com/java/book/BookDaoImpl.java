@@ -554,7 +554,6 @@ public class BookDaoImpl implements BookDao {
 		return list;	
 	}
 
-	
 	public List<BookVo> recommandBook(int uid){
 		List<BookVo> list = new ArrayList<>();
 		Connection conn = null;
@@ -665,7 +664,6 @@ public class BookDaoImpl implements BookDao {
 		return resultBookList;
 	}
 		
-	
 	public String findBookNameFromId(int bookId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -777,7 +775,7 @@ public class BookDaoImpl implements BookDao {
 	    return false;
 	}
 	
-	public boolean updateHistory(int uid, int book_id) {
+	public boolean updateHistory(int uid, int bookId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int insertedCount = 0;
@@ -790,7 +788,7 @@ public class BookDaoImpl implements BookDao {
 		pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setInt(1, uid);
-		pstmt.setInt(2, book_id);
+		pstmt.setInt(2, bookId);
 		
 		
 		insertedCount = pstmt.executeUpdate();
@@ -809,7 +807,8 @@ public class BookDaoImpl implements BookDao {
 		return insertedCount > 0 ;
 	}
 	
-	public boolean rentalBook(int book_id, int uid) {
+	@Override
+	public boolean rentalBook(int uid, int bookId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -821,7 +820,7 @@ public class BookDaoImpl implements BookDao {
 			String sql  ="SELECT rent_cnt, is_rental FROM book WHERE book_id = ?";
 		
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, book_id);
+		pstmt.setInt(1, bookId);
 		
 		rs = pstmt.executeQuery();
 		
@@ -840,13 +839,13 @@ public class BookDaoImpl implements BookDao {
 		 pstmt = conn.prepareStatement(updateSql);
 	        pstmt.setInt(1, 1); 
 	        pstmt.setInt(2, rentCount); 
-	        pstmt.setInt(3, book_id); 
+	        pstmt.setInt(3, bookId); 
 	        
 	        int updatedCount = pstmt.executeUpdate();
 
 	        if(updatedCount > 0) {
 	        	
-	        	boolean historyUpdated = updateHistory(uid, book_id);
+	        	boolean historyUpdated = updateHistory(uid, bookId);
 	        	return historyUpdated;
 	        }
 	        return false;
@@ -863,7 +862,8 @@ public class BookDaoImpl implements BookDao {
 			}
 		}
 	}
-	
+
+	@Override
 	public boolean returnBook(int bookId) {
 	    Connection conn = null;
 	    PreparedStatement pstmt = null;
