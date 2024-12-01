@@ -522,6 +522,14 @@ public class DaoApp {
 		
 		int commend = sc.nextInt();
 		
+		for(BookVo rentalBook : rentalBookList) {
+			if(rentalBook.getBookId() == book.getBookId()) {
+				System.out.println(book.getBookTitle() + "은 이미 대여하신 지식입니다!");
+				mainMenu(sc);
+				return;
+			}
+		}
+		
 		switch(commend)
 		{
 		case 1:
