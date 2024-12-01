@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -554,41 +555,114 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	
-	public List<BookVo> recommandBook(int genreId){
+	public List<BookVo> recommandBook(int uid){
 		List<BookVo> list = new ArrayList<>();
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
+		List<BookVo> resultBookList = new ArrayList<>();
+		
+		int genreMaxId = 0; 
 		
 		try {
 			conn = getConnection();
 			
-//			String sql = "SELECT us.uid, gen.genre_name, book.book_title, book.rent_cnt "
-//					+ "	FROM book book JOIN book_genre gen ON book.genre1 = gen.genre_id "
-//					+ " JOIN book_rental_history ren ON book.book_id = ren.book_id "
-//					+ " JOIN user us ON us.uid = ren.uid "
-//					+ " ORDER BY rent_cnt LIMIT 10;";
-			// 추천 리스트 쿼리 만들던 것.
+			// 대여한 책들 중 가장 많이 본 장르를 찾아내는 쿼리
+			String sql = "SELECT "
+					+ " count(case when bk.genre1=1 then 1 end) AS genre1_count, "
+					+ " count(case when bk.genre1=2 then 1 end) AS genre2_count, "
+					+ " count(case when bk.genre1=3 then 1 end) AS genre3_count, "
+					+ " count(case when bk.genre1=4 then 1 end) AS genre4_count, "
+					+ " count(case when bk.genre1=5 then 1 end) AS genre5_count, "
+					+ " count(case when bk.genre1=6 then 1 end) AS genre6_count, "
+					+ " count(case when bk.genre1=7 then 1 end) AS genre7_count, "
+					+ " count(case when bk.genre1=8 then 1 end) AS genre8_count, "
+					+ " count(case when bk.genre1=9 then 1 end) AS genre9_count, "
+					+ " count(case when bk.genre1=10 then 1 end) AS genre10_count "
+					+ " FROM book AS bk JOIN book_rental_history AS ren ON bk.book_id = ren.book_id "
+					+ " WHERE ren.uid = ?;";
 			
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uid);
+			
+			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				int uid = rs.getInt("us.uid");
-				String genreName = rs.getString("gen.genre_name");
-				String bookTitle = rs.getString("book.book_title");
-				int rentCnt = rs.getInt("book.rent_cnt");
+				List<Integer> genreCntArray = new ArrayList<Integer>();
+				
+				for(int i = 1; i <= 10; ++i) {
+					int genreCnt = rs.getInt("genre" + i + "_count");
+					genreCntArray.add(genreCnt);
+				}
+				
+				genreMaxId = Collections.max(genreCntArray);
 			}
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				try {
-					if (stmt != null) stmt.close();
+					if (pstmt != null) pstmt.close();
 					if (conn != null) conn.close();
-				} catch (Exception e) {}
+				}catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		
-		return list;
+		if(genreMaxId != 0) {
+			try {
+				conn = getConnection();
+				
+				// 대여한 책들 중 가장 많이 본 장르를 찾아내는 쿼리
+				String sql = "SELECT bk.* FROM book AS bk "
+						+ "JOIN book_rental_history AS ren "
+						+ "WHERE bk.genre1 = ? AND ren.uid = ? AND ren.book_id != bk.book_id "
+						+ "ORDER BY bk.rent_cnt LIMIT 10;";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, genreMaxId);
+				pstmt.setInt(2, uid);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					int bId = rs.getInt("book_id");  // bId = bookId
+					String bookTitle = rs.getString("book_title");
+					int rating = rs.getInt("rating");
+					String authorName = rs.getString("author");
+					String publisher = rs.getString("publisher");
+					Date date = rs.getDate("publish_date");
+					int categoryId = rs.getInt("category_id");
+					int genre1 = rs.getInt("genre1");
+					int genre2 = rs.getInt("genre2");
+					int genre3 = rs.getInt("genre3");
+					int isRental = rs.getInt("is_rental");
+					int price = rs.getInt("price");
+					String imgUrl = rs.getString("img_url");
+					Date update = rs.getDate("upd_date");
+					String comment = rs.getString("comment");
+					int rent_cnt = rs.getInt("rent_cnt");
+					
+					BookVo vo = new BookVo(bId, bookTitle, rating, authorName, publisher, 
+							date, categoryId,  genre1, genre2, genre3, 
+							isRental, price, imgUrl, update, comment, rent_cnt);
+					
+					resultBookList.add(vo);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (pstmt != null) pstmt.close();
+					if (conn != null) conn.close();
+				}catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return resultBookList;
 	}
 		
 	
