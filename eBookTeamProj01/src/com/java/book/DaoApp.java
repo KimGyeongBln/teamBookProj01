@@ -578,11 +578,12 @@ public class DaoApp {
 		System.out.print("명령어를 입력해주세요: ");
 		
 		int commend = sc.nextInt();
+		boolean result = false;
 		
 		switch(commend)
 		{
 		case 1:
-			return confirmReturnBookList(sc); 
+			result = confirmReturnBookList(sc); 
 			break;
 		case 0:
 			mainMenu(sc);
@@ -593,7 +594,7 @@ public class DaoApp {
             break;
 		}
 		
-		return true;
+		return result;
 	}
 	
    private static boolean confirmReturnBookList (Scanner sc) {
