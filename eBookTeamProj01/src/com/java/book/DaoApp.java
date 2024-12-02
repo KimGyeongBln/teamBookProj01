@@ -555,6 +555,7 @@ public class DaoApp {
 				System.out.println(rentalBook.toString());
 			}
 		}
+		System.out.println("|                                        \t\t|");
 		System.out.println("|             책을 반납하러 가실거면 1번을 눌러주세요!\t\t|");
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
