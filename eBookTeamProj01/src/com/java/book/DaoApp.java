@@ -37,7 +37,7 @@ public class DaoApp {
 		System.out.println("|                   이용에 참고 부탁드립니다.\t\t\t|");
 		System.out.println("=========================================================");
 
-		System.out.print("번호를 입력해주세요 : ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
 		int commend = sc.nextInt();
 		
 		switch(commend)
@@ -503,7 +503,7 @@ public class DaoApp {
 		System.out.println("|                     1. 대여하기\t\t\t\t|");
 		System.out.println("|                     2. 뒤로가기\t\t\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
 
@@ -544,7 +544,7 @@ public class DaoApp {
 		System.out.println("|             책을 반납하러 가실거면 1번을 눌러주세요!\t\t|");
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
 		
@@ -557,19 +557,23 @@ public class DaoApp {
 		case 0:
 			mainMenu(sc);
 			break;
+		default : 
+			System.out.println("번호를 다시 입력해주세요");
+			mainMenu(sc);
+			break;
 		}
 		
 	}
 	
 	private static boolean returnRentalBook(Scanner sc) {
 		System.out.println("=========================================================");
-		System.out.println("|             읽다보니 벌써 반납시간이?\t\t\t|");
+		System.out.println("|             아쉬운 이별의 순간이네요.\t\t\t|");
 		System.out.println("|             저희 지식방은 언제나 회원님께 열려있습니다!\t\t|");
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             1번을 누르신 후 반납 해 주실 지식을 알려주세요!\t|");
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요: ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
 		boolean result = false;
@@ -665,7 +669,7 @@ public class DaoApp {
 		}
 		System.out.println("|             뒤로가기는 언제나 0번을 불러주세요!\t\t|");
 		System.out.println("=========================================================");
-		System.out.print("명령어를 입력해주세요 : ");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		// switch
 		
@@ -694,7 +698,7 @@ public class DaoApp {
 	    		 System.out.println(book);
 	    	 }    
 	     }
-		System.out.println("명령어를 입력해주세요 : ");
+			System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		
 		
