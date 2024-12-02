@@ -811,6 +811,8 @@ public class BookDaoImpl implements BookDao {
 		
 		if(insertedCount > 0) {
 			try {
+				conn = getConnection();
+				
 				String sql = "INSERT INTO user_rental_history (uid, book_id) VALUES (?, ?)";
 				
 				pstmt = conn.prepareStatement(sql);
