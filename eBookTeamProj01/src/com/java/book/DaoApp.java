@@ -519,6 +519,7 @@ public class DaoApp {
 			bookDAO.updateHistory(currentUser.getUid(), book.getBookId());
 			bookDAO.updateRental(book.getBookId(), 1);
 			System.out.println(book.getBookTitle() + "지식이 추가 되었습니다!");
+			mainMenu(sc);
 			break;
 		case 2:
 			mainMenu(sc);
