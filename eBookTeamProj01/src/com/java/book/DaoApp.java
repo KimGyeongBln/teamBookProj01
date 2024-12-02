@@ -441,7 +441,7 @@ public class DaoApp {
 			mainMenu(sc);
 		} else {
 			System.out.println("아직 준비 중입니다. 다른 장르를 선택 해 주세요.");
-			mainMenu(sc);
+			genreSearch(sc, categoryId);
 		}
 		
 		
@@ -482,6 +482,11 @@ public class DaoApp {
 		if(currentUser.getAdmin() < 3) {
 			System.out.print("대여할 지식의 번호를 입력해주세요 : ");
 			int bookNo = sc.nextInt();
+			
+			if(bookNo == 0) {
+				categorySearch(sc);
+			}
+			
 			BookVo book = bookDAO.get(bookNo);
 			
 			List<BookVo> container = new ArrayList<BookVo>();
