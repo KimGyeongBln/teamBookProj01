@@ -522,7 +522,7 @@ public class BookDaoImpl implements BookDao {
 				int bookId = rs.getInt("book_id");
 				String bookTitle = rs.getString("book_title");
 				int rating = rs.getInt("rating");
-				String authorName = rs.getString("author_name");
+				String authorName = rs.getString("author");
 				String publisher = rs.getString("publisher");
 				Date date = rs.getDate("publish_date");
 				int cateId = rs.getInt("category_id");
