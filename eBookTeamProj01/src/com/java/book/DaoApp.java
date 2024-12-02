@@ -134,7 +134,7 @@ public class DaoApp {
 		
 		currentUser = userDAO.guestLogin();
 		
-		return currentUser == null;
+		return currentUser != null;
 	}
 	
 	// 회원가입 기능
