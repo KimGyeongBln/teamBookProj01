@@ -351,13 +351,8 @@ public class DaoApp {
 			System.out.println("=========================================================");
 			System.out.print("작가 이름 혹은 작품 제목 : ");
 			
-			if(generalSearch(sc).size() > 0) {
-				bookList = generalSearch(sc);
-				searchResult(sc, bookList);
-				mainMenu(sc);
-			} else {
-				System.out.println("키워드 검색에 실패했어요. 다시 입력해주세요.");
-			}
+			generalSearch(sc);
+			
 			break;
 		case 2:
 			int categoryId = categorySearch(sc);
@@ -388,10 +383,17 @@ public class DaoApp {
 		}
 	}
 	
-	private static List<BookVo> generalSearch(Scanner sc) {		
-		String keyword = sc.nextLine();
+	private static void generalSearch(Scanner sc) {		
+		String keyword = sc.next();
 		
-		return bookDAO.search(keyword);
+		List<BookVo> list = bookDAO.search(keyword);
+		
+		if(list.size() > 0) {
+			searchResult(sc, list);
+		} else {
+			System.out.println("키워드 검색에 실패했어요. 다시 입력해주세요.");
+			mainMenu(sc);
+		}
 	}
 	
 
