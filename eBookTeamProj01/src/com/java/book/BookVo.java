@@ -184,8 +184,8 @@ public class BookVo {
 
 	@Override
 	public String toString() {
-		return "BookVo [책번호: " + this.bookId + ", 책이름: " + this.bookTitle + ","
-				+ " 작가이름: "+ this.authorName + ", 출판사: " + ","
+		return "[책번호: " + this.bookId + ",\t책이름: " + this.bookTitle + ",\t"
+				+ " 작가이름: "+ this.authorName + ",\t출판사: " + this.publisher + ",\t"
 				+ " 대여여부=" + this.isRental + "]";
 	}
 }
