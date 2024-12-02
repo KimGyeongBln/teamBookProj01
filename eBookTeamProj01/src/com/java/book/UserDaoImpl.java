@@ -328,6 +328,46 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 	
+	// 유저가 대여했던 책 리스트 모
+	@Override
+	public List<Integer> getMyRentalBookHistory(int uid) {
+		List<Integer> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT book_id, reg_date"
+					+ " FROM user_book_history"
+					+ " WHERE uid = ?;";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uid);
+			
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				int bookId = rs.getInt("book_id");
+				
+				//TODO:날짜도 컨테이너에 받아서 리턴하고 싶다.
+				Date regDate = rs.getDate("reg_date");
+			
+				list.add(bookId);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {}
+		}
+		
+		return list;
+	}
+	
 	public List<Date> regDateReturn(int uid) {
 		List<Date> list = new ArrayList<>();
 		Connection conn = null;
@@ -362,6 +402,7 @@ public class UserDaoImpl implements UserDao {
 		
 		return list;
 	}
+	
 	// 유저 정보 가져오기
 	@Override
 	public UserVo get(int uid) {

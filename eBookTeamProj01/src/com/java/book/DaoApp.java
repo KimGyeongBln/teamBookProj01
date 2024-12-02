@@ -282,7 +282,7 @@ public class DaoApp {
 			recommandBook(sc);
 			break;
 		case 5:
-			bookIdList = userDAO.getMyRentalBookList(currentUser.getUid());
+			bookIdList = userDAO.getMyRentalBookHistory(currentUser.getUid());
 			for(int i = 0; i < bookIdList.size(); ++i) {
 				bookList.add(bookDAO.get(bookIdList.get(i)));
 			}

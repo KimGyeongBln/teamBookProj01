@@ -579,7 +579,7 @@ public class BookDaoImpl implements BookDao {
 					+ " count(case when bk.genre1=8 then 1 end) AS genre8_count, "
 					+ " count(case when bk.genre1=9 then 1 end) AS genre9_count, "
 					+ " count(case when bk.genre1=10 then 1 end) AS genre10_count "
-					+ " FROM book AS bk JOIN book_rental_history AS ren ON bk.book_id = ren.book_id "
+					+ " FROM book AS bk JOIN user_rental_history AS ren ON bk.book_id = ren.book_id "
 					+ " WHERE ren.uid = ?;";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -615,7 +615,7 @@ public class BookDaoImpl implements BookDao {
 				
 				// 대여한 책들 중 가장 많이 본 장르를 찾아내는 쿼리
 				String sql = "SELECT bk.* FROM book AS bk "
-						+ "JOIN book_rental_history AS ren "
+						+ "JOIN user_rental_history AS ren "
 						+ "WHERE bk.genre1 = ? AND ren.uid = ? AND ren.book_id != bk.book_id "
 						+ "ORDER BY bk.rent_cnt LIMIT 10;";
 				
@@ -783,15 +783,19 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "INSERT INTO BOOK_RENTAL_HISTORY (uid, book_id) VALUES (?, ?)";
+			String sql = "INSERT INTO book_rental_history (uid, book_id) VALUES (?, ?)";
 			
-		pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setInt(1, uid);
-		pstmt.setInt(2, bookId);
+			pstmt.setInt(1, uid);
+			pstmt.setInt(2, bookId);
 		
 		
-		insertedCount = pstmt.executeUpdate();
+			insertedCount = pstmt.executeUpdate();
+			
+			if(insertedCount > 0) {
+
+			}
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -804,6 +808,30 @@ public class BookDaoImpl implements BookDao {
 				e.printStackTrace();
 			}
 		}
+		
+		if(insertedCount > 0) {
+			try {
+				String sql = "INSERT INTO user_rental_history (uid, book_id) VALUES (?, ?)";
+				
+				pstmt = conn.prepareStatement(sql);
+			
+				pstmt.setInt(1, uid);
+				pstmt.setInt(2, bookId);
+			
+				insertedCount = pstmt.executeUpdate();
+			}  catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}finally {
+				try {
+					if (pstmt != null) pstmt.close();
+					if (conn != null) conn.close();
+				}catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		return insertedCount > 0 ;
 	}
 	
