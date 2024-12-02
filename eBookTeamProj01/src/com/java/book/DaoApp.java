@@ -557,6 +557,10 @@ public class DaoApp {
 		case 0:
 			mainMenu(sc);
 			break;
+		default : 
+			System.out.println("번호를 다시 입력해주세요");
+			mainMenu(sc);
+			break;
 		}
 		
 	}
