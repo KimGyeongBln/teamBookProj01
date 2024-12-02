@@ -33,7 +33,7 @@ public class DaoApp {
 		System.out.println("|            	      3. 회   원   가  입\t\t\t|");
 		System.out.println("|             	      4. 나    가     기\t\t\t|");
 		System.out.println("|                                        \t\t|");
-		System.out.println("|             지식방의 모든 도서는 '지식'으로 통일 됩니다!\t\t|");
+		System.out.println("|             지식방의 모든 도서는 '지식'으로 통일 됩니다!\t|");
 		System.out.println("|                   이용에 참고 부탁드립니다.\t\t\t|");
 		System.out.println("=========================================================");
 
@@ -332,7 +332,7 @@ public class DaoApp {
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
 		System.out.println("|             	  원하시는 검색을 골라주세요.\t\t\t|");		
 		System.out.println("|                                        \t\t|");
-		System.out.println("|  1. 일  반    검  색 (제목 또는 작가 이름으로 지식 검색)\t\t|");	
+		System.out.println("|  1. 일  반    검  색 (제목 또는 작가 이름으로 지식 검색)\t|");	
 		System.out.println("|  2. 카 테 고 리 검 색  (소설 또는 만화책 구분해 지식 검색)\t|");	
 		System.out.println("|  3. 상  세    검  색 (제목, 장르, 출판사 등을 입력해 지식 검색)\t|");	
 		System.out.println("|  4. 메인으로 돌아가기\t\t\t\t\t|");
@@ -425,8 +425,8 @@ public class DaoApp {
 		System.out.println("|                                        \t\t|");
 		System.out.println("|            	    1. 판      타     지\t\t\t|");
 		System.out.println("|            	    2. 로      맨     스\t\t\t|");
-		System.out.println("|            	    3. 무              협\t\t\t|");
-		System.out.println("|            	    4. 추              리\t\t\t|");
+		System.out.println("|            	    3. 무              협\t\t|");
+		System.out.println("|            	    4. 추              리\t\t|");
 		System.out.println("|            	    5. 스      릴     러\t\t\t|");
 		System.out.println("|            	    6. 코      미     디\t\t\t|");
 		System.out.println("|            	    7. 현대   판 타 지\t\t\t|");
@@ -532,7 +532,7 @@ public class DaoApp {
 	
 	private static void showRentalBookList(Scanner sc, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
-		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t\t|");
+		System.out.println("|             쌓여가는 내 지식은 뭐가 있을까요?\t\t|");
 		System.out.println("|             현재 회원님의 지식 목록이 궁금합니다!\t\t|");
 		System.out.println("|                                        \t\t|");
 		// 대여중인 리스트 
