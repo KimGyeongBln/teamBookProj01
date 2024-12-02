@@ -525,6 +525,7 @@ public class DaoApp {
 		for(BookVo rentalBook : rentalBookList) {
 			if(rentalBook.getBookId() == book.getBookId()) {
 				System.out.println(book.getBookTitle() + "은 이미 대여하신 지식입니다!");
+				
 				mainMenu(sc);
 				return;
 			}
@@ -591,7 +592,10 @@ public class DaoApp {
 		switch(commend)
 		{
 		case 1:
-			result = confirmReturnBookList(sc); 
+			result = confirmReturnBookList(sc);
+			if(result) {
+				mainMenu(sc);
+			}
 			break;
 		case 0:
 			mainMenu(sc);
@@ -632,9 +636,17 @@ public class DaoApp {
 		   // 뒤로 가기 (메인 메뉴로 돌아가기)
 	       returnRentalBook(sc); // 반납 메뉴로 돌아가기
 	   } else {
+		   BookVo selectedBook = null;
+		   
 	       // 책 번호가 유효한 경우 해당 책을 반납 처리
-	       BookVo selectedBook = rentalBookList.get(bookNumber); // 선택된 책
-	       System.out.println("선택하신 책: " + selectedBook.getBookTitle() + " 입니다.");
+		   for(BookVo book : rentalBookList) {
+			   if(book.getBookId() == bookNumber) {
+				   selectedBook = book;
+				   break;
+			   }
+		   }
+	       
+		   System.out.println("선택하신 책: " + selectedBook.getBookTitle() + " 입니다.");
 	       
 	       // 반납 처리 메서드 호출
 //	       boolean isReturned = bookDAO.returnBook(selectedBook.getBookId());
