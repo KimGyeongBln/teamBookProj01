@@ -815,7 +815,7 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "DELETE FROM BOOK_RENTAL_HISTORY WHERE uid = ? AND book_id = ?)";
+			String sql = "DELETE FROM BOOK_RENTAL_HISTORY WHERE uid = ? AND book_id = ?";
 			
 		pstmt = conn.prepareStatement(sql);
 		
