@@ -361,7 +361,7 @@ public class DaoApp {
 				searchResult(sc, bookList);
 				mainMenu(sc);
 			} else {
-				System.out.println("장르 검색에 실패했어요. 다시 입력해주세요.");
+				System.out.println("아직 준비 중입니다. 다른 장르를 선택 해 주세요.");
 				mainMenu(sc);
 			}
 			break;
