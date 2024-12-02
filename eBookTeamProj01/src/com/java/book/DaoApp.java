@@ -485,6 +485,7 @@ public class DaoApp {
 			
 			if(bookNo == 0) {
 				categorySearch(sc);
+				return;
 			}
 			
 			BookVo book = bookDAO.get(bookNo);
