@@ -306,7 +306,7 @@ public class DaoApp {
 		System.out.println("|                                        \t\t|");
 		System.out.println("|            	    1. 지  식    검  색\t\t\t|");
 		System.out.println("|            	    2. 회  원    가  입\t\t\t|");
-		System.out.println("|            	    3. 로  그    아  웃\t\t\t|");
+		System.out.println("|            	    3. 뒤  로    가  기\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 
@@ -376,7 +376,11 @@ public class DaoApp {
 			}
 			break;
 		case 0:
-			mainMenu(sc);
+			if(currentUser.getAdmin() == 3) { //게스트 유저일 경우
+				mainMenuForGuest(sc);
+			} else {
+				mainMenu(sc);
+			}
 			break;
 		default:
 			init(sc);
