@@ -10,7 +10,7 @@ public interface BookDao {
 	public List<BookVo> searchGenre(int uid); //@hsNa: 장르검색
 	public List<BookVo> searchRating(int minRating); //@hsNa : 평점 검색
 	public List<BookVo> searchPrice(int minPrice, int maxPrice); //@hsNa : 가격 검색
-	public List<BookVo> gerneSearch(int categoryId, int genreId); // 장르 검색(예진)
+	public List<BookVo> genreSearch(int categoryId, int genreId); // 장르 검색(예진)
 	public List<BookVo> recommandBook(int genreId); // 장르로 도서 추천(예진)
 	public boolean rentalBook(int uid, int bookId);
 	public boolean returnBook(int bookId);

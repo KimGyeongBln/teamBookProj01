@@ -496,7 +496,7 @@ public class BookDaoImpl implements BookDao {
 		return list;	
 	}
 	
-	public List<BookVo> gerneSearch(int categoryId, int genreId) {
+	public List<BookVo> genreSearch(int categoryId, int genreId) {
 		List<BookVo> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -505,7 +505,7 @@ public class BookDaoImpl implements BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "SELECT book_id, book_title, rating, author_name,"
+			String sql = "SELECT book_id, book_title, rating, author,"
 					+ " publisher, date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "

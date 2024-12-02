@@ -442,7 +442,7 @@ public class DaoApp {
 			categorySearch(sc);
 		}
 		
-		return bookDAO.gerneSearch(categoryId, commend);
+		return bookDAO.genreSearch(categoryId, commend);
 	}
 
 	private static List<BookVo> detailSearch(Scanner sc) {
