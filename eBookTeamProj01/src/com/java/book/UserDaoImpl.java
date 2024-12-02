@@ -328,7 +328,7 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 	
-	// 유저가 대여했던 책 리스트 모
+	// 유저가 대여했던 책 리스트 모음
 	@Override
 	public List<Integer> getMyRentalBookHistory(int uid) {
 		List<Integer> list = new ArrayList<>();
@@ -340,7 +340,7 @@ public class UserDaoImpl implements UserDao {
 			conn = getConnection();
 			
 			String sql = "SELECT book_id, reg_date"
-					+ " FROM user_book_history"
+					+ " FROM user_rental_history"
 					+ " WHERE uid = ?;";
 			
 			pstmt = conn.prepareStatement(sql);
