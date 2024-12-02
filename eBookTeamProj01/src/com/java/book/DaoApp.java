@@ -335,7 +335,7 @@ public class DaoApp {
 		System.out.println("|  1. 일  반    검  색 (제목 또는 작가 이름으로 지식 검색)\t|");	
 		System.out.println("|  2. 카 테 고 리 검 색  (소설 또는 만화책 구분해 지식 검색)\t|");	
 		System.out.println("|  3. 상  세    검  색 (제목, 장르, 출판사 등을 입력해 지식 검색)\t|");	
-		System.out.println("|  4. 메인으로 돌아가기\t\t\t\t\t|");
+		System.out.println("|  0. 메인으로 돌아가기\t\t\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
@@ -375,7 +375,7 @@ public class DaoApp {
 				mainMenu(sc);
 			}
 			break;
-		case 4:
+		case 0:
 			mainMenu(sc);
 			break;
 		default:
@@ -406,12 +406,12 @@ public class DaoApp {
 		System.out.println("|                                        \t\t|");
 		System.out.println("|            	    1. 소           설\t\t\t|");
 		System.out.println("|            	    2. 만           화\t\t\t|");
-		System.out.println("|            	    3. 뒤  로    가  기\t\t\t|");	
+		System.out.println("|            	    0. 뒤  로    가  기\t\t\t|");	
 		System.out.println("=========================================================");
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
-		if(commend == 3) {
+		if(commend == 0) {
 			searchMenu(sc);
 		}
 		
@@ -433,13 +433,13 @@ public class DaoApp {
 		System.out.println("|            	    8. 게임   판 타 지\t\t\t|");
 		System.out.println("|            	    9. 	   시	 \t\t\t|");
 		System.out.println("|            	   10. 일  반    소  설\t\t\t|");
-		System.out.println("|            	   11. 뒤  로    가  기\t\t\t|");
+		System.out.println("|            	    0. 뒤  로    가  기\t\t\t|");
 		System.out.println("=========================================================");
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
 		
-		if(commend == 11) {
+		if(commend == 0) {
 			categorySearch(sc);
 		}
 		
@@ -451,12 +451,12 @@ public class DaoApp {
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
 		System.out.println("|              현재 상세검색 기능은 준비중에 있습니다.\t\t|");
 		System.out.println("|              더 나은 서비스를 위해 최선을 다하겠습니다.\t|");
-		System.out.println("|             뒤로가기를 원하신다면 5번을 입력해 주세요.\t\t|");	
+		System.out.println("|             뒤로가기를 원하신다면 0번을 입력해 주세요.\t\t|");	
 		System.out.println("=========================================================");
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		int commend = sc.nextInt();
 		
-		if(commend == 5) {
+		if(commend == 0) {
 			searchMenu(sc);				
 		}
 			
