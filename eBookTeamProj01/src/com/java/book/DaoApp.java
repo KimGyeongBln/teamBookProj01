@@ -355,15 +355,7 @@ public class DaoApp {
 			break;
 		case 2:
 			int categoryId = categorySearch(sc);
-			
-			if(genreSearch(sc, categoryId).size() > 0) {
-				bookList = genreSearch(sc, categoryId);
-				searchResult(sc, bookList);
-				mainMenu(sc);
-			} else {
-				System.out.println("아직 준비 중입니다. 다른 장르를 선택 해 주세요.");
-				mainMenu(sc);
-			}
+			genreSearch(sc, categoryId);
 			break;
 		case 3:
 			if(detailSearch(sc).size() > 0) {
@@ -388,7 +380,7 @@ public class DaoApp {
 		String keyword = sc.next();
 		
 		List<BookVo> list = bookDAO.search(keyword);
-		
+
 		if(list.size() > 0) {
 			searchResult(sc, list);
 		} else {
@@ -438,6 +430,18 @@ public class DaoApp {
 		System.out.print("원하시는 번호를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
+		List<BookVo> list = bookDAO.genreSearch(categoryId, commend);
+		
+		if(list.size() > 0) {
+			searchResult(sc, list);
+			mainMenu(sc);
+		} else {
+			System.out.println("아직 준비 중입니다. 다른 장르를 선택 해 주세요.");
+			mainMenu(sc);
+		}
+		
+		
+		
 		
 		if(commend == 0) {
 			categorySearch(sc);
