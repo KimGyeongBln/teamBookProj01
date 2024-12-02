@@ -1,4 +1,4 @@
-package com.java.book;
+package com.java.user;
 
 import java.util.List;
 

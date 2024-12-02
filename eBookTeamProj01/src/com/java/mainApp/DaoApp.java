@@ -1,8 +1,15 @@
-package com.java.book;
+package com.java.mainApp;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import com.java.book.BookDao;
+import com.java.book.BookDaoImpl;
+import com.java.book.BookVo;
+import com.java.user.UserDao;
+import com.java.user.UserDaoImpl;
+import com.java.user.UserVo;
 
 public class DaoApp {
 	// 유저 기능

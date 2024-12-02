@@ -1,4 +1,4 @@
-package com.java.book;
+package com.java.user;
 
 public class UserVo {
 	private int uid;
