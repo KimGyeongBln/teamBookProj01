@@ -807,6 +807,38 @@ public class BookDaoImpl implements BookDao {
 		return insertedCount > 0 ;
 	}
 	
+	public boolean deleteHistory(int uid, int bookId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int deletedCount = 0;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "DELETE FROM BOOK_RENTAL_HISTORY WHERE uid = ? AND book_id = ?)";
+			
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, uid);
+		pstmt.setInt(2, bookId);
+		
+		
+		deletedCount = pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return deletedCount > 0 ;
+	}
+	
 	@Override
 	public boolean rentalBook(int uid, int bookId) {
 		Connection conn = null;

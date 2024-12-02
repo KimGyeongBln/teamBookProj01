@@ -16,6 +16,7 @@ public interface BookDao {
 	public boolean returnBook(int bookId);
 	public boolean updateRental(int book_id, int isRental); //@hsNa : 책 대여 기능
 	public boolean updateHistory(int uid, int book_id); //@hsNa: 책 대여 기록 기능
+	public boolean deleteHistory(int uid, int book_id); //@hsNa: 책 대여 기록 기능
 	public BookVo get(int bookId);		// 리스트에서 객체 가져오기
 	public boolean insert(BookVo vo); 	// 추가
 	public boolean update(BookVo vo); 	// 수정

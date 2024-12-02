@@ -633,9 +633,9 @@ public class DaoApp {
 	       // 반납 처리 메서드 호출
 //	       boolean isReturned = bookDAO.returnBook(selectedBook.getBookId());
 	       boolean isReturned = bookDAO.updateRental(selectedBook.getBookId(), 0);
-	       boolean isUpdated = bookDAO.updateHistory(currentUser.getUid(), selectedBook.getBookId());
+	       boolean isDeleted = bookDAO.deleteHistory(currentUser.getUid(), selectedBook.getBookId());
 	      
-	       if (isReturned && isUpdated) {
+	       if (isReturned && isDeleted) {
 	    	   System.out.println("책이 정상적으로 반납되었습니다.");
 	          
 	           return true;
