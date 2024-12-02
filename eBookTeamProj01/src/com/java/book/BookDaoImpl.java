@@ -614,7 +614,7 @@ public class BookDaoImpl implements BookDao {
 				conn = getConnection();
 				
 				// 대여한 책들 중 가장 많이 본 장르를 찾아내는 쿼리
-				String sql = "SELECT bk.* FROM book AS bk "
+				String sql = "SELECT DISTINCT bk.* FROM book AS bk "
 						+ "JOIN user_rental_history AS ren "
 						+ "WHERE bk.genre1 = ? AND ren.uid = ? AND ren.book_id != bk.book_id "
 						+ "ORDER BY bk.rent_cnt LIMIT 10;";
