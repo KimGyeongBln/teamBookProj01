@@ -563,7 +563,7 @@ public class DaoApp {
 	
 	private static boolean returnRentalBook(Scanner sc) {
 		System.out.println("=========================================================");
-		System.out.println("|             읽다보니 벌써 반납시간이?\t\t\t|");
+		System.out.println("|             아쉬운 이별의 순간이네요.\t\t\t|");
 		System.out.println("|             저희 지식방은 언제나 회원님께 열려있습니다!\t\t|");
 		System.out.println("|                                        \t\t|");
 		System.out.println("|             1번을 누르신 후 반납 해 주실 지식을 알려주세요!\t|");
