@@ -450,9 +450,10 @@ public class DaoApp {
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
 		System.out.println("|              현재 상세검색 기능은 준비중에 있습니다.\t\t|");
-		System.out.println("|              더 나은 서비스를 위해 최선을 다하겠습니다.\t\t|");
+		System.out.println("|              더 나은 서비스를 위해 최선을 다하겠습니다.\t|");
 		System.out.println("|             뒤로가기를 원하신다면 5번을 입력해 주세요.\t\t|");	
 		System.out.println("=========================================================");
+		System.out.print("원하시는 번호를 입력해주세요 : ");
 		int commend = sc.nextInt();
 		
 		if(commend == 5) {
@@ -492,12 +493,13 @@ public class DaoApp {
 
 	private static void rentalBook(Scanner sc, BookVo book, List<BookVo> rentalBookList) {
 		System.out.println("=========================================================");
-		System.out.println("|                 현재까지 대여하신 지식 목록이에요.\t\t\t|");
+		System.out.println("|                 현재까지 대여하신 지식 목록이에요.\t\t|");
 		for(var rentalBook : rentalBookList) {
 			System.out.println(rentalBook.toString());
 		}
 		System.out.println("=========================================================");
-		System.out.println("|                 "+book.getBookTitle()+"을 대여하실껀가요?\t" );
+		System.out.println("|"+book.getBookTitle()+"을(를)\t" );
+		System.out.println("|		  대여하시겠습니까?\t" );
 		System.out.println("|                     1. 대여하기\t\t\t\t|");
 		System.out.println("|                     2. 뒤로가기\t\t\t\t|");
 		System.out.println("=========================================================");
@@ -603,14 +605,15 @@ public class DaoApp {
 	   }
 	   
 	   System.out.println("=========================================================");
-	   System.out.println("|             현재 대여중인 책 목록입니다.                |");
+	   System.out.println("|               현재 대여중인 지식 목록입니다.                |");
 
 	   for(BookVo book : rentalBookList) {
 		   System.out.println(book.toString());
 	   }
 	  
 	   System.out.println("=========================================================");
-	   System.out.println("|             0번을 입력하면 뒤로 가기입니다.            |");
+	   System.out.println("|               0번을 입력하면 뒤로 가기입니다.               |");
+	   System.out.println("=========================================================");
 	   System.out.print("반납할 책의 번호를 입력해주세요: ");
 	  
 	   int bookNumber = sc.nextInt();
