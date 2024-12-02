@@ -506,7 +506,7 @@ public class BookDaoImpl implements BookDao {
 			conn = getConnection();
 			
 			String sql = "SELECT book_id, book_title, rating, author,"
-					+ " publisher, date, category_id,"
+					+ " publisher, publish_date, category_id,"
 					+ " genre1, genre2, genre3, is_rental, price,"
 					+ " img_url, upd_date, comment, rent_cnt "
 					+ " FROM BOOK "
@@ -524,7 +524,7 @@ public class BookDaoImpl implements BookDao {
 				int rating = rs.getInt("rating");
 				String authorName = rs.getString("author_name");
 				String publisher = rs.getString("publisher");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("publish_date");
 				int cateId = rs.getInt("category_id");
 				int genre1 = rs.getInt("genre1");
 				int genre2 = rs.getInt("genre2");
