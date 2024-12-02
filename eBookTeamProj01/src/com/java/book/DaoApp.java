@@ -449,33 +449,13 @@ public class DaoApp {
 	private static List<BookVo> detailSearch(Scanner sc) {
 		System.out.println("=========================================================");
 		System.out.println("|             	      고객님 어서오세요!\t\t\t|");	
-		System.out.println("|               찾으시는 지식의 정보를 입력해 주세요.\t\t|");		
+		System.out.println("|              현재 상세검색 기능은 준비중에 있습니다.\t\t|");
+		System.out.println("|              더 나은 서비스를 위해 최선을 다하겠습니다.\t\t|");
 		System.out.println("|             뒤로가기를 원하신다면 5번을 입력해 주세요.\t\t|");	
 		System.out.println("=========================================================");
+		int commend = sc.nextInt();
 		
-		System.out.print("제목: ");
-		String bookTitle = sc.next();
-		
-		if(bookTitle.equals("5")) {
-			searchMenu(sc);				
-		}
-		
-		System.out.print("작가: ");
-		String authorName = sc.next();
-		
-		if(authorName.equals("5")) {
-			searchMenu(sc);				
-		}
-		System.out.print("출판사: ");
-		String publisher = sc.next();
-		
-		if(publisher.equals("5")) {
-			searchMenu(sc);				
-		}
-		System.out.print("카테고리 (소설: 1, 만화: 2): ");
-		int categoryId = sc.nextInt();
-		
-		if(categoryId == 5) {
+		if(commend == 5) {
 			searchMenu(sc);				
 		}
 			
