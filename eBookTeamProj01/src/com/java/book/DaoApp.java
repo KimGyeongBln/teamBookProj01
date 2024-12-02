@@ -352,7 +352,6 @@ public class DaoApp {
 			System.out.print("작가 이름 혹은 작품 제목 : ");
 			
 			generalSearch(sc);
-			
 			break;
 		case 2:
 			int categoryId = categorySearch(sc);
@@ -363,6 +362,7 @@ public class DaoApp {
 				mainMenu(sc);
 			} else {
 				System.out.println("장르 검색에 실패했어요. 다시 입력해주세요.");
+				mainMenu(sc);
 			}
 			break;
 		case 3:
@@ -372,6 +372,7 @@ public class DaoApp {
 				mainMenu(sc);
 			} else {
 				System.out.println("상세 검색에 실패했어요. 다시 입력해주세요.");
+				mainMenu(sc);
 			}
 			break;
 		case 4:
