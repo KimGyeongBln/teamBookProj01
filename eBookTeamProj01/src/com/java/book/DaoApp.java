@@ -521,18 +521,18 @@ public class DaoApp {
 		System.out.print("명령어를 입력해주세요 : ");
 		
 		int commend = sc.nextInt();
-		
-		for(BookVo rentalBook : rentalBookList) {
-			if(rentalBook.getBookId() == book.getBookId()) {
-				System.out.println(book.getBookTitle() + "은 이미 대여하신 지식입니다!");
-				mainMenu(sc);
-				return;
-			}
-		}
-		
+				
 		switch(commend)
 		{
 		case 1:
+			for(BookVo rentalBook : rentalBookList) {
+				if(rentalBook.getBookId() == book.getBookId()) {
+					System.out.println(book.getBookTitle() + "은 이미 대여하신 지식입니다!");
+					mainMenu(sc);
+					return;
+				}
+			}
+			
 			bookDAO.updateHistory(currentUser.getUid(), book.getBookId());
 			bookDAO.updateRental(book.getBookId(), 1);
 			System.out.println(book.getBookTitle() + "지식이 추가 되었습니다!");
