@@ -595,7 +595,7 @@ public class BookDaoImpl implements BookDao {
 					genreCntArray.add(genreCnt);
 				}
 				
-				genreMaxId = Collections.max(genreCntArray);
+				genreMaxId = genreCntArray.indexOf(Collections.max(genreCntArray));
 			}
 				
 			} catch (SQLException e) {
