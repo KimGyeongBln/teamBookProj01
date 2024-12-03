@@ -491,7 +491,7 @@ public class DaoApp {
 			int bookNo = sc.nextInt();
 			
 			if(bookNo == 0) {
-				categorySearch(sc);
+				searchMenu(sc);
 				return;
 			}
 			
